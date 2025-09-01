@@ -1,0 +1,126 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Customer {
+  id             String  @id @default(cuid())
+  name           String
+  email          String  @unique
+  phone          String
+  marketingOptIn Boolean @default(false)
+  events         Event[]
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@map("customers")
+}
+
+model Event {
+  id             String    @id @default(cuid())
+  customerId     String    @map("customer_id")
+  customer       Customer  @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  date           DateTime
+  startAt        DateTime  @map("start_at")
+  endAt          DateTime  @map("end_at")
+  street         String
+  city           String
+  state          String
+  zip            String
+  lat            Float
+  lng            Float
+  eventType      String    @map("event_type")
+  surface        String
+  notes          String?
+  status         EventStatus @default(PENDING)
+  waiverSignedAt DateTime? @map("waiver_signed_at")
+  bookings       Booking[]
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  @@map("events")
+}
+
+model Package {
+  id            String  @id @default(cuid())
+  name          String
+  durationMin   Int     @map("duration_min")
+  basePrice     Int     @map("base_price") // in cents
+  includedItems Json    @map("included_items")
+  maxGuests     Int     @map("max_guests")
+  isActive      Boolean @default(true) @map("is_active")
+  bookings      Booking[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("packages")
+}
+
+model Addon {
+  id               String  @id @default(cuid())
+  name             String
+  price            Int     // in cents
+  description      String
+  requiresEvening  Boolean @default(false) @map("requires_evening")
+  inventoryCount   Int?    @map("inventory_count")
+  isActive         Boolean @default(true) @map("is_active")
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@map("addons")
+}
+
+model Booking {
+  id                     String                @id @default(cuid())
+  eventId                String                @map("event_id")
+  event                  Event                 @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  packageId              String                @map("package_id")
+  package                Package               @relation(fields: [packageId], references: [id])
+  addons                 Json                  // array of addon IDs with quantities
+  subtotal               Int                   // in cents
+  travelFee              Int                   @map("travel_fee") // in cents
+  tax                    Int                   // in cents
+  depositAmount          Int                   @map("deposit_amount") // in cents
+  balanceDueAt           DateTime?             @map("balance_due_at")
+  stripePaymentIntentId  String?               @map("stripe_payment_intent_id")
+  stripePaymentStatus    StripePaymentStatus?  @map("stripe_payment_status")
+  confirmationEmailSent  Boolean               @default(false) @map("confirmation_email_sent")
+  reminderEmailSent      Boolean               @default(false) @map("reminder_email_sent")
+  reminderSmsSent        Boolean               @default(false) @map("reminder_sms_sent")
+  createdAt              DateTime              @default(now())
+  updatedAt              DateTime              @updatedAt
+
+  @@map("bookings")
+}
+
+model Block {
+  id        String   @id @default(cuid())
+  startAt   DateTime @map("start_at")
+  endAt     DateTime @map("end_at")
+  reason    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("blocks")
+}
+
+enum EventStatus {
+  PENDING
+  CONFIRMED
+  COMPLETED
+  CANCELLED
+}
+
+enum StripePaymentStatus {
+  PENDING
+  SUCCEEDED
+  FAILED
+  CANCELED
+}
