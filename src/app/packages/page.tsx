@@ -209,24 +209,26 @@ export default function PackagesPage() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Extra Foam */}
-            <div className="bg-gray-50 rounded-xl p-6 hover:shadow-md transition-shadow duration-200">
-              <div className="text-center mb-4">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <span className="text-2xl">🫧</span>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900">Extra Foam</h3>
-                <div className="text-2xl font-bold text-blue-600">$100</div>
-              </div>
-              <p className="text-gray-600 text-center mb-4">
-                Extend your party by 1 hour with continuous foam coverage. $100 per additional hour.
-              </p>
-              <ul className="text-sm text-gray-600 space-y-1 mb-4">
-                <li>• +1 hour of foam time</li>
-                <li>• Continuous foam coverage</li>
-                <li>• Perfect for larger groups</li>
-              </ul>
-            </div>
+                         {/* Extra Foam */}
+             <div className="bg-gray-50 rounded-xl p-6 hover:shadow-md transition-shadow duration-200">
+               <div className="text-center mb-4">
+                 <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                   <span className="text-2xl">🫧</span>
+                 </div>
+                 <h3 className="text-xl font-semibold text-gray-900">Extra Foam Hours</h3>
+                 <div className="text-2xl font-bold text-blue-600">$100</div>
+                 <p className="text-gray-600 text-center">Per additional hour</p>
+               </div>
+               <p className="text-gray-600 text-center mb-4">
+                 Extend your party by 1-3 additional hours with continuous foam coverage.
+               </p>
+               <ul className="text-sm text-gray-600 space-y-1 mb-4">
+                 <li>• +1 hour: $100</li>
+                 <li>• +2 hours: $200</li>
+                 <li>• +3 hours: $300</li>
+                 <li>• Continuous foam coverage</li>
+               </ul>
+             </div>
 
             {/* Music System */}
             <div className="bg-gray-50 rounded-xl p-6 hover:shadow-md transition-shadow duration-200">

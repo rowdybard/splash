@@ -22,38 +22,59 @@ export default function AddOnsPage() {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Extra Foam */}
-            <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
-              <div className="text-center mb-6">
-                <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-4xl">🫧</span>
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900">Extra Foam</h3>
-                <div className="text-3xl font-bold text-blue-600">$100</div>
-                <p className="text-gray-600">Each additional hour</p>
-              </div>
-              
-              <div className="space-y-4 mb-6">
-                <h4 className="font-semibold text-gray-900">What's Included:</h4>
-                <ul className="space-y-2 text-gray-600">
-                  <li className="flex items-center">
-                    <span className="text-green-500 mr-2">✓</span>
-                    +1 hour of foam time
-                  </li>
-                  <li className="flex items-center">
-                    <span className="text-green-500 mr-2">✓</span>
-                    Continuous foam coverage
-                  </li>
-                  <li className="flex items-center">
-                    <span className="text-green-500 mr-2">✓</span>
-                    Perfect for larger groups
-                  </li>
-                  <li className="flex items-center">
-                    <span className="text-green-500 mr-2">✓</span>
-                    Extended party duration
-                  </li>
-                </ul>
-              </div>
+                         {/* Extra Foam */}
+             <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
+               <div className="text-center mb-6">
+                 <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                   <span className="text-4xl">🫧</span>
+                 </div>
+                 <h3 className="text-2xl font-bold text-gray-900">Extra Foam Hours</h3>
+                 <div className="text-3xl font-bold text-blue-600">$100</div>
+                 <p className="text-gray-600">Per additional hour (up to 3 hours)</p>
+               </div>
+               
+               <div className="space-y-4 mb-6">
+                 <h4 className="font-semibold text-gray-900">Pricing Options:</h4>
+                 <ul className="space-y-2 text-gray-600">
+                   <li className="flex items-center justify-between">
+                     <span className="flex items-center">
+                       <span className="text-green-500 mr-2">✓</span>
+                       +1 hour
+                     </span>
+                     <span className="font-semibold">$100</span>
+                   </li>
+                   <li className="flex items-center justify-between">
+                     <span className="flex items-center">
+                       <span className="text-green-500 mr-2">✓</span>
+                       +2 hours
+                     </span>
+                     <span className="font-semibold">$200</span>
+                   </li>
+                   <li className="flex items-center justify-between">
+                     <span className="flex items-center">
+                       <span className="text-green-500 mr-2">✓</span>
+                       +3 hours
+                     </span>
+                     <span className="font-semibold">$300</span>
+                   </li>
+                 </ul>
+                 
+                 <h4 className="font-semibold text-gray-900 mt-4">What's Included:</h4>
+                 <ul className="space-y-2 text-gray-600">
+                   <li className="flex items-center">
+                     <span className="text-green-500 mr-2">✓</span>
+                     Continuous foam coverage
+                   </li>
+                   <li className="flex items-center">
+                     <span className="text-green-500 mr-2">✓</span>
+                     Perfect for larger groups
+                   </li>
+                   <li className="flex items-center">
+                     <span className="text-green-500 mr-2">✓</span>
+                     Extended party duration
+                   </li>
+                 </ul>
+               </div>
               
               <div className="text-center">
                 <Link

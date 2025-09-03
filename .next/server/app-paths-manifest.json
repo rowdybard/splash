@@ -1,8 +1,8 @@
 {
   "/_not-found": "app/_not-found.js",
-  "/about/page": "app/about/page.js",
   "/add-ons/page": "app/add-ons/page.js",
   "/admin/page": "app/admin/page.js",
+  "/about/page": "app/about/page.js",
   "/api/availability/route": "app/api/availability/route.js",
   "/api/checkout/route": "app/api/checkout/route.js",
   "/api/ics/[bookingId]/route": "app/api/ics/[bookingId]/route.js",
@@ -14,7 +14,7 @@
   "/packages/page": "app/packages/page.js",
   "/page": "app/page.js",
   "/policies/page": "app/policies/page.js",
-  "/success/page": "app/success/page.js",
   "/service-area/page": "app/service-area/page.js",
+  "/success/page": "app/success/page.js",
   "/api/webhooks/stripe/route": "app/api/webhooks/stripe/route.js"
 }
