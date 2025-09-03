@@ -305,7 +305,7 @@ export function BookingStepper({ initialStep = 1, completedSteps = [] }: Booking
                  selectedPackage?.name === 'Starter Party' ? 'border-blue-500 bg-blue-50' : ''
                }`}
                onClick={() => {
-                                  setSelectedPackage({ name: 'Starter Party', price: 399, durationMin: 120 });
+                                  setSelectedPackage({ name: 'Starter Party', price: 399, durationMin: 60 });
                  setError(null);
                  setSuccess(null);
                  // Refresh availability with new duration if date is selected
@@ -314,9 +314,9 @@ export function BookingStepper({ initialStep = 1, completedSteps = [] }: Booking
                  }
                }}
              >
-               <h3 className="font-bold">Starter Party</h3>
-               <p className="text-gray-600">2 hours • Up to 20 guests</p>
-               <p className="text-2xl font-bold">$399</p>
+                               <h3 className="font-bold">Starter Party</h3>
+                <p className="text-gray-600">1 hour • Up to 20 guests</p>
+                <p className="text-2xl font-bold">$399</p>
                <ul className="text-sm text-gray-600 mt-2">
                  <li>• Professional foam machine</li>
                  <li>• Biodegradable foam solution</li>

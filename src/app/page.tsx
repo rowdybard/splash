@@ -143,7 +143,7 @@ export default function HomePage() {
                 </li>
                 <li className="flex items-center">
                   <span className="text-green-500 mr-2">✓</span>
-                  2 hours of foam fun
+                  1 hour of foam fun
                 </li>
                 <li className="flex items-center">
                   <span className="text-green-500 mr-2">✓</span>

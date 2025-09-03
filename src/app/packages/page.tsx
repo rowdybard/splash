@@ -41,10 +41,10 @@ export default function PackagesPage() {
                     <span className="text-green-500 mr-3 text-xl">✓</span>
                     <span>Up to 20 guests</span>
                   </li>
-                  <li className="flex items-center">
-                    <span className="text-green-500 mr-3 text-xl">✓</span>
-                    <span>2 hours of foam fun</span>
-                  </li>
+                                     <li className="flex items-center">
+                     <span className="text-green-500 mr-3 text-xl">✓</span>
+                     <span>1 hour of foam fun</span>
+                   </li>
                   <li className="flex items-center">
                     <span className="text-green-500 mr-3 text-xl">✓</span>
                     <span>Professional foam machine</span>
