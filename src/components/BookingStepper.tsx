@@ -26,17 +26,44 @@ export function BookingStepper({ initialStep = 1, completedSteps = [] }: Booking
     address: '',
   });
 
-  const fetchAvailability = async () => {
+  const fetchAvailability = async (date: string) => {
+    if (!date) return;
+    
     try {
-      // Simulate API call for now
-      // In a real app, this would be an actual API call
-      // For testing, we can simulate an error by checking if we're in test mode
-      if (process.env.NODE_ENV === 'test' && Math.random() < 0.5) {
-        throw new Error('API Error')
+      setError(null);
+      const response = await fetch('/api/availability', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          date: date,
+          durationMin: 120, // Default 2-hour party duration
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch availability');
       }
-      setAvailableTimes(["10:00", "14:00", "16:00"]);
+
+      const data = await response.json();
+      
+      // Extract available time slots
+      const availableSlots = data.slots
+        .filter((slot: any) => slot.available)
+        .map((slot: any) => slot.time);
+      
+      setAvailableTimes(availableSlots);
+      
+      // Clear selected time if it's no longer available
+      if (selectedTime && !availableSlots.includes(selectedTime)) {
+        setSelectedTime(null);
+      }
+      
     } catch (error) {
-      setError('Unable to load availability');
+      console.error('Error fetching availability:', error);
+      setError('Unable to load availability. Please try again.');
+      setAvailableTimes([]);
     }
   };
 
@@ -49,7 +76,9 @@ export function BookingStepper({ initialStep = 1, completedSteps = [] }: Booking
         return;
       }
       // Fetch availability when moving from step 1
-      fetchAvailability();
+      if (selectedDate) {
+        fetchAvailability(selectedDate);
+      }
       setCurrentStep(currentStep + 1);
     }
     
@@ -92,6 +121,16 @@ export function BookingStepper({ initialStep = 1, completedSteps = [] }: Booking
       setError(null);
       setPhoneError(null);
       setShowStep4Errors(false);
+    }
+  };
+
+  const handleDateChange = (date: string) => {
+    setSelectedDate(date);
+    setSelectedTime(null); // Clear time when date changes
+    if (date) {
+      fetchAvailability(date);
+    } else {
+      setAvailableTimes([]);
     }
   };
 
@@ -165,7 +204,7 @@ export function BookingStepper({ initialStep = 1, completedSteps = [] }: Booking
                 id="date"
                 type="date"
                 value={selectedDate || ''}
-                onChange={(e) => setSelectedDate(e.target.value)}
+                onChange={(e) => handleDateChange(e.target.value)}
                 min={new Date().toISOString().split('T')[0]}
                 className="border p-2 rounded w-full"
               />
@@ -173,17 +212,26 @@ export function BookingStepper({ initialStep = 1, completedSteps = [] }: Booking
             
             <div>
               <label htmlFor="time" className="block text-sm font-medium mb-2">Time</label>
-              <select
-                id="time"
-                value={selectedTime || ''}
-                onChange={(e) => setSelectedTime(e.target.value)}
-                className="border p-2 rounded w-full"
-              >
-                <option value="">Select a time</option>
-                {availableTimes.map((time: string) => (
-                  <option key={time} value={time}>{time}</option>
-                ))}
-              </select>
+              {!selectedDate ? (
+                <p className="text-gray-500 text-sm">Please select a date first</p>
+              ) : availableTimes.length === 0 ? (
+                <div>
+                  <p className="text-gray-500 text-sm mb-2">No available times for this date</p>
+                  <p className="text-gray-400 text-xs">Try selecting a different date</p>
+                </div>
+              ) : (
+                <select
+                  id="time"
+                  value={selectedTime || ''}
+                  onChange={(e) => setSelectedTime(e.target.value)}
+                  className="border p-2 rounded w-full"
+                >
+                  <option value="">Select a time</option>
+                  {availableTimes.map((time: string) => (
+                    <option key={time} value={time}>{time}</option>
+                  ))}
+                </select>
+              )}
             </div>
           </div>
           
