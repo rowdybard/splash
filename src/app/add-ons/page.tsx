@@ -29,7 +29,7 @@ export default function AddOnsPage() {
                    <span className="text-4xl">🫧</span>
                  </div>
                  <h3 className="text-2xl font-bold text-gray-900">Extra Foam Hours</h3>
-                 <div className="text-3xl font-bold text-blue-600">$100</div>
+                 <div className="text-3xl font-bold text-blue-600">$99</div>
                  <p className="text-gray-600">Per additional hour (up to 3 hours)</p>
                </div>
                
@@ -41,21 +41,21 @@ export default function AddOnsPage() {
                        <span className="text-green-500 mr-2">✓</span>
                        +1 hour
                      </span>
-                     <span className="font-semibold">$100</span>
+                     <span className="font-semibold">$99</span>
                    </li>
                    <li className="flex items-center justify-between">
-                     <span className="flex items-center">
+                     <span className="flex items-center justify-between">
                        <span className="text-green-500 mr-2">✓</span>
                        +2 hours
                      </span>
-                     <span className="font-semibold">$200</span>
+                     <span className="font-semibold">$198</span>
                    </li>
                    <li className="flex items-center justify-between">
                      <span className="flex items-center">
                        <span className="text-green-500 mr-2">✓</span>
                        +3 hours
                      </span>
-                     <span className="font-semibold">$300</span>
+                     <span className="font-semibold">$297</span>
                    </li>
                  </ul>
                  

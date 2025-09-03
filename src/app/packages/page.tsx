@@ -216,16 +216,16 @@ export default function PackagesPage() {
                    <span className="text-2xl">🫧</span>
                  </div>
                  <h3 className="text-xl font-semibold text-gray-900">Extra Foam Hours</h3>
-                 <div className="text-2xl font-bold text-blue-600">$100</div>
+                 <div className="text-2xl font-bold text-blue-600">$99</div>
                  <p className="text-gray-600 text-center">Per additional hour</p>
                </div>
                <p className="text-gray-600 text-center mb-4">
                  Extend your party by 1-3 additional hours with continuous foam coverage.
                </p>
                <ul className="text-sm text-gray-600 space-y-1 mb-4">
-                 <li>• +1 hour: $100</li>
-                 <li>• +2 hours: $200</li>
-                 <li>• +3 hours: $300</li>
+                 <li>• +1 hour: $99</li>
+                 <li>• +2 hours: $198</li>
+                 <li>• +3 hours: $297</li>
                  <li>• Continuous foam coverage</li>
                </ul>
              </div>

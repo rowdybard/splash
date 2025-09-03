@@ -374,11 +374,11 @@ export function BookingStepper({ initialStep = 1, completedSteps = [] }: Booking
            <div className="space-y-4">
              {/* Extra Hours Add-on */}
              <div className="border p-4 rounded">
-               <div className="flex items-center justify-between mb-3">
-                 <h3 className="font-bold">Extra Hours</h3>
-                 <div className="text-2xl font-bold text-blue-600">${selectedAddons.filter(a => a.name === 'Extra Hour').length * 100}</div>
-               </div>
-               <p className="text-gray-600 mb-3">$100 per additional hour (up to 3 hours)</p>
+                               <div className="flex items-center justify-between mb-3">
+                  <h3 className="font-bold">Extra Hours</h3>
+                  <div className="text-2xl font-bold text-blue-600">${selectedAddons.filter(a => a.name === 'Extra Hour').length * 99}</div>
+                </div>
+                <p className="text-gray-600 mb-3">$99 per additional hour (up to 3 hours)</p>
                
                <div className="flex items-center space-x-3">
                  <button
@@ -403,12 +403,12 @@ export function BookingStepper({ initialStep = 1, completedSteps = [] }: Booking
                    data-testid="addon-extra-hour-plus"
                    className="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center hover:bg-green-600 disabled:opacity-50"
                    disabled={selectedAddons.filter(a => a.name === 'Extra Hour').length >= 3}
-                   onClick={() => {
-                     const extraHours = selectedAddons.filter(a => a.name === 'Extra Hour');
-                     if (extraHours.length < 3) {
-                       setSelectedAddons([...selectedAddons, { name: 'Extra Hour', price: 100 }]);
-                     }
-                   }}
+                                       onClick={() => {
+                      const extraHours = selectedAddons.filter(a => a.name === 'Extra Hour');
+                      if (extraHours.length < 3) {
+                        setSelectedAddons([...selectedAddons, { name: 'Extra Hour', price: 99 }]);
+                      }
+                    }}
                  >
                    +
                  </button>
