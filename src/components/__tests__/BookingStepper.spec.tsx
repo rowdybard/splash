@@ -279,7 +279,10 @@ describe('BookingStepper', () => {
 
   describe('Step 5: Review & Payment', () => {
     beforeEach(() => {
-      render(<BookingStepper initialStep={5} />)
+      render(<BookingStepper 
+        initialStep={5} 
+        completedSteps={[1, 2, 3, 4]}
+      />)
     })
 
     it('should display booking summary', () => {

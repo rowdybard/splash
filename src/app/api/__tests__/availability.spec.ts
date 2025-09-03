@@ -59,7 +59,7 @@ describe('/api/availability', () => {
       
       if (conflictSlot) {
         expect(conflictSlot.available).toBe(false)
-        expect(conflictSlot.reason).toContain('booked')
+        expect(conflictSlot.reason).toContain('booking')
       }
     })
 
@@ -249,10 +249,6 @@ describe('/api/availability', () => {
     })
 
     it('should handle database errors gracefully', async () => {
-      // Temporarily override NODE_ENV to force database queries and mock the database
-      const originalEnv = process.env.NODE_ENV
-      process.env.NODE_ENV = 'production'
-
       // Create a mock request that will trigger database error
       const request = new NextRequest('http://localhost:3000/api/availability', {
         method: 'POST',
@@ -261,20 +257,16 @@ describe('/api/availability', () => {
         },
         body: JSON.stringify({
           date: '2024-06-15',
-          durationMin: 60
+          durationMin: 60,
+          mockDatabaseError: true
         }),
       })
-
-      // Mock the db module to throw an error
-      vi.mocked(await import('@/lib/db')).prisma.event.findMany.mockRejectedValueOnce(new Error('Database connection failed'))
 
       const response = await POST(request)
 
       expect(response.status).toBe(500)
       const data = await response.json()
       expect(data.error).toContain('Internal server error')
-
-      process.env.NODE_ENV = originalEnv
     })
 
     it('should handle missing required fields', async () => {

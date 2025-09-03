@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 type BookingStepperProps = {
   initialStep?: number
@@ -15,22 +15,46 @@ export function BookingStepper({ initialStep = 1, completedSteps = [] }: Booking
   const [waiverAccepted, setWaiverAccepted] = useState(false);
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
-  const [selectedPackage, setSelectedPackage] = useState<{ name: string; price: number } | null>(null);
+  const [selectedPackage, setSelectedPackage] = useState<{ name: string; price: number; durationMin: number } | null>(null);
   const [selectedAddons, setSelectedAddons] = useState<{ name: string; price: number }[]>([]);
   const [totalPrice, setTotalPrice] = useState(0);
+  
+  // Calculate total price whenever package or addons change
+  useEffect(() => {
+    let total = 0;
+    if (selectedPackage) {
+      total += selectedPackage.price;
+    }
+    selectedAddons.forEach(addon => {
+      total += addon.price;
+    });
+    setTotalPrice(total);
+  }, [selectedPackage, selectedAddons]);
   const [availableTimes, setAvailableTimes] = useState<string[]>([]);
+  const [isLoadingAvailability, setIsLoadingAvailability] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
     address: '',
+    city: '',
+    state: '',
+    zipCode: '',
+    eventType: '',
+    surface: '',
+    notes: '',
   });
 
   const fetchAvailability = async (date: string) => {
     if (!date) return;
     
     try {
+      setIsLoadingAvailability(true);
       setError(null);
+      
+      // Use selected package duration or default to 120 minutes
+      const durationMin = selectedPackage?.durationMin || 120;
+      
       const response = await fetch('/api/availability', {
         method: 'POST',
         headers: {
@@ -38,12 +62,13 @@ export function BookingStepper({ initialStep = 1, completedSteps = [] }: Booking
         },
         body: JSON.stringify({
           date: date,
-          durationMin: 120, // Default 2-hour party duration
+          durationMin: durationMin,
         }),
       });
 
       if (!response.ok) {
-        throw new Error('Failed to fetch availability');
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to fetch availability');
       }
 
       const data = await response.json();
@@ -60,10 +85,17 @@ export function BookingStepper({ initialStep = 1, completedSteps = [] }: Booking
         setSelectedTime(null);
       }
       
+      // Show success message if no slots available
+      if (availableSlots.length === 0) {
+        setError('No available time slots for this date. Please try a different date.');
+      }
+      
     } catch (error) {
       console.error('Error fetching availability:', error);
-      setError('Unable to load availability. Please try again.');
+      setError(error instanceof Error ? error.message : 'Unable to load availability. Please try again.');
       setAvailableTimes([]);
+    } finally {
+      setIsLoadingAvailability(false);
     }
   };
 
@@ -214,6 +246,11 @@ export function BookingStepper({ initialStep = 1, completedSteps = [] }: Booking
               <label htmlFor="time" className="block text-sm font-medium mb-2">Time</label>
               {!selectedDate ? (
                 <p className="text-gray-500 text-sm">Please select a date first</p>
+              ) : isLoadingAvailability ? (
+                <div className="flex items-center space-x-2 text-gray-500">
+                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-600"></div>
+                  <span className="text-sm">Loading available times...</span>
+                </div>
               ) : availableTimes.length === 0 ? (
                 <div>
                   <p className="text-gray-500 text-sm mb-2">No available times for this date</p>
@@ -247,7 +284,19 @@ export function BookingStepper({ initialStep = 1, completedSteps = [] }: Booking
           <p className="text-gray-600 mb-6">Choose your foam party package</p>
           
           <div className="space-y-4">
-            <div data-testid="package-starter" className="border p-4 rounded cursor-pointer hover:bg-gray-50">
+            <div 
+              data-testid="package-starter" 
+              className={`border p-4 rounded cursor-pointer hover:bg-gray-50 ${
+                selectedPackage?.name === 'Starter Party' ? 'border-blue-500 bg-blue-50' : ''
+              }`}
+              onClick={() => {
+                setSelectedPackage({ name: 'Starter Party', price: 299, durationMin: 60 });
+                // Refresh availability with new duration if date is selected
+                if (selectedDate) {
+                  fetchAvailability(selectedDate);
+                }
+              }}
+            >
               <h3 className="font-bold">Starter Party</h3>
               <p className="text-gray-600">60 minutes • Up to 15 guests</p>
               <p className="text-2xl font-bold">$299</p>
@@ -258,13 +307,37 @@ export function BookingStepper({ initialStep = 1, completedSteps = [] }: Booking
               </ul>
             </div>
             
-            <div data-testid="package-mega" className="border p-4 rounded cursor-pointer hover:bg-gray-50">
+            <div 
+              data-testid="package-mega" 
+              className={`border p-4 rounded cursor-pointer hover:bg-gray-50 ${
+                selectedPackage?.name === 'Mega Splash' ? 'border-blue-500 bg-blue-50' : ''
+              }`}
+              onClick={() => {
+                setSelectedPackage({ name: 'Mega Splash', price: 449, durationMin: 90 });
+                // Refresh availability with new duration if date is selected
+                if (selectedDate) {
+                  fetchAvailability(selectedDate);
+                }
+              }}
+            >
               <h3 className="font-bold">Mega Splash</h3>
               <p className="text-gray-600">90 minutes • Up to 25 guests</p>
               <p className="text-2xl font-bold">$449</p>
             </div>
             
-            <div data-testid="package-glow" className="border p-4 rounded cursor-pointer hover:bg-gray-50">
+            <div 
+              data-testid="package-glow" 
+              className={`border p-4 rounded cursor-pointer hover:bg-gray-50 ${
+                selectedPackage?.name === 'Glow Night Spectacular' ? 'border-blue-500 bg-blue-50' : ''
+              }`}
+              onClick={() => {
+                setSelectedPackage({ name: 'Glow Night Spectacular', price: 599, durationMin: 90 });
+                // Refresh availability with new duration if date is selected
+                if (selectedDate) {
+                  fetchAvailability(selectedDate);
+                }
+              }}
+            >
               <h3 className="font-bold">Glow Night Spectacular</h3>
               <p className="text-gray-600">90 minutes • Up to 30 guests</p>
               <p className="text-2xl font-bold">$599</p>
@@ -278,17 +351,57 @@ export function BookingStepper({ initialStep = 1, completedSteps = [] }: Booking
           <h2 className="text-2xl font-bold mb-4">Add-ons</h2>
           
           <div className="space-y-4">
-            <div data-testid="addon-extra-time" className="border p-4 rounded cursor-pointer hover:bg-gray-50">
+            <div 
+              data-testid="addon-extra-time" 
+              className={`border p-4 rounded cursor-pointer hover:bg-gray-50 ${
+                selectedAddons.some(addon => addon.name === 'Extra 30 Minutes') ? 'border-green-500 bg-green-50' : ''
+              }`}
+              onClick={() => {
+                const addon = { name: 'Extra 30 Minutes', price: 99 };
+                if (selectedAddons.some(a => a.name === addon.name)) {
+                  setSelectedAddons(selectedAddons.filter(a => a.name !== addon.name));
+                } else {
+                  setSelectedAddons([...selectedAddons, addon]);
+                }
+              }}
+            >
               <h3 className="font-bold">Extra 30 Minutes</h3>
               <p className="text-2xl font-bold">$99</p>
             </div>
             
-            <div data-testid="addon-neon-foam" className="border p-4 rounded cursor-pointer hover:bg-gray-50">
+            <div 
+              data-testid="addon-neon-foam" 
+              className={`border p-4 rounded cursor-pointer hover:bg-gray-50 ${
+                selectedAddons.some(addon => addon.name === 'Neon Foam Upgrade') ? 'border-green-500 bg-green-50' : ''
+              }`}
+              onClick={() => {
+                const addon = { name: 'Neon Foam Upgrade', price: 75 };
+                if (selectedAddons.some(a => a.name === addon.name)) {
+                  setSelectedAddons(selectedAddons.filter(a => a.name !== addon.name));
+                } else {
+                  setSelectedAddons([...selectedAddons, addon]);
+                }
+              }}
+            >
               <h3 className="font-bold">Neon Foam Upgrade</h3>
               <p className="text-2xl font-bold">$75</p>
             </div>
             
-            <div data-testid="addon-slip-n-slide" className="border p-4 rounded cursor-pointer hover:bg-gray-50" data-available="true">
+            <div 
+              data-testid="addon-slip-n-slide" 
+              className={`border p-4 rounded cursor-pointer hover:bg-gray-50 ${
+                selectedAddons.some(addon => addon.name === 'Slip-n-Slide Combo') ? 'border-green-500 bg-green-50' : ''
+              }`}
+              data-available="true"
+              onClick={() => {
+                const addon = { name: 'Slip-n-Slide Combo', price: 150 };
+                if (selectedAddons.some(a => a.name === addon.name)) {
+                  setSelectedAddons(selectedAddons.filter(a => a.name !== addon.name));
+                } else {
+                  setSelectedAddons([...selectedAddons, addon]);
+                }
+              }}
+            >
               <h3 className="font-bold">Slip-n-Slide Combo</h3>
               <p className="text-2xl font-bold">$150</p>
             </div>
@@ -346,44 +459,78 @@ export function BookingStepper({ initialStep = 1, completedSteps = [] }: Booking
               />
             </div>
             
-            <div className="grid grid-cols-3 gap-4">
-              <div>
-                <label htmlFor="city" className="block text-sm font-medium">City</label>
-                <input id="city" type="text" className="border p-2 rounded w-full" />
-              </div>
-              
-              <div>
-                <label htmlFor="state" className="block text-sm font-medium">State</label>
-                <select id="state" className="border p-2 rounded w-full">
-                  <option value="">Select State</option>
-                  <option value="MI">Michigan</option>
-                </select>
-              </div>
-              
-              <div>
-                <label htmlFor="zip" className="block text-sm font-medium">Zip Code</label>
-                <input id="zip" type="text" className="border p-2 rounded w-full" />
-              </div>
-            </div>
-            
-            <div>
-              <label htmlFor="eventType" className="block text-sm font-medium">Event Type</label>
-              <input id="eventType" type="text" className="border p-2 rounded w-full" />
-            </div>
-            
-            <div>
-              <label htmlFor="surface" className="block text-sm font-medium">Surface</label>
-              <select id="surface" className="border p-2 rounded w-full">
-                <option value="">Select Surface</option>
-                <option value="Grass">Grass</option>
-                <option value="Concrete">Concrete</option>
-              </select>
-            </div>
-            
-            <div>
-              <label htmlFor="notes" className="block text-sm font-medium">Notes</label>
-              <textarea id="notes" className="border p-2 rounded w-full" rows={3}></textarea>
-            </div>
+                           <div className="grid grid-cols-3 gap-4">
+                 <div>
+                   <label htmlFor="city" className="block text-sm font-medium">City</label>
+                   <input 
+                     id="city" 
+                     type="text" 
+                     value={formData.city}
+                     onChange={(e) => setFormData({...formData, city: e.target.value})}
+                     className="border p-2 rounded w-full" 
+                   />
+                 </div>
+                 
+                 <div>
+                   <label htmlFor="state" className="block text-sm font-medium">State</label>
+                   <select 
+                     id="state" 
+                     value={formData.state}
+                     onChange={(e) => setFormData({...formData, state: e.target.value})}
+                     className="border p-2 rounded w-full"
+                   >
+                     <option value="">Select State</option>
+                     <option value="MI">Michigan</option>
+                   </select>
+                 </div>
+                 
+                 <div>
+                   <label htmlFor="zip" className="block text-sm font-medium">Zip Code</label>
+                   <input 
+                     id="zip" 
+                     type="text" 
+                     value={formData.zipCode}
+                     onChange={(e) => setFormData({...formData, zipCode: e.target.value})}
+                     className="border p-2 rounded w-full" 
+                   />
+                 </div>
+               </div>
+               
+               <div>
+                 <label htmlFor="eventType" className="block text-sm font-medium">Event Type</label>
+                 <input 
+                   id="eventType" 
+                   type="text" 
+                   value={formData.eventType}
+                   onChange={(e) => setFormData({...formData, eventType: e.target.value})}
+                   className="border p-2 rounded w-full" 
+                 />
+               </div>
+               
+               <div>
+                 <label htmlFor="surface" className="block text-sm font-medium">Surface</label>
+                 <select 
+                   id="surface" 
+                   value={formData.surface}
+                   onChange={(e) => setFormData({...formData, surface: e.target.value})}
+                   className="border p-2 rounded w-full"
+                 >
+                   <option value="">Select Surface</option>
+                   <option value="Grass">Grass</option>
+                   <option value="Concrete">Concrete</option>
+                 </select>
+               </div>
+               
+               <div>
+                 <label htmlFor="notes" className="block text-sm font-medium">Notes</label>
+                 <textarea 
+                   id="notes" 
+                   value={formData.notes}
+                   onChange={(e) => setFormData({...formData, notes: e.target.value})}
+                   className="border p-2 rounded w-full" 
+                   rows={3}
+                 ></textarea>
+               </div>
           </form>
           
           {showStep4Errors && (
@@ -413,25 +560,39 @@ export function BookingStepper({ initialStep = 1, completedSteps = [] }: Booking
           <div className="mb-6">
             <h3 className="text-lg font-bold mb-2">Booking Summary</h3>
             <div className="border p-4 rounded">
-              <div className="flex justify-between">
-                <span>Package: Starter Party</span>
-                <span>$299.00</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Subtotal</span>
-                <span>$299.00</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Travel Fee</span>
-                <span>$0.00</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Tax</span>
-                <span>$23.92</span>
-              </div>
-              <div className="flex justify-between font-bold">
-                <span>Total</span>
-                <span>$322.92</span>
+              {selectedPackage && (
+                <div className="flex justify-between">
+                  <span>Package: {selectedPackage.name}</span>
+                  <span>${selectedPackage.price.toFixed(2)}</span>
+                </div>
+              )}
+              {selectedAddons.length > 0 && (
+                <>
+                  {selectedAddons.map((addon, index) => (
+                    <div key={index} className="flex justify-between text-sm">
+                      <span>+ {addon.name}</span>
+                      <span>${addon.price.toFixed(2)}</span>
+                    </div>
+                  ))}
+                </>
+              )}
+              <div className="border-t pt-2 mt-2">
+                <div className="flex justify-between">
+                  <span>Subtotal</span>
+                  <span>${totalPrice.toFixed(2)}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Travel Fee</span>
+                  <span>$0.00</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Tax (8%)</span>
+                  <span>${(totalPrice * 0.08).toFixed(2)}</span>
+                </div>
+                <div className="flex justify-between font-bold text-lg">
+                  <span>Total</span>
+                  <span>${(totalPrice * 1.08).toFixed(2)}</span>
+                </div>
               </div>
             </div>
           </div>
@@ -453,14 +614,14 @@ export function BookingStepper({ initialStep = 1, completedSteps = [] }: Booking
               disabled={!waiverAccepted}
               onClick={() => handlePayment('deposit')}
             >
-              Pay Deposit (30%) - $96.88
+              Pay Deposit (30%) - ${(totalPrice * 0.3).toFixed(2)}
             </button>
             <button 
               className="w-full bg-green-500 text-white py-3 rounded font-bold disabled:opacity-50"
               disabled={!waiverAccepted}
               onClick={() => handlePayment('full')}
             >
-              Pay in Full - $322.92
+              Pay in Full - ${(totalPrice * 1.08).toFixed(2)}
             </button>
           </div>
           
