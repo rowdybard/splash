@@ -11,8 +11,8 @@ export default function ServiceAreaPage() {
               Our Service Area
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We proudly serve the entire Detroit metropolitan area and surrounding communities. 
-              From downtown Detroit to the suburbs, we bring foam party magic to your doorstep!
+              We proudly serve the entire Greater Lansing area and surrounding communities. 
+              From downtown Lansing to the suburbs, we bring foam party magic to your doorstep!
             </p>
           </div>
         </div>
@@ -23,23 +23,23 @@ export default function ServiceAreaPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Detroit Metropolitan Area
+              Greater Lansing Area
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Our comprehensive coverage includes Wayne, Oakland, and Macomb counties, 
+              Our comprehensive coverage includes Ingham, Eaton, and Clinton counties, 
               ensuring we can serve your foam party needs wherever you are in the metro area.
             </p>
           </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Wayne County */}
+            {/* Ingham County */}
             <div className="bg-white rounded-2xl shadow-lg p-8">
               <div className="text-center mb-6">
                 <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-4xl">🏙️</span>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900">Wayne County</h3>
-                <p className="text-gray-600">The heart of Detroit</p>
+                <h3 className="text-2xl font-bold text-gray-900">Ingham County</h3>
+                <p className="text-gray-600">The heart of Lansing</p>
               </div>
               
               <div className="space-y-4">
@@ -47,55 +47,55 @@ export default function ServiceAreaPage() {
                 <ul className="space-y-2 text-gray-600">
                   <li className="flex items-center">
                     <span className="text-blue-500 mr-2">📍</span>
-                    Detroit (Downtown, Midtown, Corktown)
+                    Lansing (Downtown, Eastside, Westside)
                   </li>
                   <li className="flex items-center">
                     <span className="text-blue-500 mr-2">📍</span>
-                    Dearborn
+                    East Lansing
                   </li>
                   <li className="flex items-center">
                     <span className="text-blue-500 mr-2">📍</span>
-                    Livonia
+                    Okemos
                   </li>
                   <li className="flex items-center">
                     <span className="text-blue-500 mr-2">📍</span>
-                    Westland
+                    Haslett
                   </li>
                   <li className="flex items-center">
                     <span className="text-blue-500 mr-2">📍</span>
-                    Garden City
+                    Williamston
                   </li>
                   <li className="flex items-center">
                     <span className="text-blue-500 mr-2">📍</span>
-                    Redford
+                    Mason
                   </li>
                   <li className="flex items-center">
                     <span className="text-blue-500 mr-2">📍</span>
-                    Allen Park
+                    Holt
                   </li>
                   <li className="flex items-center">
                     <span className="text-blue-500 mr-2">📍</span>
-                    Taylor
+                    Dimondale
                   </li>
                   <li className="flex items-center">
                     <span className="text-blue-500 mr-2">📍</span>
-                    Wyandotte
+                    Leslie
                   </li>
                   <li className="flex items-center">
                     <span className="text-blue-500 mr-2">📍</span>
-                    Grosse Pointe
+                    Stockbridge
                   </li>
                 </ul>
               </div>
             </div>
 
-            {/* Oakland County */}
+            {/* Eaton County */}
             <div className="bg-white rounded-2xl shadow-lg p-8">
               <div className="text-center mb-6">
                 <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-4xl">🌳</span>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900">Oakland County</h3>
+                <h3 className="text-2xl font-bold text-gray-900">Eaton County</h3>
                 <p className="text-gray-600">Suburban excellence</p>
               </div>
               
@@ -104,55 +104,55 @@ export default function ServiceAreaPage() {
                 <ul className="space-y-2 text-gray-600">
                   <li className="flex items-center">
                     <span className="text-green-500 mr-2">📍</span>
-                    Troy
+                    Charlotte
                   </li>
                   <li className="flex items-center">
                     <span className="text-green-500 mr-2">📍</span>
-                    Royal Oak
+                    Grand Ledge
                   </li>
                   <li className="flex items-center">
                     <span className="text-green-500 mr-2">📍</span>
-                    Birmingham
+                    Potterville
                   </li>
                   <li className="flex items-center">
                     <span className="text-green-500 mr-2">📍</span>
-                    Bloomfield Hills
+                    Eaton Rapids
                   </li>
                   <li className="flex items-center">
                     <span className="text-green-500 mr-2">📍</span>
-                    Farmington Hills
+                    Delta Township
                   </li>
                   <li className="flex items-center">
                     <span className="text-green-500 mr-2">📍</span>
-                    Novi
+                    Oneida Township
                   </li>
                   <li className="flex items-center">
                     <span className="text-green-500 mr-2">📍</span>
-                    Rochester Hills
+                    Brookfield Township
                   </li>
                   <li className="flex items-center">
                     <span className="text-green-500 mr-2">📍</span>
-                    Auburn Hills
+                    Benton Township
                   </li>
                   <li className="flex items-center">
                     <span className="text-green-500 mr-2">📍</span>
-                    Southfield
+                    Windsor Township
                   </li>
                   <li className="flex items-center">
                     <span className="text-green-500 mr-2">📍</span>
-                    West Bloomfield
+                    Sunfield
                   </li>
                 </ul>
               </div>
             </div>
 
-            {/* Macomb County */}
+            {/* Clinton County */}
             <div className="bg-white rounded-2xl shadow-lg p-8">
               <div className="text-center mb-6">
                 <div className="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-4xl">🏘️</span>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900">Macomb County</h3>
+                <h3 className="text-2xl font-bold text-gray-900">Clinton County</h3>
                 <p className="text-gray-600">Family-friendly communities</p>
               </div>
               
@@ -161,43 +161,43 @@ export default function ServiceAreaPage() {
                 <ul className="space-y-2 text-gray-600">
                   <li className="flex items-center">
                     <span className="text-purple-500 mr-2">📍</span>
-                    Warren
+                    St. Johns
                   </li>
                   <li className="flex items-center">
                     <span className="text-purple-500 mr-2">📍</span>
-                    Sterling Heights
+                    DeWitt
                   </li>
                   <li className="flex items-center">
                     <span className="text-purple-500 mr-2">📍</span>
-                    Clinton Township
+                    Bath Township
                   </li>
                   <li className="flex items-center">
                     <span className="text-purple-500 mr-2">📍</span>
-                    Macomb Township
+                    Watertown Township
                   </li>
                   <li className="flex items-center">
                     <span className="text-purple-500 mr-2">📍</span>
-                    Shelby Township
+                    Bengal Township
                   </li>
                   <li className="flex items-center">
                     <span className="text-purple-500 mr-2">📍</span>
-                    Utica
+                    Eagle Township
                   </li>
                   <li className="flex items-center">
                     <span className="text-purple-500 mr-2">📍</span>
-                    Roseville
+                    Greenbush Township
                   </li>
                   <li className="flex items-center">
                     <span className="text-purple-500 mr-2">📍</span>
-                    St. Clair Shores
+                    Olive Township
                   </li>
                   <li className="flex items-center">
                     <span className="text-purple-500 mr-2">📍</span>
-                    Fraser
+                    Riley Township
                   </li>
                   <li className="flex items-center">
                     <span className="text-purple-500 mr-2">📍</span>
-                    Harrison Township
+                    Victor Township
                   </li>
                 </ul>
               </div>
@@ -220,8 +220,8 @@ export default function ServiceAreaPage() {
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">Included Coverage</h3>
               <p className="text-gray-600">
-                Travel within 25 miles of downtown Detroit is included in your package price. 
-                This covers most of the Detroit metropolitan area.
+                Travel within 25 miles of downtown Lansing is included in your package price. 
+                This covers most of the Greater Lansing area.
               </p>
             </div>
             
@@ -240,7 +240,7 @@ export default function ServiceAreaPage() {
           <div className="bg-gray-50 rounded-xl p-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">How We Calculate Distance</h3>
             <p className="text-gray-600 mb-6">
-              We measure from our central location in downtown Detroit to your event location 
+              We measure from our central location in downtown Lansing to your event location 
               using the most direct route. This ensures fair and transparent pricing for all customers.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
@@ -269,7 +269,7 @@ export default function ServiceAreaPage() {
               Popular Event Locations
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We've hosted foam parties at countless amazing venues throughout the Detroit metro area. 
+              We've hosted foam parties at countless amazing venues throughout the Greater Lansing area. 
               From backyards to event spaces, we can set up anywhere!
             </p>
           </div>
@@ -385,7 +385,7 @@ export default function ServiceAreaPage() {
             Ready to Book Your Foam Party?
           </h2>
           <p className="text-xl text-blue-100 mb-8">
-            Don't let location hold you back! We serve most of the Detroit metro area and 
+            Don't let location hold you back! We serve most of the Greater Lansing area and 
             we're always expanding our coverage.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -437,7 +437,7 @@ export default function ServiceAreaPage() {
               <ul className="space-y-2 text-gray-400">
                 <li>📧 info@splashtastic.com</li>
                 <li>📱 (555) 123-4567</li>
-                <li>📍 Detroit Metro Area</li>
+                <li>📍 Greater Lansing Area</li>
               </ul>
             </div>
           </div>
