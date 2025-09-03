@@ -2,7 +2,7 @@ services:
   - type: web
     name: splashtastic-web
     env: node
-    plan: standard
+    plan: basic
     region: oregon
     buildCommand: npm ci && npm run prisma:generate && npm run build
     startCommand: npm start
