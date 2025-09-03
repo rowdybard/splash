@@ -1,306 +1,435 @@
-# 🌐 GoDaddy Domain Setup Guide
+# GoDaddy Domain Setup for Splashtastic Foam Parties
 
-Complete guide for configuring your GoDaddy domain to work with Render hosting.
-
-## 📋 Prerequisites
-
-- Domain purchased from GoDaddy
-- Render web service deployed and running
-- Access to both GoDaddy and Render dashboards
+Complete guide for configuring your GoDaddy domain to work with your Render-hosted Splashtastic website.
 
 ## 🎯 Overview
 
-We'll configure DNS to point your domain (`splashtastic.com`) to your Render service, enabling HTTPS and professional email addresses.
+This guide walks you through:
+1. Accessing your GoDaddy domain management
+2. Configuring DNS records for Render
+3. Setting up SSL certificates
+4. Verifying domain configuration
+5. Troubleshooting common issues
 
-## 🔧 Step 1: Add Custom Domain in Render
+## 🔑 Prerequisites
 
-### 1. Access Domain Settings
-1. Go to Render Dashboard
-2. Select your `splashtastic-web` service
-3. Navigate to "Settings" → "Custom Domains"
+Before starting, ensure you have:
 
-### 2. Add Your Domain
-1. Click "Add Custom Domain"
-2. Enter your domain: `splashtastic.com`
-3. Click "Add Domain"
+- [ ] GoDaddy account with domain access
+- [ ] Render web service deployed and running
+- [ ] Custom domain added in Render dashboard
+- [ ] Access to domain management panel
 
-### 3. Get DNS Records
-Render will display the required DNS records:
+## 🌐 Step 1: Access GoDaddy Domain Management
 
-**For Root Domain (splashtastic.com):**
-- **Type**: A Record or ALIAS
-- **Value**: Render's IP address (e.g., `216.24.57.1`)
+### 1.1 Log into GoDaddy
 
-**For WWW Subdomain (www.splashtastic.com):**
-- **Type**: CNAME
-- **Value**: Your Render URL (e.g., `splashtastic-web.onrender.com`)
+1. **Go to GoDaddy.com**
+   - Navigate to [godaddy.com](https://godaddy.com)
+   - Click "Sign In" in the top right
 
-> ⚠️ **Important**: Copy these exact values - you'll need them for GoDaddy setup.
+2. **Access Domain Management**
+   - After signing in, click "My Products"
+   - Find your domain (e.g., `splashtastic.com`)
+   - Click "Manage" next to your domain
 
-## 🏠 Step 2: Configure DNS in GoDaddy
+3. **Navigate to DNS Settings**
+   - In the domain management panel
+   - Click "DNS" from the left sidebar
+   - You'll see the DNS management interface
 
-### 1. Access DNS Management
-1. Log into GoDaddy account
-2. Go to "My Products" → "Domains"
-3. Click "DNS" next to your domain
-4. You'll see the DNS Management interface
+## 📝 Step 2: Configure DNS Records
 
-### 2. Configure Root Domain (A Record)
+### 2.1 Add CNAME Record for www
 
-1. **Find existing A record** pointing to `@` (root domain)
-2. **Edit the A record**:
-   - **Type**: A
-   - **Name**: `@` (represents root domain)
-   - **Value**: `216.24.57.1` (Render's IP from Step 1)
-   - **TTL**: `600` (10 minutes) or leave default
-3. **Save changes**
+1. **Create CNAME Record**
+   - Click "Add" or "+" button
+   - Select "CNAME" from the record type dropdown
 
-### 3. Configure WWW Subdomain (CNAME)
-
-1. **Add new CNAME record**:
-   - **Type**: CNAME
-   - **Name**: `www`
-   - **Value**: `splashtastic-web.onrender.com` (your Render URL)
-   - **TTL**: `600` (10 minutes)
-2. **Save changes**
-
-### 4. Remove Conflicting Records
-
-**Important**: Remove any conflicting records that might interfere:
-
-1. **Delete old A records** for `@` (if they point elsewhere)
-2. **Delete old CNAME records** for `www` (if they exist)
-3. **Keep MX records** (for email) unless you're changing email providers
-
-## ⚡ Step 3: Verify Domain Configuration
-
-### 1. Check DNS Propagation
-Use online tools to verify DNS changes:
-
-```bash
-# Check A record
-nslookup splashtastic.com
-
-# Check CNAME record  
-nslookup www.splashtastic.com
-
-# Or use online tools:
-# - whatsmydns.net
-# - dnschecker.org
-```
-
-### 2. Expected Results
-You should see:
-- `splashtastic.com` → Render's IP address
-- `www.splashtastic.com` → `splashtastic-web.onrender.com`
-
-## 🔒 Step 4: Enable HTTPS in Render
-
-### 1. Verify Domain in Render
-1. Go back to Render → Custom Domains
-2. Wait for domain status to show "Verified" (can take 5-60 minutes)
-3. Once verified, Render automatically provisions SSL certificate
-
-### 2. Force HTTPS Redirects
-Your Next.js app should automatically redirect HTTP to HTTPS. Verify by visiting:
-- `http://splashtastic.com` → should redirect to `https://splashtastic.com`
-- `http://www.splashtastic.com` → should redirect to `https://www.splashtastic.com`
-
-## 🌍 Step 5: Update Application Configuration
-
-### 1. Update Environment Variables
-In Render dashboard, update:
-
-```bash
-NEXT_PUBLIC_SITE_URL=https://splashtastic.com
-```
-
-### 2. Update Stripe Webhooks
-1. Go to Stripe Dashboard → Webhooks
-2. Edit your webhook endpoint
-3. Change URL to: `https://splashtastic.com/api/webhooks/stripe`
-4. Test the webhook to ensure it's working
-
-### 3. Update Social Media Links
-Update any social media profiles, business listings, or marketing materials with your new domain.
-
-## 📧 Step 6: Email Setup (Optional)
-
-### Option A: Use GoDaddy Email
-If you want `info@splashtastic.com`:
-
-1. **Keep existing MX records** in GoDaddy DNS
-2. **Purchase email plan** from GoDaddy
-3. **Configure email accounts** in GoDaddy dashboard
-
-### Option B: Use Google Workspace
-For professional email with Gmail interface:
-
-1. **Sign up for Google Workspace**
-2. **Add MX records** provided by Google:
+2. **Configure www Record**
    ```
-   MX 1 ASPMX.L.GOOGLE.COM
-   MX 5 ALT1.ASPMX.L.GOOGLE.COM
-   MX 5 ALT2.ASPMX.L.GOOGLE.COM
-   MX 10 ALT3.ASPMX.L.GOOGLE.COM
-   MX 10 ALT4.ASPMX.L.GOOGLE.COM
+   Type: CNAME
+   Name: www
+   Value: your-app-name.onrender.com
+   TTL: 600 (or 1 hour)
    ```
-3. **Verify domain** in Google Workspace
 
-### Option C: Use External Email Service
-Keep email separate and just use domain for website.
+3. **Save the Record**
+   - Click "Save" or "Add Record"
+   - Verify the record appears in your DNS list
 
-## 🔍 Step 7: Testing & Verification
+### 2.2 Add CNAME Record for Root Domain
 
-### 1. Website Functionality
-Test all these URLs:
-- ✅ `https://splashtastic.com`
-- ✅ `https://www.splashtastic.com`
-- ✅ `http://splashtastic.com` (should redirect to HTTPS)
-- ✅ `http://www.splashtastic.com` (should redirect to HTTPS)
+1. **Create Another CNAME Record**
+   - Click "Add" or "+" button again
+   - Select "CNAME" from the record type dropdown
 
-### 2. Application Features
-Verify everything works:
-- ✅ Home page loads
-- ✅ Booking flow works
-- ✅ Payment processing
-- ✅ Admin panel accessible
-- ✅ API endpoints responding
+2. **Configure Root Record**
+   ```
+   Type: CNAME
+   Name: @ (or leave blank for root)
+   Value: your-app-name.onrender.com
+   TTL: 600 (or 1 hour)
+   ```
 
-### 3. SSL Certificate
-Check SSL status:
-```bash
-# Should show valid certificate
-openssl s_client -connect splashtastic.com:443 -servername splashtastic.com
-```
+3. **Save the Record**
+   - Click "Save" or "Add Record"
+   - You should now have two CNAME records
 
-## 🚨 Troubleshooting
+### 2.3 Verify DNS Records
 
-### Common Issues
+Your DNS configuration should look like this:
 
-#### 1. DNS Not Propagating
-**Symptoms**: Domain still points to old location
-**Solutions**:
-- Wait 24-48 hours for full propagation
-- Clear browser cache: `Ctrl+Shift+R`
-- Try incognito/private browsing
-- Check multiple DNS checker websites
-
-#### 2. Mixed Content Warnings
-**Symptoms**: HTTPS site loading HTTP resources
-**Solutions**:
-- Update `NEXT_PUBLIC_SITE_URL` to use HTTPS
-- Check for hardcoded HTTP links in code
-- Verify all external resources use HTTPS
-
-#### 3. Redirect Loops
-**Symptoms**: Site keeps redirecting
-**Solutions**:
-- Check for multiple redirect rules
-- Verify Render configuration
-- Clear browser cache and cookies
-
-#### 4. SSL Certificate Issues
-**Symptoms**: "Not secure" warning in browser
-**Solutions**:
-- Wait for Render to provision certificate (up to 24 hours)
-- Verify domain is properly verified in Render
-- Check for DNS configuration errors
-
-### DNS Configuration Examples
-
-**Correct GoDaddy DNS Records**:
 ```
 Type    Name    Value                           TTL
-A       @       216.24.57.1                    600
-CNAME   www     splashtastic-web.onrender.com  600
-MX      @       [your email provider records]  3600
+CNAME   @       your-app-name.onrender.com     600
+CNAME   www     your-app-name.onrender.com     600
 ```
 
-**Common Mistakes to Avoid**:
-- ❌ Multiple A records for root domain
-- ❌ CNAME record for root domain (use A record)
-- ❌ Incorrect Render URL in CNAME
-- ❌ Forgetting to remove old conflicting records
+## 🔒 Step 3: SSL Certificate Setup
 
-## 📱 Step 8: Mobile & Performance Testing
+### 3.1 Render SSL Provisioning
 
-### 1. Mobile Responsiveness
-Test on various devices:
-- Smartphone (iOS/Android)
-- Tablet
-- Different screen sizes
+1. **Add Custom Domain in Render**
+   - Go to your Render web service dashboard
+   - Click "Settings" → "Custom Domains"
+   - Add your domain: `splashtastic.com`
 
-### 2. Performance Testing
-Use tools to verify performance:
-- Google PageSpeed Insights
-- GTmetrix
-- WebPageTest
+2. **SSL Certificate Generation**
+   - Render automatically provisions SSL certificates
+   - This process takes 5-15 minutes
+   - You'll see "SSL Certificate" status in the domain settings
 
-Target metrics:
-- **LCP**: < 2.5 seconds
-- **FID**: < 100ms
-- **CLS**: < 0.1
+3. **Verify SSL Status**
+   - Wait for "SSL Certificate" to show "Active"
+   - The certificate covers both `www.splashtastic.com` and `splashtastic.com`
 
-## 📊 Step 9: Analytics & Monitoring
+### 3.2 Force HTTPS (Optional)
 
-### 1. Google Analytics (Optional)
-1. Create Google Analytics account
-2. Add tracking code to your Next.js app
-3. Verify data collection
+1. **Enable HTTPS Enforcement**
+   - In Render domain settings
+   - Toggle "Force HTTPS" to enabled
+   - This redirects all HTTP traffic to HTTPS
 
-### 2. Google Search Console
-1. Add property for `https://splashtastic.com`
-2. Verify ownership via DNS TXT record
-3. Submit sitemap: `https://splashtastic.com/sitemap.xml`
+## ⏱️ Step 4: DNS Propagation
 
-### 3. Uptime Monitoring
-Set up monitoring with:
-- UptimeRobot (free)
-- Render's built-in monitoring
-- Custom health checks
+### 4.1 Understanding Propagation
 
-## ✅ Final Checklist
+DNS changes don't take effect immediately:
+- **Typical time**: 15 minutes to 48 hours
+- **Factors affecting speed**:
+  - TTL (Time To Live) settings
+  - ISP DNS caching
+  - Geographic location
 
-- [ ] Domain points to Render (A record)
-- [ ] WWW subdomain works (CNAME)
-- [ ] HTTPS is active and forced
-- [ ] SSL certificate is valid
-- [ ] All redirects work properly
-- [ ] Application functions normally
-- [ ] Environment variables updated
-- [ ] Stripe webhooks updated
-- [ ] Email configured (if needed)
-- [ ] Performance is acceptable
-- [ ] Mobile experience is good
-- [ ] Analytics/monitoring set up
+### 4.2 Check Propagation Status
 
-## 🎉 Success!
+1. **Use Online Tools**
+   - [whatsmydns.net](https://whatsmydns.net)
+   - [dnschecker.org](https://dnschecker.org)
+   - Enter your domain and check CNAME records
 
-Your domain should now be fully configured and working! Users can access your foam party booking system at:
+2. **Command Line Check**
+   ```bash
+   # Check CNAME records
+   nslookup www.splashtastic.com
+   nslookup splashtastic.com
+   
+   # Should show your-app-name.onrender.com
+   ```
 
-- **Primary**: `https://splashtastic.com`
-- **Alternate**: `https://www.splashtastic.com`
+3. **Expected Results**
+   ```
+   www.splashtastic.com -> your-app-name.onrender.com
+   splashtastic.com -> your-app-name.onrender.com
+   ```
 
-Both URLs should load your application securely with a valid SSL certificate.
+## ✅ Step 5: Verification & Testing
+
+### 5.1 Domain Accessibility
+
+1. **Test Root Domain**
+   - Open browser and go to `splashtastic.com`
+   - Should redirect to `https://splashtastic.com`
+   - Page should load your Splashtastic website
+
+2. **Test www Subdomain**
+   - Open browser and go to `www.splashtastic.com`
+   - Should redirect to `https://www.splashtastic.com`
+   - Page should load your Splashtastic website
+
+3. **Check HTTPS**
+   - Verify the lock icon in browser address bar
+   - Should show "Secure" or padlock symbol
+
+### 5.2 Functionality Testing
+
+1. **Basic Website Functions**
+   - Home page loads correctly
+   - Navigation works properly
+   - All pages accessible
+
+2. **Booking System**
+   - Booking form loads
+   - Date/time selection works
+   - Package selection functional
+
+3. **Admin Panel**
+   - Admin page accessible
+   - Login functionality works
+   - Dashboard displays correctly
+
+## 🚨 Step 6: Troubleshooting
+
+### 6.1 Common DNS Issues
+
+#### Issue: Domain Not Resolving
+```
+Error: "This site can't be reached"
+```
+
+**Solutions:**
+1. **Check DNS Records**
+   - Verify CNAME records are correct
+   - Ensure TTL values are reasonable (600 seconds)
+
+2. **Wait for Propagation**
+   - DNS changes can take up to 48 hours
+   - Use online DNS checkers to verify
+
+3. **Clear DNS Cache**
+   ```bash
+   # Windows
+   ipconfig /flushdns
+   
+   # macOS
+   sudo dscacheutil -flushcache
+   
+   # Linux
+   sudo systemctl restart systemd-resolved
+   ```
+
+#### Issue: SSL Certificate Not Active
+```
+Error: "Your connection is not private"
+```
+
+**Solutions:**
+1. **Check Render SSL Status**
+   - Verify domain is added in Render
+   - Wait for SSL certificate generation (5-15 minutes)
+
+2. **Verify Domain Configuration**
+   - Ensure DNS records point to Render
+   - Check domain spelling in Render
+
+3. **Force HTTPS Issues**
+   - Temporarily disable "Force HTTPS"
+   - Test with HTTP first, then enable HTTPS
+
+### 6.2 GoDaddy-Specific Issues
+
+#### Issue: CNAME for Root Domain Not Allowed
+Some GoDaddy plans don't allow CNAME records for root domains.
+
+**Solutions:**
+1. **Use A Record Instead**
+   ```
+   Type: A
+   Name: @
+   Value: 76.76.19.36 (Render's IP)
+   TTL: 600
+   ```
+
+2. **Contact GoDaddy Support**
+   - Upgrade your domain plan
+   - Request CNAME support for root domain
+
+#### Issue: DNS Changes Not Saving
+```
+Error: "Unable to save DNS record"
+```
+
+**Solutions:**
+1. **Check Permissions**
+   - Ensure you have domain management access
+   - Verify account status
+
+2. **Clear Browser Cache**
+   - Try different browser
+   - Clear cookies and cache
+
+3. **Contact Support**
+   - GoDaddy support can help with technical issues
+
+## 🔄 Step 7: Maintenance & Updates
+
+### 7.1 Regular DNS Checks
+
+1. **Monthly Verification**
+   - Check DNS propagation status
+   - Verify SSL certificate validity
+   - Test domain accessibility
+
+2. **After Render Updates**
+   - Verify domain still works after deployments
+   - Check for any DNS changes needed
+
+### 7.2 SSL Certificate Renewal
+
+1. **Automatic Renewal**
+   - Render handles SSL certificate renewal
+   - No manual intervention required
+   - Certificates are valid for 90 days
+
+2. **Monitor Certificate Status**
+   - Check SSL status in Render dashboard
+   - Look for any certificate warnings
+
+## 📱 Step 8: Mobile & Email Configuration
+
+### 8.1 Mobile Domain Testing
+
+1. **Test on Mobile Devices**
+   - Verify domain works on smartphones
+   - Check mobile responsiveness
+   - Test touch interactions
+
+2. **Mobile DNS**
+   - Mobile carriers may cache DNS differently
+   - Test on multiple mobile networks
+
+### 8.2 Email Configuration (Optional)
+
+If you want email addresses like `info@splashtastic.com`:
+
+1. **Add MX Records**
+   ```
+   Type: MX
+   Name: @
+   Value: your-email-provider.com
+   Priority: 10
+   TTL: 3600
+   ```
+
+2. **Email Service Providers**
+   - Google Workspace
+   - Microsoft 365
+   - Zoho Mail
+   - Custom email server
+
+## 🎯 Best Practices
+
+### 8.1 DNS Management
+
+1. **Keep TTL Reasonable**
+   - Use 600 seconds (10 minutes) for testing
+   - Use 3600 seconds (1 hour) for production
+   - Lower TTL = faster changes, higher TTL = better performance
+
+2. **Document Changes**
+   - Keep record of all DNS modifications
+   - Note dates and reasons for changes
+   - Document any special configurations
+
+3. **Regular Backups**
+   - Screenshot DNS configuration
+   - Export DNS records if possible
+   - Keep backup of domain settings
+
+### 8.2 Security Considerations
+
+1. **HTTPS Enforcement**
+   - Always use HTTPS in production
+   - Redirect HTTP to HTTPS
+   - Monitor SSL certificate status
+
+2. **DNS Security**
+   - Use strong GoDaddy account passwords
+   - Enable two-factor authentication
+   - Monitor for unauthorized changes
 
 ## 📞 Support Resources
 
-### GoDaddy Support
-- **DNS Help**: help.godaddy.com/help/680
-- **Support Phone**: Available in your account dashboard
-- **Live Chat**: Available during business hours
+### 8.1 GoDaddy Support
 
-### Render Support
-- **Documentation**: render.com/docs/custom-domains
-- **Community**: community.render.com
-- **Support Tickets**: Available in dashboard
+- **Phone**: 1-866-938-1119
+- **Live Chat**: Available in domain management panel
+- **Help Center**: [help.godaddy.com](https://help.godaddy.com)
+- **Community Forums**: [community.godaddy.com](https://community.godaddy.com)
 
-### DNS Tools
-- **DNS Checker**: dnschecker.org
-- **What's My DNS**: whatsmydns.net
-- **DNS Lookup**: nslookup.io
+### 8.2 Render Support
+
+- **Documentation**: [render.com/docs](https://render.com/docs)
+- **Community**: [community.render.com](https://community.render.com)
+- **Support Tickets**: Via Render dashboard
+
+### 8.3 External Tools
+
+- **DNS Checkers**:
+  - [whatsmydns.net](https://whatsmydns.net)
+  - [dnschecker.org](https://dnschecker.org)
+  - [mxtoolbox.com](https://mxtoolbox.com)
+
+- **SSL Checkers**:
+  - [ssllabs.com/ssltest](https://ssllabs.com/ssltest)
+  - [sslshopper.com/ssl-checker](https://sslshopper.com/ssl-checker)
+
+## ✅ Final Checklist
+
+Before considering your domain setup complete:
+
+- [ ] DNS records configured correctly
+- [ ] SSL certificate active and valid
+- [ ] Domain accessible via HTTPS
+- [ ] www subdomain working
+- [ ] All website functionality tested
+- [ ] Mobile devices tested
+- [ ] DNS propagation verified
+- [ ] SSL certificate monitoring set up
+- [ ] Documentation completed
+- [ ] Support contacts noted
+
+## 🎉 Success!
+
+Once all items are checked off, your GoDaddy domain is successfully configured and pointing to your Render-hosted Splashtastic website!
+
+**Your customers can now access your foam party booking website at:**
+- `https://splashtastic.com`
+- `https://www.splashtastic.com`
 
 ---
 
-**Your professional domain is now live! 🚀**
+## 🚀 Quick Reference Commands
+
+### DNS Verification
+```bash
+# Check CNAME records
+nslookup www.splashtastic.com
+nslookup splashtastic.com
+
+# Check from different DNS servers
+dig @8.8.8.8 www.splashtastic.com
+dig @1.1.1.1 splashtastic.com
+```
+
+### SSL Verification
+```bash
+# Check SSL certificate
+openssl s_client -connect splashtastic.com:443 -servername splashtastic.com
+
+# Test HTTPS redirect
+curl -I http://splashtastic.com
+curl -I https://splashtastic.com
+```
+
+### Common TTL Values
+- **Testing**: 300-600 seconds (5-10 minutes)
+- **Production**: 3600 seconds (1 hour)
+- **Stable**: 86400 seconds (24 hours)
+
+---
+
+**Happy Domain Configuring! 🌐**
+
+*Your Splashtastic website will be accessible worldwide in no time! 🫧*

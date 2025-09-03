@@ -152,13 +152,13 @@ describe('Availability Service', () => {
       expect(bufferSlot?.available).toBe(false) // Within buffer time
     })
 
-    it('should not return slots on Sundays', async () => {
+    it('should return slots on Sundays (7-day availability)', async () => {
       const sunday = new Date('2024-06-16') // Sunday
       const durationMin = 60
 
       const slots = await getAvailableSlots(sunday, durationMin, [], [])
 
-      expect(slots).toHaveLength(0)
+      expect(slots.length).toBeGreaterThan(0)
     })
 
     it('should limit slots based on package duration', async () => {

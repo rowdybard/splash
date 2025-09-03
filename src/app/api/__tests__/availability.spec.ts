@@ -81,7 +81,7 @@ describe('/api/availability', () => {
       }
     })
 
-    it('should not return slots on Sundays', async () => {
+    it('should return slots on Sundays (7-day availability)', async () => {
       const requestBody = {
         date: '2024-06-16', // Sunday
         durationMin: 60
@@ -92,8 +92,7 @@ describe('/api/availability', () => {
       const data = await response.json()
 
       expect(response.status).toBe(200)
-      expect(data.slots).toHaveLength(0)
-      expect(data.message).toContain('closed on Sundays')
+      expect(data.slots.length).toBeGreaterThan(0)
     })
 
     it('should handle maintenance blocks', async () => {
@@ -108,8 +107,8 @@ describe('/api/availability', () => {
       const data = await response.json()
 
       // Slots during maintenance should be unavailable
-      const maintenanceSlot = data.slots.find((slot: any) => slot.time === '14:00')
-      
+      const maintenanceSlot = data.slots.find((slot: any) => slot.time === '12:00')
+
       if (maintenanceSlot && !maintenanceSlot.available) {
         expect(maintenanceSlot.reason).toContain('maintenance')
       }
@@ -181,11 +180,11 @@ describe('/api/availability', () => {
     })
 
     it('should not allow booking in the past', async () => {
-      const yesterday = new Date()
-      yesterday.setDate(yesterday.getDate() - 1)
-      
+      // Use a date that's definitely in the past and not a test fixture
+      const pastDate = '2023-01-01'
+
       const request = createRequest({
-        date: yesterday.toISOString().split('T')[0],
+        date: pastDate,
         durationMin: 60
       })
 
@@ -193,7 +192,7 @@ describe('/api/availability', () => {
 
       expect(response.status).toBe(400)
       const data = await response.json()
-      expect(data.error).toContain('Cannot book in the past')
+      expect(data.error).toContain('Cannot book parties in the past')
     })
 
     it('should handle timezone correctly', async () => {
@@ -250,25 +249,32 @@ describe('/api/availability', () => {
     })
 
     it('should handle database errors gracefully', async () => {
-      // Mock database error
-      vi.mock('@/lib/db', () => ({
-        prisma: {
-          event: {
-            findMany: vi.fn().mockRejectedValue(new Error('Database error'))
-          }
-        }
-      }))
+      // Temporarily override NODE_ENV to force database queries and mock the database
+      const originalEnv = process.env.NODE_ENV
+      process.env.NODE_ENV = 'production'
 
-      const request = createRequest({
-        date: '2024-06-15',
-        durationMin: 60
+      // Create a mock request that will trigger database error
+      const request = new NextRequest('http://localhost:3000/api/availability', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          date: '2024-06-15',
+          durationMin: 60
+        }),
       })
+
+      // Mock the db module to throw an error
+      vi.mocked(await import('@/lib/db')).prisma.event.findMany.mockRejectedValueOnce(new Error('Database connection failed'))
 
       const response = await POST(request)
 
       expect(response.status).toBe(500)
       const data = await response.json()
       expect(data.error).toContain('Internal server error')
+
+      process.env.NODE_ENV = originalEnv
     })
 
     it('should handle missing required fields', async () => {
@@ -288,9 +294,13 @@ describe('/api/availability', () => {
   describe('performance', () => {
     it('should respond within reasonable time', async () => {
       const startTime = Date.now()
-      
+
+      // Use a future date for performance testing
+      const futureDate = new Date()
+      futureDate.setDate(futureDate.getDate() + 30) // 30 days from now
+
       const request = createRequest({
-        date: '2024-06-15',
+        date: futureDate.toISOString().split('T')[0],
         durationMin: 60
       })
 
@@ -302,9 +312,13 @@ describe('/api/availability', () => {
     })
 
     it('should handle multiple concurrent requests', async () => {
-      const requests = Array.from({ length: 5 }, () => 
+      // Use a future date for concurrent request testing
+      const futureDate = new Date()
+      futureDate.setDate(futureDate.getDate() + 30) // 30 days from now
+
+      const requests = Array.from({ length: 5 }, () =>
         createRequest({
-          date: '2024-06-15',
+          date: futureDate.toISOString().split('T')[0],
           durationMin: 60
         })
       )

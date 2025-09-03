@@ -2,6 +2,8 @@ import { zonedTimeToUtc, utcToZonedTime, format } from 'date-fns-tz'
 import { addMinutes, isSunday, isAfter, isBefore, parseISO } from 'date-fns'
 
 const TIMEZONE = process.env.TIMEZONE || 'America/Detroit'
+
+// Bookings allowed 7 days/week – no Sunday restriction
 const BUFFER_MINUTES = 45 // Minimum buffer between events
 const BUSINESS_START_HOUR = 9 // 9 AM
 const BUSINESS_END_HOUR = 18 // 6 PM
@@ -36,17 +38,15 @@ export type AvailabilityResult = {
 export async function checkAvailability(check: AvailabilityCheck): Promise<AvailabilityResult> {
   const { date, startTime, durationMin, existingEvents, blocks } = check
 
-  // Parse the requested start time in Detroit timezone
+  // Build a timezone-aware start datetime based on the provided date and time (America/Detroit)
   const [hours, minutes] = startTime.split(':').map(Number)
-  const requestedStart = new Date(date)
-  requestedStart.setHours(hours, minutes, 0, 0)
-  
-  // Convert to UTC for comparison with existing events
-  const zonedStart = zonedTimeToUtc(requestedStart, TIMEZONE)
+  const dateString = date.toISOString().slice(0, 10)
+  const localIso = `${dateString}T${startTime}:00`
+  // Treat localIso as time in Detroit and convert to UTC for comparisons
+  const zonedStart = zonedTimeToUtc(localIso, TIMEZONE)
   const zonedEnd = addMinutes(zonedStart, durationMin)
-  
-  // Use local time for business hour and Sunday checks
-  const localStart = requestedStart
+  // Local time instance for day-of-week checks
+  const localStart = utcToZonedTime(zonedStart, TIMEZONE)
 
   // Check business hours
   if (hours < BUSINESS_START_HOUR || hours >= BUSINESS_END_HOUR) {
@@ -56,11 +56,22 @@ export async function checkAvailability(check: AvailabilityCheck): Promise<Avail
     }
   }
 
-  // Check if it's Sunday (closed) - use local date
-  if (isSunday(localStart)) {
-    return {
-      isAvailable: false,
-      reason: 'We are closed on Sundays'
+  // No Sunday closure – operate 7 days/week
+
+  // Check against existing events with buffer first (bookings take precedence)
+  for (const event of existingEvents) {
+    const eventStartWithBuffer = addMinutes(event.startAt, -BUFFER_MINUTES)
+    const eventEndWithBuffer = addMinutes(event.endAt, BUFFER_MINUTES)
+
+    // Overlap or within buffer
+    if (zonedStart < eventEndWithBuffer && zonedEnd > eventStartWithBuffer) {
+      const isDirectOverlap = zonedStart < event.endAt && zonedEnd > event.startAt
+      return {
+        isAvailable: false,
+        reason: isDirectOverlap
+          ? 'Time slot overlaps with existing booking'
+          : 'Too close to existing booking (requires 45-minute buffer)'
+      }
     }
   }
 
@@ -78,25 +89,6 @@ export async function checkAvailability(check: AvailabilityCheck): Promise<Avail
     }
   }
 
-  // Check against existing events with buffer
-  for (const event of existingEvents) {
-    const eventStartWithBuffer = addMinutes(event.startAt, -BUFFER_MINUTES)
-    const eventEndWithBuffer = addMinutes(event.endAt, BUFFER_MINUTES)
-
-    // Check for overlaps or buffer conflicts
-    if (
-      (zonedStart < eventEndWithBuffer && zonedEnd > eventStartWithBuffer)
-    ) {
-      const isDirectOverlap = 
-        (zonedStart < event.endAt && zonedEnd > event.startAt)
-
-      return {
-        isAvailable: false,
-        reason: isDirectOverlap ? 'Time slot overlaps with existing booking' : 'Too close to existing booking (requires 45-minute buffer)'
-      }
-    }
-  }
-
   return { isAvailable: true }
 }
 
@@ -108,11 +100,7 @@ export async function getAvailableSlots(
 ): Promise<TimeSlot[]> {
   const slots: TimeSlot[] = []
 
-  // Don't return slots for Sundays - check the local date
-  const localDate = new Date(date)
-  if (isSunday(localDate)) {
-    return slots
-  }
+  // No Sunday closure – operate 7 days/week
 
   // Generate slots every 30 minutes during business hours
   for (let hour = BUSINESS_START_HOUR; hour < BUSINESS_END_HOUR; hour++) {
@@ -126,13 +114,15 @@ export async function getAvailableSlots(
       }
 
       const timeString = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`
-      const slotDate = new Date(date)
-      slotDate.setHours(hour, minute, 0, 0)
-      
+      // Build a local time string for the date in Detroit timezone and convert to UTC
+      const dateString = date.toISOString().slice(0, 10)
+      const localIso = `${dateString}T${timeString}:00`
+      const slotUtc = zonedTimeToUtc(localIso, TIMEZONE)
+
       const slot: TimeSlot = {
         time: timeString,
         available: true,
-        date: zonedTimeToUtc(slotDate, TIMEZONE)
+        date: slotUtc
       }
 
       // Check if this slot is available

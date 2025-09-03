@@ -14,5 +14,5 @@ beforeAll(() => {
 
 afterEach(() => {
   // Reset any mocks after each test
-  vi.clearAllMocks?.()
+  // vi.clearAllMocks?.() // Only available in test context
 })

@@ -1,261 +1,328 @@
-# 🎉 Splashtastic Foam Parties
+# Splashtastic Foam Parties - Booking Website
 
-**Production-ready booking website built with TDD methodology**
+A production-ready, test-driven booking website for Splashtastic Foam Parties, built with Next.js 14, TypeScript, and modern web technologies.
 
-Transform any backyard into a foam wonderland with our professional foam party services. This application handles booking, scheduling, payments, and customer management for a foam party rental business.
+## 🎯 Project Overview
 
-## 🌟 Features
+Splashtastic Foam Parties is a professional foam party entertainment company serving the Detroit metropolitan area. This website provides a complete booking system for customers to schedule foam parties, manage their events, and access all necessary information about our services.
 
-- **🎯 Multi-step Booking Process**: Date/time selection → Package choice → Add-ons → Details → Payment
-- **💰 Dynamic Pricing**: Travel fees by distance, evening surcharges, tax calculation
-- **📍 Geographic Services**: Address validation, distance calculation, service area enforcement
-- **⏰ Smart Scheduling**: Availability checking with buffer times and maintenance windows
-- **💳 Stripe Integration**: Secure payment processing with webhooks
-- **📧 Email Notifications**: Confirmation emails with ICS calendar attachments
-- **📱 Mobile-First Design**: Responsive, accessible UI with Tailwind CSS
-- **🔒 Production Security**: Environment variables, validation, error handling
+## ✨ Features
 
-## 🛠️ Tech Stack
+- **Multi-step Booking Process**: Intuitive stepper interface for easy party planning
+- **Real-time Availability**: Check available dates and times instantly
+- **Package Management**: Choose from various foam party packages and add-ons
+- **Payment Integration**: Secure Stripe checkout with deposit and full payment options
+- **Email Notifications**: Automated confirmation emails with ICS calendar attachments
+- **Admin Dashboard**: Manage bookings, view analytics, and handle customer requests
+- **Mobile-First Design**: Responsive design optimized for all devices
+- **Accessibility**: WCAG 2.2 AA compliant for inclusive user experience
 
-- **Frontend**: Next.js 14 (App Router), TypeScript, Tailwind CSS, React Hook Form, Zod
-- **Backend**: Next.js API routes, Prisma ORM, PostgreSQL
-- **Payments**: Stripe (deposits & full payments)
-- **Email**: Resend with ICS attachments
-- **SMS**: Twilio (optional reminders)
-- **Maps**: Google Maps API for geocoding and distance
-- **Testing**: Vitest (unit), React Testing Library (components), Playwright (E2E)
-- **Deployment**: Render with managed PostgreSQL
-- **CI/CD**: GitHub Actions
+## 🏗️ Tech Stack
 
-## 🚀 Quick Start
+### Frontend
+- **Next.js 14** - React framework with App Router
+- **TypeScript** - Type-safe development
+- **Tailwind CSS** - Utility-first CSS framework
+- **shadcn/ui** - Modern component library
+- **React Hook Form** - Form management with validation
+- **Zod** - Schema validation
+
+### Backend & Database
+- **Prisma** - Type-safe database ORM
+- **PostgreSQL** - Primary database (Render managed)
+- **Next.js API Routes** - Serverless API endpoints
+
+### External Services
+- **Stripe** - Payment processing and webhooks
+- **Resend** - Email delivery service
+- **Twilio** - SMS notifications (optional)
+- **Google Maps API** - Distance calculation and geolocation
+
+### Testing & Quality
+- **Vitest** - Unit and integration testing
+- **React Testing Library** - Component testing
+- **Playwright** - End-to-end testing
+- **GitHub Actions** - Continuous integration
+
+### Deployment
+- **Render** - Hosting and deployment platform
+- **GoDaddy** - Domain management
+
+## 🚀 Getting Started
 
 ### Prerequisites
 
-- Node.js 20+
-- PostgreSQL database
-- Stripe account (for payments)
-- Google Maps API key
-- Resend account (for email)
+- Node.js 18+ 
+- npm or yarn
+- PostgreSQL database (local or cloud)
+- Stripe account
+- Resend account
 
 ### Installation
 
-1. **Clone and install dependencies**
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd splash
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables**
+   ```bash
+   cp .env.example .env.local
+   ```
+   
+   Fill in your environment variables:
+   ```env
+   # Database
+   DATABASE_URL="postgresql://user:password@localhost:5432/splashtastic"
+   
+   # Stripe
+   STRIPE_SECRET_KEY="sk_test_..."
+   STRIPE_WEBHOOK_SECRET="whsec_..."
+   NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY="pk_test_..."
+   
+   # Email
+   RESEND_API_KEY="re_..."
+   
+   # Other services
+   GOOGLE_MAPS_API_KEY="AIza..."
+   TWILIO_ACCOUNT_SID="AC..."
+   TWILIO_AUTH_TOKEN="..."
+   ```
+
+4. **Set up the database**
+   ```bash
+   npx prisma generate
+   npx prisma db push
+   npx prisma db seed
+   ```
+
+5. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+
+6. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+## 🧪 Testing
+
+### Run all tests
 ```bash
-git clone <your-repo>
-cd splashtastic
-npm install
-```
-
-2. **Environment setup**
-```bash
-cp env.example .env.local
-# Edit .env.local with your actual values
-```
-
-3. **Database setup**
-```bash
-npm run db:migrate
-npm run seed
-```
-
-4. **Development server**
-```bash
-npm run dev
-```
-
-Visit `http://localhost:3000` to see the application.
-
-## 🧪 Testing (TDD Approach)
-
-This project was built using **Test-Driven Development**:
-
-```bash
-# Run all tests
 npm test
-
-# Run tests in watch mode
-npm run test:watch
-
-# Run E2E tests
-npm run test:ui
-
-# Type checking
-npm run typecheck
-
-# Linting
-npm run lint
 ```
 
-### Test Coverage
-- **146 total tests** written before implementation
-- **Unit tests**: Domain logic (pricing, availability, geo, ICS)
-- **Integration tests**: API endpoints with validation
-- **Component tests**: React components with user interactions
-- **E2E tests**: Complete user journeys with Playwright
+### Run specific test suites
+```bash
+# Unit tests
+npm test -- src/lib/__tests__/
 
-## 📊 Domain Logic
+# API tests
+npm test -- src/app/api/__tests__/
 
-### Pricing System
-- **Base package pricing** with duration and guest limits
-- **Travel fees**: $0 (0-15mi), $49 (16-30mi), $99 (31-50mi)
-- **Evening surcharge**: 15% for Glow Night events
-- **Tax calculation**: 8% default (configurable)
-- **Deposit**: 30% required, balance due at event
+# Component tests
+npm test -- src/components/__tests__/
 
-### Availability System
-- **Business hours**: 9 AM - 6 PM, closed Sundays
-- **Buffer times**: 45-minute setup/teardown between events
-- **Maintenance blocks**: Configurable unavailable periods
-- **Timezone**: America/Detroit throughout
+# E2E tests
+npm run test:e2e
+```
 
-### Geographic Services
-- **Address validation**: US addresses only
-- **Service area**: 50-mile radius from Detroit
-- **Distance calculation**: Haversine formula for accurate distances
+### Test coverage
+```bash
+npm run test:coverage
+```
+
+## 🏗️ Project Structure
+
+```
+src/
+├── app/                    # Next.js App Router
+│   ├── api/               # API endpoints
+│   ├── book/              # Booking page
+│   ├── admin/             # Admin dashboard
+│   └── ...                # Other pages
+├── components/             # React components
+│   ├── ui/                # shadcn/ui components
+│   └── BookingStepper.tsx # Main booking component
+├── lib/                    # Utility functions
+│   ├── __tests__/         # Unit tests
+│   ├── pricing.ts         # Pricing calculations
+│   ├── availability.ts    # Availability logic
+│   ├── geo.ts            # Geolocation services
+│   ├── ics.ts            # Calendar generation
+│   └── email.ts          # Email services
+├── test/                   # Test setup and utilities
+└── prisma/                 # Database schema and migrations
+```
+
+## 📱 Pages & Routes
+
+- **`/`** - Home page with hero section and package overview
+- **`/book`** - Multi-step booking process
+- **`/packages`** - Detailed package information and pricing
+- **`/add-ons`** - Available add-ons and enhancements
+- **`/faq`** - Frequently asked questions
+- **`/service-area`** - Coverage area and travel information
+- **`/about`** - Company information and team
+- **`/policies`** - Booking policies and terms
+- **`/contact`** - Contact form and information
+- **`/admin`** - Admin dashboard (protected)
+- **`/success`** - Payment success page
+- **`/cancel`** - Payment cancellation page
+
+## 🔌 API Endpoints
+
+- **`/api/quote`** - Generate pricing quotes
+- **`/api/availability`** - Check date/time availability
+- **`/api/checkout`** - Create Stripe checkout sessions
+- **`/api/webhooks/stripe`** - Handle Stripe webhooks
+- **`/api/ics/[bookingId]`** - Generate calendar files
+
+## 💳 Payment Flow
+
+1. **Quote Generation**: Customer selects package and add-ons
+2. **Availability Check**: Verify requested date/time is available
+3. **Checkout**: Create Stripe checkout session
+4. **Payment Processing**: Handle deposit or full payment
+5. **Confirmation**: Send email with ICS attachment
+6. **Webhook Processing**: Update booking status and send notifications
+
+## 🎨 Design System
+
+### Color Palette
+- **Primary**: Blue (#2563eb) - Trust and professionalism
+- **Secondary**: Green (#16a34a) - Fun and excitement
+- **Accent**: Purple (#9333ea) - Creativity and playfulness
+- **Neutral**: Gray scale for text and backgrounds
+
+### Typography
+- **Headings**: Inter font family for modern, clean look
+- **Body**: System fonts for optimal readability
+- **Sizes**: Responsive typography scale from mobile to desktop
+
+### Components
+- **Buttons**: Multiple variants (primary, secondary, outline, ghost)
+- **Cards**: Consistent spacing and shadow system
+- **Forms**: Accessible form controls with validation
+- **Navigation**: Mobile-first navigation with smooth transitions
+
+## 🔒 Security Features
+
+- **Input Validation**: Zod schemas for all user inputs
+- **SQL Injection Protection**: Prisma ORM with parameterized queries
+- **XSS Prevention**: Proper content sanitization
+- **CSRF Protection**: Built-in Next.js security features
+- **Environment Variables**: Secure configuration management
+- **HTTPS Enforcement**: Secure connections in production
+
+## 📊 Performance
+
+### Core Web Vitals Targets
+- **LCP**: < 2.5 seconds
+- **FID**: < 100 milliseconds
+- **CLS**: < 0.1
+
+### Optimization Strategies
+- **Static Generation**: Pre-render static pages
+- **Image Optimization**: Next.js Image component
+- **Code Splitting**: Automatic route-based splitting
+- **Bundle Analysis**: Regular bundle size monitoring
+- **Caching**: Strategic caching strategies
 
 ## 🌐 Deployment
 
 ### Render Deployment
+1. Connect your GitHub repository
+2. Configure environment variables
+3. Set build command: `npm run build`
+4. Set start command: `npm start`
+5. Deploy automatically on push to main branch
 
-1. **Database setup**
-```bash
-# Create PostgreSQL database on Render
-# Copy connection string to environment variables
-```
+### Environment Setup
+- Production database connection
+- Stripe live keys
+- Email service configuration
+- Domain and SSL setup
 
-2. **Environment variables**
-Set these in Render dashboard:
-```
-DATABASE_URL=postgresql://...
-STRIPE_SECRET_KEY=sk_...
-STRIPE_WEBHOOK_SECRET=whsec_...
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_...
-RESEND_API_KEY=re_...
-GOOGLE_MAPS_API_KEY=AIza...
-NEXT_PUBLIC_SITE_URL=https://yourdomain.com
-TIMEZONE=America/Detroit
-ADMIN_PASSCODE=your-secret-code
-```
+## 📈 Monitoring & Analytics
 
-3. **Deploy**
-```bash
-git push origin main
-# Render auto-deploys via render.yaml
-```
+- **Error Tracking**: Monitor application errors
+- **Performance Monitoring**: Track Core Web Vitals
+- **User Analytics**: Understand user behavior
+- **Business Metrics**: Track conversions and bookings
 
-### Domain Setup (GoDaddy)
-See `DOMAIN_SETUP_GODADDY.md` for detailed DNS configuration.
+## 🤝 Contributing
 
-### Stripe Webhooks
-See `DEPLOY_RENDER.md` for webhook endpoint setup.
+### Development Workflow
+1. Create feature branch from `main`
+2. Write tests first (TDD approach)
+3. Implement feature with tests
+4. Ensure all tests pass
+5. Submit pull request
 
-## 📁 Project Structure
+### Code Standards
+- **TypeScript**: Strict type checking enabled
+- **ESLint**: Consistent code style
+- **Prettier**: Automatic code formatting
+- **Conventional Commits**: Standardized commit messages
 
-```
-src/
-├── app/                    # Next.js app router
-│   ├── (marketing)/       # Marketing pages
-│   ├── book/              # Booking flow
-│   ├── admin/             # Admin dashboard
-│   └── api/               # API routes
-├── components/            # Reusable UI components
-├── lib/                   # Business logic & utilities
-│   ├── pricing.ts         # Pricing calculations
-│   ├── availability.ts    # Scheduling logic
-│   ├── geo.ts            # Geographic services
-│   └── ics.ts            # Calendar file generation
-├── emails/               # Email templates
-└── styles/               # Global styles
+## 📚 Documentation
 
-prisma/
-├── schema.prisma         # Database schema
-└── seed.ts              # Sample data
-
-tests/
-├── unit/                # Domain logic tests
-├── integration/         # API tests
-├── components/          # React component tests
-└── e2e/                # End-to-end tests
-```
-
-## 🔧 Configuration
-
-### Business Settings
-Edit these in the codebase:
-- **Service radius**: `SERVICE_AREA_RADIUS_MILES` in `geo.ts`
-- **Buffer time**: `BUFFER_MINUTES` in `availability.ts`
-- **Business hours**: `BUSINESS_START_HOUR/END_HOUR` in `availability.ts`
-- **Tax rate**: `DEFAULT_TAX_RATE` in `pricing.ts`
-- **Deposit rate**: `DEFAULT_DEPOSIT_RATE` in `pricing.ts`
-
-### Package & Add-on Management
-Packages and add-ons are managed via the database:
-```sql
--- Add new package
-INSERT INTO packages (name, duration_min, base_price, max_guests, included_items)
-VALUES ('Custom Party', 120, 69900, 40, '["Custom items"]');
-
--- Add new add-on
-INSERT INTO addons (name, price, description)
-VALUES ('Photo Booth', 15000, 'Professional photo booth setup');
-```
+- **API Documentation**: OpenAPI/Swagger specs
+- **Component Library**: Storybook documentation
+- **User Guides**: Customer and admin documentation
+- **Deployment Guide**: Step-by-step deployment instructions
 
 ## 🐛 Troubleshooting
 
 ### Common Issues
 
-1. **Database connection errors**
-   - Check `DATABASE_URL` format
-   - Ensure database is accessible
-   - Run `npm run db:generate`
+**Database Connection Errors**
+- Verify DATABASE_URL format
+- Check database server status
+- Ensure proper network access
 
-2. **Stripe webhook failures**
-   - Verify `STRIPE_WEBHOOK_SECRET`
-   - Check webhook endpoint URL
-   - Ensure HTTPS in production
+**Stripe Integration Issues**
+- Verify API keys are correct
+- Check webhook endpoint configuration
+- Monitor Stripe dashboard for errors
 
-3. **Geocoding failures**
-   - Verify `GOOGLE_MAPS_API_KEY`
-   - Check API quotas and billing
-   - Ensure Geocoding API is enabled
+**Email Delivery Problems**
+- Verify Resend API key
+- Check email template syntax
+- Monitor email delivery logs
 
-### Development Tips
-
+### Debug Mode
+Enable debug logging:
 ```bash
-# Reset database
-npm run db:reset
-
-# View database
-npx prisma studio
-
-# Check types
-npm run typecheck
-
-# Format code
-npm run lint --fix
+DEBUG=* npm run dev
 ```
 
-## 📈 Performance
+## 📞 Support
 
-- **LCP < 2 seconds**: Optimized images and lazy loading
-- **Mobile-first**: Responsive design with touch targets
-- **SEO optimized**: Meta tags, structured data, sitemap
-- **Accessibility**: WCAG 2.2 AA compliant
-
-## 🤝 Contributing
-
-This project follows TDD methodology:
-
-1. **Write failing tests first**
-2. **Implement minimal code to pass**
-3. **Refactor while keeping tests green**
-
-All PRs must include tests and maintain 100% test coverage for new features.
+- **Technical Issues**: Check GitHub issues
+- **Business Questions**: Contact Splashtastic team
+- **Emergency**: Use admin dashboard contact form
 
 ## 📄 License
 
-© 2024 Splashtastic Foam Parties. All rights reserved.
+This project is proprietary software owned by Splashtastic Foam Parties. All rights reserved.
+
+## 🙏 Acknowledgments
+
+- **Next.js Team** - Amazing React framework
+- **Vercel** - Deployment and hosting platform
+- **Stripe** - Payment processing infrastructure
+- **Tailwind CSS** - Utility-first CSS framework
+- **shadcn/ui** - Beautiful component library
 
 ---
 
-**Built with ❤️ using Test-Driven Development**
+**Built with ❤️ by the Splashtastic development team**
+
+*Making memories one bubble at a time! 🫧*

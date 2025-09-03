@@ -1,298 +1,465 @@
-# 🚀 Render Deployment Guide
+# Deploying Splashtastic Foam Parties to Render
 
-Complete guide for deploying Splashtastic to Render.com with managed PostgreSQL.
+This guide walks you through deploying the Splashtastic booking website to Render, including database setup, environment configuration, and domain setup.
 
-## 📋 Prerequisites
+## 🚀 Prerequisites
 
-- Render account (render.com)
-- GitHub repository with your code
-- Environment variables ready
-- Stripe account for webhook setup
+Before starting deployment, ensure you have:
 
-## 🗄️ Database Setup
+- [ ] GitHub repository with your code
+- [ ] Render account (free tier available)
+- [ ] Stripe account for payments
+- [ ] Resend account for emails
+- [ ] Google Maps API key
+- [ ] GoDaddy domain (or other domain provider)
 
-### 1. Create PostgreSQL Database
+## 📊 Step 1: Database Setup
 
-1. Go to Render Dashboard → "New" → "PostgreSQL"
-2. Configure database:
-   - **Name**: `splashtastic-db`
-   - **Region**: `Oregon` (or closest to users)
-   - **Plan**: `Starter` ($7/month)
-3. Click "Create Database"
-4. Wait for database to be ready (2-3 minutes)
-5. Copy the **External Database URL** for environment variables
+### 1.1 Create PostgreSQL Database
 
-## 🌐 Web Service Setup
+1. **Log into Render Dashboard**
+   - Go to [dashboard.render.com](https://dashboard.render.com)
+   - Sign in or create account
 
-### 1. Create Web Service
+2. **Create New Database**
+   - Click "New +" button
+   - Select "PostgreSQL"
+   - Choose "Free" plan (or paid for production)
 
-1. Go to Render Dashboard → "New" → "Web Service"
-2. Connect your GitHub repository
-3. Configure service:
-   - **Name**: `splashtastic-web`
-   - **Region**: `Oregon` (same as database)
-   - **Branch**: `main`
-   - **Runtime**: `Node`
-   - **Build Command**: `npm install --frozen-lockfile && npx prisma generate && npm run build`
-   - **Start Command**: `npm start`
+3. **Configure Database**
+   ```
+   Name: splashtastic-db
+   Database: splashtastic
+   User: splashtastic_user
+   Region: Choose closest to your users
+   ```
 
-### 2. Environment Variables
+4. **Save Connection Details**
+   - Note down the connection string
+   - Format: `postgresql://user:password@host:port/database`
 
-Add these environment variables in the Render dashboard:
+### 1.2 Database Migration
 
-#### Required Variables
-```bash
-# Database (auto-filled from database connection)
-DATABASE_URL=postgresql://...
+1. **Connect to Database**
+   ```bash
+   # Install psql client if needed
+   # macOS: brew install postgresql
+   # Windows: Download from postgresql.org
+   
+   psql "postgresql://user:password@host:port/database"
+   ```
 
-# Site Configuration
-NEXT_PUBLIC_SITE_URL=https://your-app-name.onrender.com
-TIMEZONE=America/Detroit
+2. **Run Prisma Migrations**
+   ```bash
+   # In your local project
+   npx prisma db push
+   npx prisma db seed
+   ```
 
-# Stripe (get from Stripe dashboard)
-STRIPE_SECRET_KEY=sk_live_... # or sk_test_... for testing
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_live_... # or pk_test_...
-STRIPE_WEBHOOK_SECRET=whsec_... # Set up after deployment
+## 🌐 Step 2: Web Service Setup
 
-# Email (get from Resend)
+### 2.1 Create Web Service
+
+1. **New Web Service**
+   - Click "New +" → "Web Service"
+   - Connect your GitHub repository
+   - Select the repository
+
+2. **Configure Service**
+   ```
+   Name: splashtastic-website
+   Region: Same as database
+   Branch: main
+   Root Directory: ./
+   Runtime: Node
+   Build Command: npm run build
+   Start Command: npm start
+   ```
+
+### 2.2 Environment Variables
+
+Set these environment variables in Render:
+
+```env
+# Database
+DATABASE_URL=postgresql://user:password@host:port/database
+
+# Stripe (Production Keys)
+STRIPE_SECRET_KEY=sk_live_...
+STRIPE_WEBHOOK_SECRET=whsec_...
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_live_...
+
+# Email
 RESEND_API_KEY=re_...
 
-# Maps (get from Google Cloud Console)
+# Maps & Location
 GOOGLE_MAPS_API_KEY=AIza...
+TIMEZONE=America/Detroit
+
+# Site Configuration
+NEXT_PUBLIC_SITE_URL=https://yourdomain.com
+NODE_ENV=production
 
 # Admin Access
-ADMIN_PASSCODE=your-secure-password
+ADMIN_PASSCODE=your-secure-passcode
 
-# Optional: SMS (get from Twilio)
+# Optional Services
 TWILIO_ACCOUNT_SID=AC...
 TWILIO_AUTH_TOKEN=...
-TWILIO_MESSAGING_SERVICE_SID=MG...
 ```
 
-#### Connecting Database
-1. In Environment Variables section, add:
-   - **Key**: `DATABASE_URL`
-   - **Value**: Select "From Database" → Choose your `splashtastic-db`
+### 2.3 Advanced Settings
 
-### 3. Deploy
+1. **Auto-Deploy**
+   - Enable "Auto-Deploy from main branch"
+   - This deploys automatically on every push
 
-1. Click "Create Web Service"
-2. Render will automatically deploy from your `render.yaml` file
-3. Wait for deployment (5-10 minutes for first deploy)
-4. Check deployment logs for any errors
+2. **Health Check Path**
+   - Set to `/api/health` (create this endpoint)
 
-## 🔗 Stripe Webhook Setup
+3. **Environment**
+   - Set to `production`
 
-### 1. Create Webhook Endpoint
+## 🔗 Step 3: Stripe Webhook Configuration
 
-1. Go to Stripe Dashboard → "Developers" → "Webhooks"
-2. Click "Add endpoint"
-3. Configure webhook:
-   - **Endpoint URL**: `https://your-app-name.onrender.com/api/webhooks/stripe`
-   - **Events to send**: 
-     - `payment_intent.succeeded`
-     - `payment_intent.payment_failed`
-4. Click "Add endpoint"
+### 3.1 Create Webhook Endpoint
 
-### 2. Configure Webhook Secret
+1. **Stripe Dashboard**
+   - Go to [dashboard.stripe.com](https://dashboard.stripe.com)
+   - Navigate to "Developers" → "Webhooks"
 
-1. Copy the **Signing secret** from the webhook details
-2. Go back to Render → Your web service → Environment
-3. Add environment variable:
-   - **Key**: `STRIPE_WEBHOOK_SECRET`
-   - **Value**: `whsec_...` (the signing secret)
-4. Deploy the updated service
+2. **Add Endpoint**
+   ```
+   Endpoint URL: https://yourdomain.com/api/webhooks/stripe
+   Events to send:
+   - checkout.session.completed
+   - payment_intent.succeeded
+   - payment_intent.payment_failed
+   - invoice.payment_succeeded
+   - invoice.payment_failed
+   ```
 
-### 3. Test Webhooks
+3. **Get Webhook Secret**
+   - Copy the webhook signing secret
+   - Add to `STRIPE_WEBHOOK_SECRET` in Render
 
-```bash
-# Use Stripe CLI to test webhooks locally first
-stripe listen --forward-to localhost:3000/api/webhooks/stripe
+### 3.2 Test Webhooks
 
-# Create test payment to verify webhook
-stripe payment_intents create --amount=2000 --currency=usd --automatic-payment-methods[enabled]=true
-```
+1. **Use Stripe CLI**
+   ```bash
+   # Install Stripe CLI
+   # macOS: brew install stripe/stripe-cli/stripe
+   # Windows: Download from github.com/stripe/stripe-cli
+   
+   # Login
+   stripe login
+   
+   # Forward webhooks to local development
+   stripe listen --forward-to localhost:3000/api/webhooks/stripe
+   ```
 
-## 🌍 Custom Domain Setup
+2. **Test Events**
+   - Create test payments in Stripe dashboard
+   - Verify webhook delivery in logs
 
-### 1. Add Domain in Render
+## 📧 Step 4: Email Service Setup
 
-1. Go to your web service → "Settings" → "Custom Domains"
-2. Click "Add Custom Domain"
-3. Enter your domain: `splashtastic.com`
-4. Render will provide DNS records
+### 4.1 Resend Configuration
 
-### 2. Configure DNS (See DOMAIN_SETUP_GODADDY.md)
+1. **Resend Dashboard**
+   - Go to [resend.com](https://resend.com)
+   - Create account and verify email
 
-Follow the domain setup guide for detailed DNS configuration.
+2. **API Key**
+   - Generate new API key
+   - Add to `RESEND_API_KEY` in Render
 
-### 3. Update Environment Variables
+3. **Domain Verification**
+   - Add your domain to Resend
+   - Configure DNS records as instructed
+   - Verify domain ownership
 
-Once domain is active:
-```bash
-NEXT_PUBLIC_SITE_URL=https://splashtastic.com
-```
+### 4.2 Email Templates
 
-## 📊 Database Migration & Seeding
+1. **Template Structure**
+   ```
+   src/lib/email.ts - Email service functions
+   src/lib/email-templates/ - HTML email templates
+   ```
 
-### Automatic (via render.yaml)
+2. **Test Emails**
+   - Send test emails during development
+   - Verify delivery and formatting
 
-The `postDeployCommand` automatically runs:
-```bash
-npx prisma migrate deploy && npx prisma db seed
-```
+## 🗺️ Step 5: Google Maps Setup
 
-### Manual (if needed)
+### 5.1 API Key Configuration
 
-Connect to your database via Render dashboard and run:
-```sql
--- Check if tables exist
-\dt
+1. **Google Cloud Console**
+   - Go to [console.cloud.google.com](https://console.cloud.google.com)
+   - Create new project or select existing
 
--- Check seed data
-SELECT * FROM packages;
-SELECT * FROM addons;
-```
+2. **Enable APIs**
+   - Geocoding API
+   - Distance Matrix API
+   - Maps JavaScript API
 
-## 🔍 Monitoring & Logs
+3. **Create API Key**
+   - Generate new API key
+   - Restrict to your domain
+   - Add to `GOOGLE_MAPS_API_KEY` in Render
 
-### Application Logs
-1. Go to your web service → "Logs"
-2. Monitor for errors during startup and requests
-3. Look for successful Prisma connections
+### 5.2 Billing Setup
 
-### Database Monitoring
-1. Go to your database → "Metrics"
-2. Monitor connections, query performance
-3. Set up alerts for high usage
+1. **Enable Billing**
+   - Required for API usage
+   - Set up billing account
+   - Set usage limits and alerts
 
-### Key Metrics to Watch
-- **Response time**: Should be < 500ms for most requests
-- **Error rate**: Should be < 1%
-- **Database connections**: Should stay under limit
-- **Memory usage**: Monitor for memory leaks
+## 🔒 Step 6: Security Configuration
 
-## 🚨 Troubleshooting
+### 6.1 Environment Variables
 
-### Common Deployment Issues
+1. **Never Commit Secrets**
+   - Ensure `.env` is in `.gitignore`
+   - Use Render environment variables
+   - Rotate keys regularly
 
-#### 1. Build Failures
-```bash
-# Check these in logs:
-Error: Cannot find module '@prisma/client'
-# Solution: Ensure prisma generate runs in build command
+2. **Production Keys**
+   - Use live Stripe keys (not test)
+   - Use production database
+   - Enable HTTPS enforcement
 
-Error: Environment variable not found: DATABASE_URL
-# Solution: Check environment variables are set correctly
-```
+### 6.2 Domain Security
 
-#### 2. Database Connection Issues
-```bash
-# Check database URL format:
-DATABASE_URL=postgresql://user:password@host:port/database?sslmode=require
+1. **HTTPS Enforcement**
+   - Render provides free SSL certificates
+   - Enable "Force HTTPS" in settings
+   - Set secure headers
 
-# Test connection:
-npx prisma db push
-```
+2. **CORS Configuration**
+   - Restrict to your domain
+   - Configure allowed origins
 
-#### 3. Stripe Webhook Issues
-```bash
-# Check webhook signature verification:
-curl -X POST https://your-app.onrender.com/api/webhooks/stripe \
-  -H "stripe-signature: invalid" \
-  -d '{"type": "test"}'
+## 🌍 Step 7: Domain Configuration
 
-# Should return 400 Bad Request
-```
+### 7.1 GoDaddy DNS Setup
 
-### Performance Optimization
+1. **Log into GoDaddy**
+   - Go to [godaddy.com](https://godaddy.com)
+   - Access your domain management
 
-#### 1. Database Performance
-```sql
--- Add indexes for common queries
-CREATE INDEX idx_events_date ON events(date);
-CREATE INDEX idx_bookings_status ON bookings(stripe_payment_status);
-```
+2. **Add DNS Records**
+   ```
+   Type: CNAME
+   Name: www
+   Value: your-app-name.onrender.com
+   TTL: 600
+   
+   Type: CNAME
+   Name: @
+   Value: your-app-name.onrender.com
+   TTL: 600
+   ```
 
-#### 2. Enable Database Connection Pooling
-In your DATABASE_URL, add:
-```
-?connection_limit=5&pool_timeout=20
-```
+3. **Verify Domain**
+   - Wait for DNS propagation (up to 48 hours)
+   - Verify in Render dashboard
 
-#### 3. Monitor Memory Usage
-- Enable "Auto-Deploy" for critical fixes
-- Set up health checks
-- Monitor error rates
+### 7.2 Custom Domain in Render
 
-## 🔄 Deployment Pipeline
+1. **Add Custom Domain**
+   - Go to your web service in Render
+   - Click "Settings" → "Custom Domains"
+   - Add your domain
 
-### Automatic Deployments
-Render automatically deploys when you push to the main branch:
+2. **SSL Certificate**
+   - Render automatically provisions SSL
+   - Wait for certificate generation
+   - Verify HTTPS works
 
-```bash
-git add .
-git commit -m "feat: add new feature"
-git push origin main
-# Render will automatically deploy
-```
+## 📱 Step 8: Mobile & Performance
 
-### Manual Deployments
-1. Go to your web service → "Manual Deploy"
-2. Click "Deploy latest commit"
-3. Monitor logs for deployment progress
+### 8.1 Performance Optimization
 
-### Rollback Strategy
-1. Go to "Deploys" tab
-2. Find the last working deployment
-3. Click "Redeploy" on that version
+1. **Core Web Vitals**
+   - Monitor LCP, FID, CLS
+   - Use Render's built-in monitoring
+   - Set up performance alerts
 
-## 📈 Scaling
+2. **Image Optimization**
+   - Use Next.js Image component
+   - Implement lazy loading
+   - Optimize image formats
 
-### Vertical Scaling
-Upgrade service plan in Render dashboard:
-- **Starter**: $7/month - Good for testing
-- **Standard**: $25/month - Production ready
-- **Pro**: $85/month - High traffic
+### 8.2 Mobile Testing
 
-### Database Scaling
-- **Starter**: 256MB RAM, 1GB storage
-- **Standard**: 1GB RAM, 10GB storage
-- **Pro**: 4GB RAM, 100GB storage
+1. **Responsive Design**
+   - Test on various devices
+   - Verify touch interactions
+   - Check mobile performance
 
-### Monitoring Growth
-Set up alerts for:
-- High CPU usage (>80%)
-- High memory usage (>80%)
-- Database connection limits
-- Response time degradation
+## 🔍 Step 9: Monitoring & Analytics
 
-## ✅ Post-Deployment Checklist
+### 9.1 Render Monitoring
 
-- [ ] Application loads successfully
-- [ ] Database connection working
-- [ ] Stripe payments processing
-- [ ] Webhooks receiving events
-- [ ] Email notifications sending
-- [ ] Admin panel accessible
-- [ ] All API endpoints responding
+1. **Built-in Metrics**
+   - Response times
+   - Error rates
+   - Resource usage
+
+2. **Logs**
+   - Access application logs
+   - Monitor errors and warnings
+   - Set up log aggregation
+
+### 9.2 External Monitoring
+
+1. **Uptime Monitoring**
+   - Set up uptime checks
+   - Configure alerting
+   - Monitor response times
+
+2. **Error Tracking**
+   - Implement error logging
+   - Set up error notifications
+   - Track user experience
+
+## 🚨 Step 10: Testing & Validation
+
+### 10.1 Pre-Launch Checklist
+
+- [ ] Database migrations completed
+- [ ] Environment variables set
+- [ ] Stripe webhooks configured
+- [ ] Email service working
+- [ ] Domain DNS configured
 - [ ] SSL certificate active
-- [ ] Custom domain working
-- [ ] Monitoring set up
+- [ ] All tests passing
+- [ ] Performance benchmarks met
 
-## 📞 Support
+### 10.2 Post-Launch Validation
 
-### Render Support
-- Documentation: render.com/docs
-- Community: community.render.com
-- Support tickets via dashboard
+1. **Functionality Tests**
+   - Complete booking flow
+   - Payment processing
+   - Email delivery
+   - Admin dashboard access
 
-### Application Issues
-- Check application logs first
-- Verify environment variables
-- Test locally with same data
-- Review database queries
+2. **Performance Tests**
+   - Load testing
+   - Mobile performance
+   - Core Web Vitals
+   - Database performance
+
+## 🆘 Troubleshooting
+
+### Common Issues
+
+1. **Build Failures**
+   ```bash
+   # Check build logs in Render
+   # Verify all dependencies in package.json
+   # Check for TypeScript errors
+   ```
+
+2. **Database Connection**
+   ```bash
+   # Verify DATABASE_URL format
+   # Check database accessibility
+   # Verify network security groups
+   ```
+
+3. **Environment Variables**
+   ```bash
+   # Check all required variables are set
+   # Verify no typos in variable names
+   # Restart service after changes
+   ```
+
+4. **Domain Issues**
+   ```bash
+   # Check DNS propagation
+   # Verify CNAME records
+   # Check SSL certificate status
+   ```
+
+### Getting Help
+
+1. **Render Support**
+   - Check Render documentation
+   - Use community forums
+   - Contact support if needed
+
+2. **Application Logs**
+   - Check Render logs
+   - Monitor error rates
+   - Debug specific issues
+
+## 📈 Next Steps
+
+### Post-Deployment
+
+1. **Performance Monitoring**
+   - Set up monitoring dashboards
+   - Configure alerting
+   - Track business metrics
+
+2. **Backup Strategy**
+   - Database backups
+   - Code repository backups
+   - Disaster recovery plan
+
+3. **Scaling Considerations**
+   - Monitor resource usage
+   - Plan for traffic growth
+   - Consider paid plans
+
+### Maintenance
+
+1. **Regular Updates**
+   - Keep dependencies updated
+   - Monitor security advisories
+   - Update SSL certificates
+
+2. **Backup Verification**
+   - Test backup restoration
+   - Verify data integrity
+   - Document procedures
 
 ---
 
-**Your Splashtastic application should now be live and processing bookings! 🎉**
+## 🎯 Quick Reference
+
+### Essential Commands
+```bash
+# Local development
+npm run dev
+npm test
+npm run build
+
+# Database
+npx prisma db push
+npx prisma db seed
+npx prisma studio
+
+# Deployment
+git push origin main  # Auto-deploys to Render
+```
+
+### Key URLs
+- **Render Dashboard**: [dashboard.render.com](https://dashboard.render.com)
+- **Stripe Dashboard**: [dashboard.stripe.com](https://dashboard.stripe.com)
+- **Resend Dashboard**: [resend.com](https://resend.com)
+- **Google Cloud**: [console.cloud.google.com](https://console.cloud.google.com)
+
+### Support Contacts
+- **Render Support**: [render.com/docs](https://render.com/docs)
+- **Stripe Support**: [support.stripe.com](https://support.stripe.com)
+- **Resend Support**: [resend.com/support](https://resend.com/support)
+
+---
+
+**Happy Deploying! 🚀**
+
+*Your Splashtastic website will be live and ready to book foam parties in no time! 🫧*
