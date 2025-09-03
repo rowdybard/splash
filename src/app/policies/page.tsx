@@ -242,7 +242,7 @@ export default function PoliciesPage() {
                   </li>
                   <li className="flex items-start">
                     <span className="text-green-500 mr-2 mt-1">•</span>
-                    <span>Travel within 25 miles of downtown Detroit is included</span>
+                    <span>Travel within 25 miles of downtown Lansing is included</span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-green-500 mr-2 mt-1">•</span>
@@ -492,7 +492,7 @@ export default function PoliciesPage() {
               <ul className="space-y-2 text-gray-400">
                 <li>📧 info@splashtastic.com</li>
                 <li>📱 (555) 123-4567</li>
-                <li>📍 Detroit Metro Area</li>
+                <li>📍 Greater Lansing Area</li>
               </ul>
             </div>
           </div>

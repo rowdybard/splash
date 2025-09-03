@@ -17,7 +17,7 @@ const quoteSchema = z.object({
   isGlowNight: z.boolean().default(false)
 })
 
-// Business location (Detroit area)
+    // Business location (Lansing area)
 const BUSINESS_LOCATION = { lat: 42.3314, lng: -83.0458 }
 
 export async function POST(request: NextRequest) {

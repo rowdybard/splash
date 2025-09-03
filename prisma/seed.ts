@@ -132,7 +132,7 @@ async function main() {
         startAt: new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000),
         endAt: new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000 + 60 * 60 * 1000), // +1 hour
         street: '123 Test Street',
-        city: 'Detroit',
+        city: 'Lansing',
         state: 'MI',
         zip: '48201',
         lat: 42.3314,

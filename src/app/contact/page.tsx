@@ -216,7 +216,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900">Service Area</h3>
-                      <p className="text-gray-600">Detroit Metropolitan Area</p>
+                      <p className="text-gray-600">Greater Lansing Area</p>
                       <p className="text-sm text-gray-500">Wayne, Oakland & Macomb Counties</p>
                     </div>
                   </div>
@@ -274,7 +274,7 @@ export default function ContactPage() {
               Our Service Area
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We proudly serve the entire Detroit metropolitan area and surrounding communities. 
+              We proudly serve the entire Greater Lansing area and surrounding communities. 
               Contact us to confirm coverage for your specific location.
             </p>
           </div>
@@ -286,7 +286,7 @@ export default function ContactPage() {
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">Wayne County</h3>
               <ul className="text-gray-600 space-y-1">
-                <li>Detroit</li>
+                <li>Lansing</li>
                 <li>Dearborn</li>
                 <li>Livonia</li>
                 <li>Westland</li>
@@ -329,7 +329,7 @@ export default function ContactPage() {
           <div className="text-center mt-12">
             <div className="bg-gray-50 rounded-xl p-6 inline-block">
               <p className="text-gray-600 mb-2">
-                <strong>Travel within 25 miles of downtown Detroit is included!</strong>
+                <strong>Travel within 25 miles of downtown Lansing is included!</strong>
               </p>
               <p className="text-sm text-gray-500">
                 Locations beyond 25 miles may incur a small travel fee
@@ -398,7 +398,7 @@ export default function ContactPage() {
               <ul className="space-y-2 text-gray-400">
                 <li>📧 info@splashtastic.com</li>
                 <li>📱 (555) 123-4567</li>
-                <li>📍 Detroit Metro Area</li>
+                <li>📍 Greater Lansing Area</li>
               </ul>
             </div>
           </div>

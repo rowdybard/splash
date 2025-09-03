@@ -250,7 +250,7 @@ describe('BookingStepper', () => {
       const zipInput = screen.getByLabelText(/zip code/i)
 
       await user.type(streetInput, '123 Test Street')
-      await user.type(cityInput, 'Detroit')
+              await user.type(cityInput, 'Lansing')
       await user.type(stateInput, 'MI')
       await user.type(zipInput, '48201')
 

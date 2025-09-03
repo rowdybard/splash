@@ -4,7 +4,7 @@ A production-ready, test-driven booking website for Splashtastic Foam Parties, b
 
 ## 🎯 Project Overview
 
-Splashtastic Foam Parties is a professional foam party entertainment company serving the Detroit metropolitan area. This website provides a complete booking system for customers to schedule foam parties, manage their events, and access all necessary information about our services.
+Splashtastic Foam Parties is a professional foam party entertainment company serving the Greater Lansing metropolitan area. This website provides a complete booking system for customers to schedule foam parties, manage their events, and access all necessary information about our services.
 
 ## ✨ Features
 

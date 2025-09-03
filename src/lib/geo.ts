@@ -132,9 +132,9 @@ export async function geocodeAddress(address: Address): Promise<GeocodeResult> {
 function mockGeocodeForTesting(address: Address): GeocodeResult {
   // Mock geocoding for testing - return different coordinates based on city
   const mockLocations: Record<string, GeoLocation> = {
-    'Detroit': { lat: 42.3314, lng: -83.0458 },
+    'Lansing': { lat: 42.7325, lng: -84.5555 },
     'Ann Arbor': { lat: 42.2808, lng: -83.7430 },
-    'Lansing': { lat: 42.3540, lng: -84.9551 },
+
     'Chicago': { lat: 41.8781, lng: -87.6298 },
     'Faketown': { lat: 0, lng: 0 } // Invalid location for testing
   }

@@ -50,9 +50,9 @@ test.describe('Booking Flow E2E', () => {
 
     // Fill address
     await page.getByLabel(/street address/i).fill('123 Test Street')
-    await page.getByLabel(/city/i).fill('Detroit')
+    await page.getByLabel(/city/i).fill('Lansing')
     await page.getByLabel(/state/i).selectOption('MI')
-    await page.getByLabel(/zip code/i).fill('48201')
+    await page.getByLabel(/zip code/i).fill('48901')
 
     // Wait for address validation
     await expect(page.getByText(/within service area/i)).toBeVisible()
@@ -196,9 +196,9 @@ test.describe('Booking Flow E2E', () => {
     await page.getByLabel(/email/i).fill('john.doe@example.com')
     await page.getByLabel(/phone/i).fill('555-123-4567')
     await page.getByLabel(/street address/i).fill('123 Test Street')
-    await page.getByLabel(/city/i).fill('Detroit')
+    await page.getByLabel(/city/i).fill('Lansing')
     await page.getByLabel(/state/i).selectOption('MI')
-    await page.getByLabel(/zip code/i).fill('48201')
+    await page.getByLabel(/zip code/i).fill('48901')
     await page.getByRole('button', { name: 'Next' }).click()
 
     // Accept waiver and try payment with declined card
@@ -244,9 +244,9 @@ test.describe('Booking Flow E2E', () => {
     await page.getByLabel(/email/i).fill('john.doe@example.com')
     await page.getByLabel(/phone/i).fill('555-123-4567')
     await page.getByLabel(/street address/i).fill('123 Test Street')
-    await page.getByLabel(/city/i).fill('Detroit')
+    await page.getByLabel(/city/i).fill('Lansing')
     await page.getByLabel(/state/i).selectOption('MI')
-    await page.getByLabel(/zip code/i).fill('48201')
+    await page.getByLabel(/zip code/i).fill('48901')
     await page.getByRole('button', { name: 'Next' }).click()
 
     await page.getByLabel(/waiver/i).check()

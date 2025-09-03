@@ -149,13 +149,13 @@ describe('Geo Service', () => {
 
   describe('calculateDistance', () => {
     it('should calculate haversine distance between two points', () => {
-      const detroit: GeoLocation = { lat: 42.3314, lng: -83.0458 }
-      const lansing: GeoLocation = { lat: 42.3540, lng: -84.9551 }
+      const lansing: GeoLocation = { lat: 42.7325, lng: -84.5555 }
+      const annArbor: GeoLocation = { lat: 42.2808, lng: -83.7430 }
 
-      const distance = calculateDistance(detroit, lansing)
+      const distance = calculateDistance(lansing, annArbor)
 
-      // Distance between Detroit and Lansing is approximately 97.52 miles
-      expect(distance).toBeCloseTo(97.52, 0) // Within 0.5 mile tolerance
+      // Distance between Lansing and Ann Arbor is approximately 65 miles
+      expect(distance).toBeCloseTo(65.0, 0) // Within 0.5 mile tolerance
     })
 
     it('should return 0 for identical locations', () => {
@@ -177,18 +177,18 @@ describe('Geo Service', () => {
     })
 
     it('should be commutative (A to B = B to A)', () => {
-      const detroit: GeoLocation = { lat: 42.3314, lng: -83.0458 }
-      const lansing: GeoLocation = { lat: 42.3540, lng: -84.9551 }
+      const lansing: GeoLocation = { lat: 42.7325, lng: -84.5555 }
+      const annArbor: GeoLocation = { lat: 42.3540, lng: -84.9551 }
 
-      const distance1 = calculateDistance(detroit, lansing)
-      const distance2 = calculateDistance(lansing, detroit)
+      const distance1 = calculateDistance(lansing, annArbor)
+      const distance2 = calculateDistance(annArbor, lansing)
 
       expect(distance1).toBeCloseTo(distance2, 6)
     })
   })
 
   describe('isWithinServiceArea', () => {
-    const businessLocation: GeoLocation = { lat: 42.3314, lng: -83.0458 } // Detroit
+    const businessLocation: GeoLocation = { lat: 42.3540, lng: -84.9551 } // Lansing
 
     it('should return true for locations within 50 miles', () => {
       const nearbyLocation: GeoLocation = { lat: 42.5, lng: -83.2 } // About 12 miles

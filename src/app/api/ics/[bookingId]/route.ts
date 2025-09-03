@@ -19,16 +19,16 @@ export async function GET(
     // For now, we'll use mock data
     if (process.env.NODE_ENV === 'test') {
           // Mock data for tests
-    const mockEventDetails = {
-      id: 'test-booking-123',
-      title: 'Splashtastic Foam Party',
-      description: 'Join us for an amazing foam party experience!',
-      location: {
-        street: '123 Main St',
-        city: 'Detroit',
-        state: 'MI',
-        zip: '48201'
-      },
+          const mockEventDetails = {
+        id: 'test-booking-123',
+        title: 'Splashtastic Foam Party',
+        description: 'Join us for an amazing foam party experience!',
+        location: {
+          street: '123 Main St',
+          city: 'Lansing',
+          state: 'MI',
+          zip: '48901'
+        },
       startDateTime: new Date('2024-06-15T14:00:00Z'),
       endDateTime: new Date('2024-06-15T16:00:00Z'),
       organizerEmail: 'info@splashtastic.com',
@@ -67,9 +67,9 @@ export async function GET(
       description: 'Join us for an amazing foam party experience!',
       location: {
         street: '123 Main St',
-        city: 'Detroit',
+        city: 'Lansing',
         state: 'MI',
-        zip: '48201'
+        zip: '48901'
       },
       startDateTime: new Date('2024-06-15T14:00:00Z'),
       endDateTime: new Date('2024-06-15T16:00:00Z'),

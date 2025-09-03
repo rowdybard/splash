@@ -34,7 +34,7 @@ export default function AboutPage() {
                   just one foam machine and a dream.
                 </p>
                 <p>
-                  What began as a small operation serving birthday parties in our local Detroit 
+                  What began as a small operation serving birthday parties in our local Lansing 
                   community has grown into the region's premier foam party entertainment company. 
                   We've hosted thousands of events, from intimate backyard celebrations to 
                   corporate team-building extravaganzas.
@@ -113,7 +113,7 @@ export default function AboutPage() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-4">Community Focus</h3>
               <p className="text-gray-600">
-                We're proud to be part of the Detroit community and actively support 
+                We're proud to be part of the Lansing community and actively support 
                 local events, schools, and charitable organizations.
               </p>
             </div>
@@ -287,9 +287,9 @@ export default function AboutPage() {
               <div className="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
                 <span className="text-3xl">🏆</span>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Best of Detroit 2023</h3>
-              <p className="text-gray-600">
-                Voted #1 Entertainment Company by Detroit Metro Times readers
+                              <h3 className="text-xl font-bold text-gray-900 mb-3">Best of Lansing 2023</h3>
+                <p className="text-gray-600">
+                  Voted #1 Entertainment Company by Lansing State Journal readers
               </p>
             </div>
             
@@ -420,7 +420,7 @@ export default function AboutPage() {
               <ul className="space-y-2 text-gray-400">
                 <li>📧 info@splashtastic.com</li>
                 <li>📱 (555) 123-4567</li>
-                <li>📍 Detroit Metro Area</li>
+                <li>📍 Greater Lansing Area</li>
               </ul>
             </div>
           </div>
