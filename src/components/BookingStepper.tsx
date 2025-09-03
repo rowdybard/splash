@@ -302,70 +302,70 @@ export function BookingStepper({ initialStep = 1, completedSteps = [] }: Booking
           <p className="text-gray-600 mb-6">Choose your foam party package</p>
           
           <div className="space-y-4">
-            <div 
-              data-testid="package-starter" 
-              className={`border p-4 rounded cursor-pointer hover:bg-gray-50 ${
-                selectedPackage?.name === 'Starter Party' ? 'border-blue-500 bg-blue-50' : ''
-              }`}
-              onClick={() => {
-                                 setSelectedPackage({ name: 'Starter Party', price: 399, durationMin: 60 });
-                setError(null);
-                setSuccess(null);
-                // Refresh availability with new duration if date is selected
-                if (selectedDate) {
-                  fetchAvailability(selectedDate);
-                }
-              }}
-            >
-              <h3 className="font-bold">Starter Party</h3>
-              <p className="text-gray-600">60 minutes • Up to 15 guests</p>
-              <p className="text-2xl font-bold">$299</p>
-              <ul className="text-sm text-gray-600 mt-2">
-                <li>• Professional foam machine</li>
-                <li>• Biodegradable foam solution</li>
-                <li>• Setup and breakdown</li>
-              </ul>
-            </div>
+                         <div 
+               data-testid="package-starter" 
+               className={`border p-4 rounded cursor-pointer hover:bg-gray-50 ${
+                 selectedPackage?.name === 'Starter Party' ? 'border-blue-500 bg-blue-50' : ''
+               }`}
+               onClick={() => {
+                                  setSelectedPackage({ name: 'Starter Party', price: 399, durationMin: 120 });
+                 setError(null);
+                 setSuccess(null);
+                 // Refresh availability with new duration if date is selected
+                 if (selectedDate) {
+                   fetchAvailability(selectedDate);
+                 }
+               }}
+             >
+               <h3 className="font-bold">Starter Party</h3>
+               <p className="text-gray-600">2 hours • Up to 20 guests</p>
+               <p className="text-2xl font-bold">$399</p>
+               <ul className="text-sm text-gray-600 mt-2">
+                 <li>• Professional foam machine</li>
+                 <li>• Biodegradable foam solution</li>
+                 <li>• Setup and breakdown</li>
+               </ul>
+             </div>
             
-            <div 
-              data-testid="package-mega" 
-              className={`border p-4 rounded cursor-pointer hover:bg-gray-50 ${
-                selectedPackage?.name === 'Mega Splash' ? 'border-blue-500 bg-blue-50' : ''
-              }`}
-              onClick={() => {
-                setSelectedPackage({ name: 'Mega Splash', price: 449, durationMin: 90 });
-                setError(null);
-                setSuccess(null);
-                // Refresh availability with new duration if date is selected
-                if (selectedDate) {
-                  fetchAvailability(selectedDate);
-                }
-              }}
-            >
-              <h3 className="font-bold">Mega Splash</h3>
-              <p className="text-gray-600">90 minutes • Up to 25 guests</p>
-              <p className="text-2xl font-bold">$449</p>
-            </div>
+                         <div 
+               data-testid="package-deluxe" 
+               className={`border p-4 rounded cursor-pointer hover:bg-gray-50 ${
+                 selectedPackage?.name === 'Deluxe Party' ? 'border-blue-500 bg-blue-50' : ''
+               }`}
+               onClick={() => {
+                 setSelectedPackage({ name: 'Deluxe Party', price: 499, durationMin: 180 });
+                 setError(null);
+                 setSuccess(null);
+                 // Refresh availability with new duration if date is selected
+                 if (selectedDate) {
+                   fetchAvailability(selectedDate);
+                 }
+               }}
+             >
+               <h3 className="font-bold">Deluxe Party</h3>
+               <p className="text-gray-600">3 hours • Up to 40 guests</p>
+               <p className="text-2xl font-bold">$499</p>
+             </div>
             
-            <div 
-              data-testid="package-glow" 
-              className={`border p-4 rounded cursor-pointer hover:bg-gray-50 ${
-                selectedPackage?.name === 'Glow Night Spectacular' ? 'border-blue-500 bg-blue-50' : ''
-              }`}
-              onClick={() => {
-                setSelectedPackage({ name: 'Glow Night Spectacular', price: 599, durationMin: 90 });
-                setError(null);
-                setSuccess(null);
-                // Refresh availability with new duration if date is selected
-                if (selectedDate) {
-                  fetchAvailability(selectedDate);
-                }
-              }}
-            >
-              <h3 className="font-bold">Glow Night Spectacular</h3>
-              <p className="text-gray-600">90 minutes • Up to 30 guests</p>
-              <p className="text-2xl font-bold">$599</p>
-            </div>
+                         <div 
+               data-testid="package-premium" 
+               className={`border p-4 rounded cursor-pointer hover:bg-gray-50 ${
+                 selectedPackage?.name === 'Premium Party' ? 'border-blue-500 bg-blue-50' : ''
+               }`}
+               onClick={() => {
+                 setSelectedPackage({ name: 'Premium Party', price: 799, durationMin: 240 });
+                 setError(null);
+                 setSuccess(null);
+                 // Refresh availability with new duration if date is selected
+                 if (selectedDate) {
+                   fetchAvailability(selectedDate);
+                 }
+               }}
+             >
+               <h3 className="font-bold">Premium Party</h3>
+               <p className="text-gray-600">4 hours • Up to 60 guests</p>
+               <p className="text-2xl font-bold">$799</p>
+             </div>
           </div>
         </div>
       )}
