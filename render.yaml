@@ -38,5 +38,5 @@ services:
 
 databases:
   - name: splashtastic-db
-    plan: starter
+    plan: pro
     region: oregon
