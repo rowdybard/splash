@@ -1,13 +1,15 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import Navigation from '@/components/Navigation'
+import Footer from '@/components/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Splashtastic Foam Parties - Backyard Magic in Minutes',
-  description: 'Professional foam parties for birthdays, events, and celebrations. Safe, biodegradable foam with full setup and cleanup. Serving the Detroit metro area.',
-  keywords: 'foam party, birthday party, Detroit, foam machine, party rental, kids party',
+  description: 'Professional foam parties for birthdays, events, and celebrations. Safe, biodegradable foam with full setup and cleanup. Serving the Greater Lansing area.',
+  keywords: 'foam party, birthday party, Lansing, East Lansing, foam machine, party rental, kids party',
   openGraph: {
     title: 'Splashtastic Foam Parties',
     description: 'Backyard magic, in minutes.',
@@ -51,7 +53,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <Navigation />
         {children}
+        <Footer />
       </body>
     </html>
   )

@@ -199,9 +199,9 @@ export default function FAQPage() {
                     Where do you provide services?
                   </h3>
                   <p className="text-gray-600">
-                    We serve the entire Detroit metropolitan area including Wayne, Oakland, and Macomb counties. 
-                    This includes Detroit, Royal Oak, Troy, Birmingham, Bloomfield Hills, Grosse Pointe, 
-                    and surrounding communities. Contact us to confirm coverage for your specific location.
+                    We serve the Greater Lansing area including Lansing, East Lansing, Grand Ledge, Okemos, 
+                    Holt, Mason, Potterville, Charlotte, Haslett, DeWitt, and more! Contact us to confirm 
+                    coverage for your specific location.
                   </p>
                 </div>
                 
@@ -210,7 +210,7 @@ export default function FAQPage() {
                     Do you charge travel fees?
                   </h3>
                   <p className="text-gray-600">
-                    Travel within 25 miles of downtown Detroit is included in your package price. Locations 
+                    Travel within 25 miles of downtown Lansing is included in your package price. Locations 
                     beyond 25 miles may incur a small travel fee, which we'll clearly communicate during 
                     booking. We never surprise you with hidden fees!
                   </p>
@@ -248,47 +248,7 @@ export default function FAQPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Splashtastic Foam Parties</h3>
-              <p className="text-gray-400">
-                Making memories one bubble at a time! 🫧
-              </p>
-            </div>
-            <div>
-              <h4 className="text-md font-semibold mb-4">Quick Links</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><Link href="/packages" className="hover:text-white transition-colors">Packages</Link></li>
-                <li><Link href="/add-ons" className="hover:text-white transition-colors">Add-ons</Link></li>
-                <li><Link href="/faq" className="hover:text-white transition-colors">FAQ</Link></li>
-                <li><Link href="/service-area" className="hover:text-white transition-colors">Service Area</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-md font-semibold mb-4">Support</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><Link href="/contact" className="hover:text-white transition-colors">Contact</Link></li>
-                <li><Link href="/policies" className="hover:text-white transition-colors">Policies</Link></li>
-                <li><Link href="/about" className="hover:text-white transition-colors">About</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-md font-semibold mb-4">Contact Info</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li>📧 info@splashtastic.com</li>
-                <li>📱 (555) 123-4567</li>
-                <li>📍 Detroit Metro Area</li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 Splashtastic Foam Parties. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+
     </div>
   )
 }
