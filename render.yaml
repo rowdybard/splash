@@ -4,9 +4,9 @@ services:
     env: node
     plan: starter
     region: oregon
-    buildCommand: pnpm install --frozen-lockfile && pnpm prisma generate && pnpm build
-    startCommand: pnpm start
-    postDeployCommand: pnpm prisma migrate deploy && pnpm prisma db seed
+    buildCommand: npm ci && npm run prisma:generate && npm run build
+    startCommand: npm start
+    postDeployCommand: npm run prisma:migrate && npm run prisma:seed
     envVars:
       - key: DATABASE_URL
         fromDatabase:
