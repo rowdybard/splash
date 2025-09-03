@@ -134,7 +134,7 @@ export default function HomePage() {
                   <span className="text-2xl">🎈</span>
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900">Starter Party</h3>
-                <div className="text-4xl font-bold text-blue-600 mt-2">$299</div>
+                <div className="text-4xl font-bold text-blue-600 mt-2">$399</div>
               </div>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-center">

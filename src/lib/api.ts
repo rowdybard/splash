@@ -23,7 +23,7 @@ export async function fetchQuote(params: any) {
     depositAmount: 9688,
     balanceAmount: 22604,
     lineItems: [
-      { name: 'Starter Party', price: 29900, type: 'package' }
+      { name: 'Starter Party', price: 39900, type: 'package' }
     ]
   }
 }

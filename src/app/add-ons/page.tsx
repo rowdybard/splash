@@ -29,8 +29,8 @@ export default function AddOnsPage() {
                   <span className="text-4xl">🫧</span>
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900">Extra Foam</h3>
-                <div className="text-3xl font-bold text-blue-600">$49</div>
-                <p className="text-gray-600">Extend the fun!</p>
+                <div className="text-3xl font-bold text-blue-600">$100</div>
+                <p className="text-gray-600">Each additional hour</p>
               </div>
               
               <div className="space-y-4 mb-6">
@@ -540,7 +540,7 @@ export default function AddOnsPage() {
               <ul className="space-y-2 text-gray-400">
                 <li>📧 info@splashtastic.com</li>
                 <li>📱 (555) 123-4567</li>
-                <li>📍 Detroit Metro Area</li>
+                <li>📍 Greater Lansing Area</li>
               </ul>
             </div>
           </div>

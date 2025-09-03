@@ -3,8 +3,8 @@
   "/about/page": "app/about/page.js",
   "/add-ons/page": "app/add-ons/page.js",
   "/admin/page": "app/admin/page.js",
-  "/api/checkout/route": "app/api/checkout/route.js",
   "/api/availability/route": "app/api/availability/route.js",
+  "/api/checkout/route": "app/api/checkout/route.js",
   "/api/ics/[bookingId]/route": "app/api/ics/[bookingId]/route.js",
   "/api/quote/route": "app/api/quote/route.js",
   "/book/page": "app/book/page.js",
@@ -13,8 +13,8 @@
   "/faq/page": "app/faq/page.js",
   "/packages/page": "app/packages/page.js",
   "/page": "app/page.js",
-  "/service-area/page": "app/service-area/page.js",
-  "/success/page": "app/success/page.js",
   "/policies/page": "app/policies/page.js",
+  "/success/page": "app/success/page.js",
+  "/service-area/page": "app/service-area/page.js",
   "/api/webhooks/stripe/route": "app/api/webhooks/stripe/route.js"
 }

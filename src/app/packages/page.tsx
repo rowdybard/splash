@@ -30,7 +30,7 @@ export default function PackagesPage() {
                   <span className="text-4xl">🎈</span>
                 </div>
                 <h2 className="text-3xl font-bold text-gray-900 mb-2">Starter Party</h2>
-                <div className="text-5xl font-bold text-blue-600 mb-2">$299</div>
+                <div className="text-5xl font-bold text-blue-600 mb-2">$399</div>
                 <p className="text-gray-600">Perfect for small gatherings</p>
               </div>
               
@@ -216,10 +216,10 @@ export default function PackagesPage() {
                   <span className="text-2xl">🫧</span>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900">Extra Foam</h3>
-                <div className="text-2xl font-bold text-blue-600">$49</div>
+                <div className="text-2xl font-bold text-blue-600">$100</div>
               </div>
               <p className="text-gray-600 text-center mb-4">
-                Double the foam fun! Extends your party by 1 hour with continuous foam coverage.
+                Extend your party by 1 hour with continuous foam coverage. $100 per additional hour.
               </p>
               <ul className="text-sm text-gray-600 space-y-1 mb-4">
                 <li>• +1 hour of foam time</li>
@@ -384,7 +384,7 @@ export default function PackagesPage() {
               <ul className="space-y-2 text-gray-400">
                 <li>📧 info@splashtastic.com</li>
                 <li>📱 (555) 123-4567</li>
-                <li>📍 Detroit Metro Area</li>
+                <li>📍 Greater Lansing Area</li>
               </ul>
             </div>
           </div>
