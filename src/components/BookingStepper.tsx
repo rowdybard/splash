@@ -10,6 +10,7 @@ type BookingStepperProps = {
 export function BookingStepper({ initialStep = 1, completedSteps = [] }: BookingStepperProps) {
   const [currentStep, setCurrentStep] = useState(initialStep)
   const [error, setError] = useState<string | null>(null)
+  const [success, setSuccess] = useState<string | null>(null)
   const [phoneError, setPhoneError] = useState<string | null>(null);
   const [showStep4Errors, setShowStep4Errors] = useState(false);
   const [waiverAccepted, setWaiverAccepted] = useState(false);
@@ -30,6 +31,13 @@ export function BookingStepper({ initialStep = 1, completedSteps = [] }: Booking
     });
     setTotalPrice(total);
   }, [selectedPackage, selectedAddons]);
+
+  // Refresh availability when package duration changes
+  useEffect(() => {
+    if (selectedDate && selectedPackage) {
+      fetchAvailability(selectedDate);
+    }
+  }, [selectedPackage]);
   const [availableTimes, setAvailableTimes] = useState<string[]>([]);
   const [isLoadingAvailability, setIsLoadingAvailability] = useState(false);
   const [formData, setFormData] = useState({
@@ -87,7 +95,10 @@ export function BookingStepper({ initialStep = 1, completedSteps = [] }: Booking
       
       // Show success message if no slots available
       if (availableSlots.length === 0) {
-        setError('No available time slots for this date. Please try a different date.');
+        setError(`No available time slots for this date with a ${durationMin}-minute party. Please try a different date or consider a shorter duration.`);
+      } else {
+        setSuccess(`${availableSlots.length} time slots available for ${date}`);
+        setError(null);
       }
       
     } catch (error) {
@@ -159,6 +170,8 @@ export function BookingStepper({ initialStep = 1, completedSteps = [] }: Booking
   const handleDateChange = (date: string) => {
     setSelectedDate(date);
     setSelectedTime(null); // Clear time when date changes
+    setError(null);
+    setSuccess(null);
     if (date) {
       fetchAvailability(date);
     } else {
@@ -228,6 +241,11 @@ export function BookingStepper({ initialStep = 1, completedSteps = [] }: Booking
               {error}
             </div>
           )}
+          {success && (
+            <div className="mb-4 text-green-600" role="alert">
+              {success}
+            </div>
+          )}
           
           <div className="space-y-4">
             <div>
@@ -291,6 +309,8 @@ export function BookingStepper({ initialStep = 1, completedSteps = [] }: Booking
               }`}
               onClick={() => {
                 setSelectedPackage({ name: 'Starter Party', price: 299, durationMin: 60 });
+                setError(null);
+                setSuccess(null);
                 // Refresh availability with new duration if date is selected
                 if (selectedDate) {
                   fetchAvailability(selectedDate);
@@ -314,6 +334,8 @@ export function BookingStepper({ initialStep = 1, completedSteps = [] }: Booking
               }`}
               onClick={() => {
                 setSelectedPackage({ name: 'Mega Splash', price: 449, durationMin: 90 });
+                setError(null);
+                setSuccess(null);
                 // Refresh availability with new duration if date is selected
                 if (selectedDate) {
                   fetchAvailability(selectedDate);
@@ -332,6 +354,8 @@ export function BookingStepper({ initialStep = 1, completedSteps = [] }: Booking
               }`}
               onClick={() => {
                 setSelectedPackage({ name: 'Glow Night Spectacular', price: 599, durationMin: 90 });
+                setError(null);
+                setSuccess(null);
                 // Refresh availability with new duration if date is selected
                 if (selectedDate) {
                   fetchAvailability(selectedDate);
