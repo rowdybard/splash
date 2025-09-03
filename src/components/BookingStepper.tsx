@@ -133,13 +133,10 @@ export function BookingStepper({ initialStep = 1, completedSteps = [] }: Booking
       setCurrentStep(currentStep + 1);
     }
     
-    if (currentStep === 3) {
-      if (!selectedAddons || selectedAddons.length === 0) {
-        setError("Please select at least one add-on");
-        return;
-      }
-      setCurrentStep(currentStep + 1);
-    }
+         if (currentStep === 3) {
+       // Allow users to proceed without add-ons (they can select 0-3 extra hours)
+       setCurrentStep(currentStep + 1);
+     }
     
     if (currentStep === 4) {
       setShowStep4Errors(true);
@@ -370,68 +367,100 @@ export function BookingStepper({ initialStep = 1, completedSteps = [] }: Booking
         </div>
       )}
 
-      {currentStep === 3 && (
-        <div>
-          <h2 className="text-2xl font-bold mb-4">Add-ons</h2>
-          
-          <div className="space-y-4">
-            <div 
-              data-testid="addon-extra-time" 
-              className={`border p-4 rounded cursor-pointer hover:bg-gray-50 ${
-                selectedAddons.some(addon => addon.name === 'Extra 30 Minutes') ? 'border-green-500 bg-green-50' : ''
-              }`}
-              onClick={() => {
-                const addon = { name: 'Extra 30 Minutes', price: 99 };
-                if (selectedAddons.some(a => a.name === addon.name)) {
-                  setSelectedAddons(selectedAddons.filter(a => a.name !== addon.name));
-                } else {
-                  setSelectedAddons([...selectedAddons, addon]);
-                }
-              }}
-            >
-              <h3 className="font-bold">Extra 30 Minutes</h3>
-              <p className="text-2xl font-bold">$99</p>
-            </div>
-            
-            <div 
-              data-testid="addon-neon-foam" 
-              className={`border p-4 rounded cursor-pointer hover:bg-gray-50 ${
-                selectedAddons.some(addon => addon.name === 'Neon Foam Upgrade') ? 'border-green-500 bg-green-50' : ''
-              }`}
-              onClick={() => {
-                const addon = { name: 'Neon Foam Upgrade', price: 75 };
-                if (selectedAddons.some(a => a.name === addon.name)) {
-                  setSelectedAddons(selectedAddons.filter(a => a.name !== addon.name));
-                } else {
-                  setSelectedAddons([...selectedAddons, addon]);
-                }
-              }}
-            >
-              <h3 className="font-bold">Neon Foam Upgrade</h3>
-              <p className="text-2xl font-bold">$75</p>
-            </div>
-            
-            <div 
-              data-testid="addon-slip-n-slide" 
-              className={`border p-4 rounded cursor-pointer hover:bg-gray-50 ${
-                selectedAddons.some(addon => addon.name === 'Slip-n-Slide Combo') ? 'border-green-500 bg-green-50' : ''
-              }`}
-              data-available="true"
-              onClick={() => {
-                const addon = { name: 'Slip-n-Slide Combo', price: 150 };
-                if (selectedAddons.some(a => a.name === addon.name)) {
-                  setSelectedAddons(selectedAddons.filter(a => a.name !== addon.name));
-                } else {
-                  setSelectedAddons([...selectedAddons, addon]);
-                }
-              }}
-            >
-              <h3 className="font-bold">Slip-n-Slide Combo</h3>
-              <p className="text-2xl font-bold">$150</p>
-            </div>
-          </div>
-        </div>
-      )}
+             {currentStep === 3 && (
+         <div>
+           <h2 className="text-2xl font-bold mb-4">Add-ons</h2>
+           
+           <div className="space-y-4">
+             {/* Extra Hours Add-on */}
+             <div className="border p-4 rounded">
+               <div className="flex items-center justify-between mb-3">
+                 <h3 className="font-bold">Extra Hours</h3>
+                 <div className="text-2xl font-bold text-blue-600">${selectedAddons.filter(a => a.name === 'Extra Hour').length * 100}</div>
+               </div>
+               <p className="text-gray-600 mb-3">$100 per additional hour (up to 3 hours)</p>
+               
+               <div className="flex items-center space-x-3">
+                 <button
+                   data-testid="addon-extra-hour-minus"
+                   className="w-8 h-8 bg-red-500 text-white rounded-full flex items-center justify-center hover:bg-red-600 disabled:opacity-50"
+                   disabled={selectedAddons.filter(a => a.name === 'Extra Hour').length === 0}
+                   onClick={() => {
+                     const extraHours = selectedAddons.filter(a => a.name === 'Extra Hour');
+                     if (extraHours.length > 0) {
+                       setSelectedAddons(selectedAddons.filter(a => a.name !== 'Extra Hour').concat(extraHours.slice(0, -1)));
+                     }
+                   }}
+                 >
+                   -
+                 </button>
+                 
+                 <span className="text-lg font-semibold min-w-[2rem] text-center">
+                   {selectedAddons.filter(a => a.name === 'Extra Hour').length}
+                 </span>
+                 
+                 <button
+                   data-testid="addon-extra-hour-plus"
+                   className="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center hover:bg-green-600 disabled:opacity-50"
+                   disabled={selectedAddons.filter(a => a.name === 'Extra Hour').length >= 3}
+                   onClick={() => {
+                     const extraHours = selectedAddons.filter(a => a.name === 'Extra Hour');
+                     if (extraHours.length < 3) {
+                       setSelectedAddons([...selectedAddons, { name: 'Extra Hour', price: 100 }]);
+                     }
+                   }}
+                 >
+                   +
+                 </button>
+               </div>
+               
+               <div className="mt-2 text-sm text-gray-500">
+                 {selectedAddons.filter(a => a.name === 'Extra Hour').length === 0 && "Click + to add extra hours"}
+                 {selectedAddons.filter(a => a.name === 'Extra Hour').length > 0 && 
+                   `${selectedAddons.filter(a => a.name === 'Extra Hour').length} hour${selectedAddons.filter(a => a.name === 'Extra Hour').length > 1 ? 's' : ''} selected`
+                 }
+               </div>
+             </div>
+             
+             <div 
+               data-testid="addon-neon-foam" 
+               className={`border p-4 rounded cursor-pointer hover:bg-gray-50 ${
+                 selectedAddons.some(addon => addon.name === 'Neon Foam Upgrade') ? 'border-green-500 bg-green-50' : ''
+               }`}
+               onClick={() => {
+                 const addon = { name: 'Neon Foam Upgrade', price: 75 };
+                 if (selectedAddons.some(a => a.name === addon.name)) {
+                   setSelectedAddons(selectedAddons.filter(a => a.name !== addon.name));
+                 } else {
+                   setSelectedAddons([...selectedAddons, addon]);
+                 }
+               }}
+             >
+               <h3 className="font-bold">Neon Foam Upgrade</h3>
+               <p className="text-2xl font-bold">$75</p>
+             </div>
+             
+             <div 
+               data-testid="addon-slip-n-slide" 
+               className={`border p-4 rounded cursor-pointer hover:bg-gray-50 ${
+                 selectedAddons.some(addon => addon.name === 'Slip-n-Slide Combo') ? 'border-green-500 bg-green-50' : ''
+               }`}
+               data-available="true"
+               onClick={() => {
+                 const addon = { name: 'Slip-n-Slide Combo', price: 150 };
+                 if (selectedAddons.some(a => a.name === addon.name)) {
+                   setSelectedAddons(selectedAddons.filter(a => a.name !== addon.name));
+                 } else {
+                   setSelectedAddons([...selectedAddons, addon]);
+                 }
+               }}
+             >
+               <h3 className="font-bold">Slip-n-Slide Combo</h3>
+               <p className="text-2xl font-bold">$150</p>
+             </div>
+           </div>
+         </div>
+       )}
 
       {currentStep === 4 && (
         <div>
