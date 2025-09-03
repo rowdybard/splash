@@ -2,7 +2,7 @@ services:
   - type: web
     name: splashtastic-web
     env: node
-    plan: starter
+    plan: standard
     region: oregon
     buildCommand: npm ci && npm run prisma:generate && npm run build
     startCommand: npm start
@@ -38,5 +38,5 @@ services:
 
 databases:
   - name: splashtastic-db
-    plan: starter
+    plan: standard
     region: oregon
