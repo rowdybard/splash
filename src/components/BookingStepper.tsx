@@ -340,7 +340,7 @@ export function BookingStepper({ initialStep = 1, completedSteps = [] }: Booking
                }}
              >
                <h3 className="font-bold">Deluxe Party</h3>
-               <p className="text-gray-600">3 hours • Up to 40 guests</p>
+               <p className="text-gray-600">2 hours • Up to 40 guests</p>
                <p className="text-2xl font-bold">$499</p>
              </div>
             

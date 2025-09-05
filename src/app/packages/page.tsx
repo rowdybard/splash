@@ -102,7 +102,7 @@ export default function PackagesPage() {
                   </li>
                   <li className="flex items-center">
                     <span className="text-green-500 mr-3 text-xl">✓</span>
-                    <span>3 hours of foam fun</span>
+                    <span>2 hours of foam fun</span>
                   </li>
                   <li className="flex items-center">
                     <span className="text-green-500 mr-3 text-xl">✓</span>

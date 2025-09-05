@@ -171,10 +171,10 @@ export default function AddOnsPage() {
             
             <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-8 text-center">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Ultimate Party</h3>
-              <div className="text-4xl font-bold text-green-600 mb-4">$396</div>
+              <div className="text-4xl font-bold text-green-600 mb-4">$297</div>
               <p className="text-gray-600 mb-6">Save $0 when you bundle!</p>
               <ul className="space-y-2 text-gray-700 mb-6">
-                <li>• Extra Foam (3 hours)</li>
+                <li>• Extra Foam (2 hours)</li>
                 <li>• Glow/Neon Foam Upgrade</li>
               </ul>
               <Link

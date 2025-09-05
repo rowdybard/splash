@@ -30,7 +30,7 @@ async function main() {
   const megaPackage = await prisma.package.create({
     data: {
       name: 'Mega Splash',
-      durationMin: 90,
+      durationMin: 120,
       basePrice: 44900, // $449.00
       maxGuests: 25,
       includedItems: [
