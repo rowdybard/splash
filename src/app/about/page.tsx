@@ -29,20 +29,20 @@ export default function AboutPage() {
               <div className="space-y-4 text-gray-600">
                 <p>
                   Splashtastic Foam Parties was born from a simple idea: what if we could bring 
-                  the pure joy and excitement of foam parties to every celebration? Founded in 2020 
-                  by a group of friends who loved creating memorable experiences, we started with 
-                  just one foam machine and a dream.
+                  the pure joy and excitement of foam parties to every celebration? Founded in 2024 
+                  by Tammy and Daniel, two friends who love creating memorable experiences, we started with 
+                  a passion for fun and a dream to make every party unforgettable.
                 </p>
                 <p>
-                  What began as a small operation serving birthday parties in our local Lansing 
-                  community has grown into the region's premier foam party entertainment company. 
-                  We've hosted thousands of events, from intimate backyard celebrations to 
-                  corporate team-building extravaganzas.
+                  As a brand new company serving the Greater Lansing area, we're excited to bring 
+                  professional foam party entertainment to our community. We specialize in creating 
+                  magical moments for birthday parties, family gatherings, and special celebrations 
+                  of all kinds.
                 </p>
                 <p>
-                  Our journey has been filled with laughter, foam, and countless happy faces. 
-                  Every party we host reminds us why we started this company – to spread joy, 
-                  create memories, and bring people together through the magic of foam!
+                  Our fresh approach combines professional equipment, safety-first practices, and 
+                  genuine enthusiasm for making people smile. Every party we host is a chance to 
+                  create new memories and spread joy through the magic of foam!
                 </p>
               </div>
             </div>
@@ -52,7 +52,7 @@ export default function AboutPage() {
                 <div className="text-6xl mb-4">🫧</div>
                 <h3 className="text-2xl font-bold mb-2">Fun Fact</h3>
                 <p className="text-lg">
-                  We've used enough foam to fill over 50 Olympic-sized swimming pools!
+                  Our foam is 100% biodegradable and safe for kids, pets, and the environment!
                 </p>
               </div>
             </div>
@@ -156,140 +156,100 @@ export default function AboutPage() {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <div className="bg-white rounded-2xl shadow-lg p-8 text-center">
               <div className="w-24 h-24 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-4xl">👨‍💼</span>
+                <span className="text-4xl">👩</span>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Mike Johnson</h3>
-              <p className="text-blue-600 font-semibold mb-3">Founder & CEO</p>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Tammy</h3>
+              <p className="text-blue-600 font-semibold mb-3">Co-Founder & Operations</p>
               <p className="text-gray-600 text-sm">
-                A former event planner with 15+ years of experience, Mike's vision and 
-                passion for creating memorable experiences drives everything we do.
+                Tammy brings her passion for creating magical moments and attention to detail 
+                to every event. She ensures every party runs smoothly and exceeds expectations.
               </p>
             </div>
             
             <div className="bg-white rounded-2xl shadow-lg p-8 text-center">
               <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-4xl">👩‍🔬</span>
+                <span className="text-4xl">👨</span>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Sarah Chen</h3>
-              <p className="text-green-600 font-semibold mb-3">Safety Director</p>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Daniel</h3>
+              <p className="text-green-600 font-semibold mb-3">Co-Founder & Technical</p>
               <p className="text-gray-600 text-sm">
-                With a background in chemical engineering, Sarah ensures all our foam 
-                solutions meet the highest safety and environmental standards.
-              </p>
-            </div>
-            
-            <div className="bg-white rounded-2xl shadow-lg p-8 text-center">
-              <div className="w-24 h-24 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-4xl">👨‍🎨</span>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">David Rodriguez</h3>
-              <p className="text-purple-600 font-semibold mb-3">Creative Director</p>
-              <p className="text-gray-600 text-sm">
-                David's artistic vision and attention to detail ensure every party is 
-                visually stunning and perfectly themed to your preferences.
-              </p>
-            </div>
-            
-            <div className="bg-white rounded-2xl shadow-lg p-8 text-center">
-              <div className="w-24 h-24 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-4xl">👩‍💻</span>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Emily Watson</h3>
-              <p className="text-yellow-600 font-semibold mb-3">Customer Experience</p>
-              <p className="text-gray-600 text-sm">
-                Emily's warm personality and attention to detail ensure every customer 
-                feels valued and every event runs smoothly from start to finish.
-              </p>
-            </div>
-            
-            <div className="bg-white rounded-2xl shadow-lg p-8 text-center">
-              <div className="w-24 h-24 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-4xl">👨‍🔧</span>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Tom Anderson</h3>
-              <p className="text-pink-600 font-semibold mb-3">Technical Director</p>
-              <p className="text-gray-600 text-sm">
-                Tom's mechanical expertise keeps our foam machines running perfectly 
-                and ensures every event has the right equipment and setup.
-              </p>
-            </div>
-            
-            <div className="bg-white rounded-2xl shadow-lg p-8 text-center">
-              <div className="w-24 h-24 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-4xl">👩‍🎓</span>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Lisa Park</h3>
-              <p className="text-indigo-600 font-semibold mb-3">Event Coordinator</p>
-              <p className="text-gray-600 text-sm">
-                Lisa's organizational skills and event planning expertise ensure every 
-                detail is perfect and every party exceeds expectations.
+                Daniel handles all the technical aspects, from equipment setup to safety protocols. 
+                His expertise ensures every foam party is both fun and safe for everyone involved.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Company Stats */}
+      {/* What We Offer */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Splashtastic by the Numbers
+              What Makes Us Special
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Our growth and success in numbers – each one represents a happy customer 
-              and a successful foam party!
+              As a new company, we're bringing fresh energy and modern approaches to foam party entertainment.
             </p>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="text-5xl md:text-6xl font-bold text-blue-600 mb-2">2,500+</div>
-              <p className="text-gray-600">Events Hosted</p>
+              <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span className="text-3xl">🆕</span>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Fresh & Modern</h3>
+              <p className="text-gray-600">
+                We're bringing the latest foam party technology and techniques to the Greater Lansing area.
+              </p>
             </div>
             
             <div className="text-center">
-              <div className="text-5xl md:text-6xl font-bold text-green-600 mb-2">15,000+</div>
-              <p className="text-gray-600">Happy Guests</p>
+              <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span className="text-3xl">🤝</span>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Personal Touch</h3>
+              <p className="text-gray-600">
+                As a small, local business, we provide personalized service and attention to every detail.
+              </p>
             </div>
             
             <div className="text-center">
-              <div className="text-5xl md:text-6xl font-bold text-purple-600 mb-2">4.9</div>
-              <p className="text-gray-600">Star Rating</p>
-            </div>
-            
-            <div className="text-center">
-              <div className="text-5xl md:text-6xl font-bold text-yellow-600 mb-2">3</div>
-              <p className="text-gray-600">Years Strong</p>
+              <div className="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span className="text-3xl">💫</span>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Excited to Serve</h3>
+              <p className="text-gray-600">
+                We're passionate about creating amazing experiences and building lasting relationships with our community.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Awards & Recognition */}
+      {/* Our Promise */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Awards & Recognition
+              Our Promise to You
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We're honored to have received recognition for our commitment to excellence, 
-              safety, and customer satisfaction.
+              As a new business, we're committed to earning your trust through exceptional service and memorable experiences.
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white rounded-2xl shadow-lg p-8 text-center">
               <div className="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-3xl">🏆</span>
+                <span className="text-3xl">⭐</span>
               </div>
-                              <h3 className="text-xl font-bold text-gray-900 mb-3">Best of Lansing 2023</h3>
-                <p className="text-gray-600">
-                  Voted #1 Entertainment Company by Lansing State Journal readers
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Quality Service</h3>
+              <p className="text-gray-600">
+                We promise to deliver professional, safe, and fun foam party experiences every time.
               </p>
             </div>
             
@@ -297,64 +257,63 @@ export default function AboutPage() {
               <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
                 <span className="text-3xl">🌱</span>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Green Business Award</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Eco-Friendly</h3>
               <p className="text-gray-600">
-                Recognized for our commitment to environmental responsibility
+                We use only biodegradable foam solutions that are safe for people and the environment.
               </p>
             </div>
             
             <div className="bg-white rounded-2xl shadow-lg p-8 text-center">
               <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-3xl">⭐</span>
+                <span className="text-3xl">🤝</span>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Safety Excellence</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Local & Personal</h3>
               <p className="text-gray-600">
-                Perfect safety record recognized by Michigan Entertainment Association
+                As a local business, we're here to build lasting relationships with our community.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Community Involvement */}
+      {/* Community Commitment */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Community Involvement
+              Our Community Commitment
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We believe in giving back to the community that has supported us. 
-              Here are some of the ways we're making a difference.
+              As a new business in the Greater Lansing area, we're excited to become an active part of our community.
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Charitable Events</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Local Partnerships</h3>
               <p className="text-gray-600 mb-6">
-                We regularly donate our services to local charities, schools, and community 
-                organizations, helping them raise funds and create memorable experiences.
+                We're building relationships with local schools, community centers, and organizations 
+                to bring foam party fun to special events and celebrations.
               </p>
               <ul className="space-y-2 text-gray-700">
-                <li>• Annual Children's Hospital Fundraiser</li>
-                <li>• School District End-of-Year Celebrations</li>
-                <li>• Community Center Summer Programs</li>
-                <li>• Local Animal Shelter Events</li>
+                <li>• School birthday parties and end-of-year celebrations</li>
+                <li>• Community center events and fundraisers</li>
+                <li>• Local business team building events</li>
+                <li>• Neighborhood block parties and festivals</li>
               </ul>
             </div>
             
             <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Environmental Initiatives</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Environmental Responsibility</h3>
               <p className="text-gray-600 mb-6">
-                We're committed to protecting our environment and educating others about 
-                sustainable entertainment options.
+                We're committed to protecting our environment and using only the safest, 
+                most eco-friendly foam solutions available.
               </p>
               <ul className="space-y-2 text-gray-700">
-                <li>• Tree planting programs</li>
-                <li>• Beach cleanup initiatives</li>
-                <li>• Educational workshops on eco-friendly parties</li>
-                <li>• Partnership with local environmental groups</li>
+                <li>• 100% biodegradable foam solutions</li>
+                <li>• Safe for kids, pets, and the environment</li>
+                <li>• Minimal water usage and cleanup</li>
+                <li>• Sustainable business practices</li>
               </ul>
             </div>
           </div>
@@ -368,7 +327,7 @@ export default function AboutPage() {
             Ready to Experience the Splashtastic Difference?
           </h2>
           <p className="text-xl text-blue-100 mb-8">
-            Join thousands of happy customers who have experienced the magic of our foam parties. 
+            Be among the first to experience our amazing foam parties! 
             Let us create an unforgettable experience for your next celebration!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -419,7 +378,7 @@ export default function AboutPage() {
               <h4 className="text-md font-semibold mb-4">Contact Info</h4>
               <ul className="space-y-2 text-gray-400">
                 <li>📧 info@splashtastic.com</li>
-                <li>📱 (555) 123-4567</li>
+                <li>📱 517-930-3292 (Tammy) | 517-505-1122 (Daniel)</li>
                 <li>📍 Greater Lansing Area</li>
               </ul>
             </div>

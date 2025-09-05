@@ -21,7 +21,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center space-x-2 text-gray-400">
                 <span>📱</span>
-                <span>(555) 123-4567</span>
+                <span>517-930-3292 (Tammy) | 517-505-1122 (Daniel)</span>
               </div>
             </div>
           </div>
@@ -49,7 +49,6 @@ export default function Footer() {
           <div>
             <h4 className="text-md font-semibold mb-4">Quick Actions</h4>
             <ul className="space-y-2 text-gray-400">
-              <li><Link href="/admin" className="hover:text-white transition-colors">Admin Portal</Link></li>
               <li><Link href="/book" className="hover:text-white transition-colors">Get Quote</Link></li>
               <li><Link href="/service-area" className="hover:text-white transition-colors">Check Coverage</Link></li>
               <li><Link href="/packages" className="hover:text-white transition-colors">View Pricing</Link></li>

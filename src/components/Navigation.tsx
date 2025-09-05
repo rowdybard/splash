@@ -21,7 +21,7 @@ export default function Navigation() {
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2">
                 <Phone className="w-4 h-4" />
-                <span>(555) 123-4567</span>
+                <span>517-930-3292 (Tammy) | 517-505-1122 (Daniel)</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4" />
@@ -135,12 +135,6 @@ export default function Navigation() {
               Contact
             </Link>
 
-            <Link
-              href="/admin"
-              className="text-gray-700 hover:text-blue-600 transition-colors font-medium"
-            >
-              Admin
-            </Link>
           </div>
 
           {/* CTA Button */}
@@ -238,13 +232,6 @@ export default function Navigation() {
               onClick={closeMenu}
             >
               Contact
-            </Link>
-            <Link
-              href="/admin"
-              className="block py-2 text-gray-700 hover:text-blue-600 transition-colors"
-              onClick={closeMenu}
-            >
-              Admin
             </Link>
           </div>
 
