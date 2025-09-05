@@ -234,22 +234,22 @@ export default function PackagesPage() {
               </ul>
             </div>
 
-            {/* Glow Package */}
+            {/* Glow/Neon Foam Upgrade */}
             <div className="bg-gray-50 rounded-xl p-6 hover:shadow-md transition-shadow duration-200">
               <div className="text-center mb-4">
                 <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-3">
                   <span className="text-2xl">✨</span>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900">Glow Package</h3>
+                <h3 className="text-xl font-semibold text-gray-900">Glow/Neon Foam Upgrade</h3>
                 <div className="text-2xl font-bold text-yellow-600">$99</div>
               </div>
               <p className="text-gray-600 text-center mb-4">
-                Make your party glow with UV lighting and glow-in-the-dark accessories.
+                Make your party glow with UV lighting and neon/glow foam effects.
               </p>
               <ul className="text-sm text-gray-600 space-y-1 mb-4">
                 <li>• UV black lights</li>
                 <li>• Glow accessories</li>
-                <li>• Neon foam effects</li>
+                <li>• Neon/glow foam effects</li>
               </ul>
             </div>
 

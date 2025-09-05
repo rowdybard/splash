@@ -70,9 +70,9 @@ async function main() {
         description: 'Extend your foam party fun for an additional 30 minutes'
       },
       {
-        name: 'Neon Foam Upgrade',
-        price: 7500, // $75.00
-        description: 'Upgrade to our vibrant neon-colored foam (safe, biodegradable)',
+        name: 'Glow/Neon Foam Upgrade',
+        price: 9900, // $99.00
+        description: 'Upgrade to our vibrant glow/neon-colored foam with UV lighting (safe, biodegradable)',
         requiresEvening: false
       },
       {
@@ -80,12 +80,6 @@ async function main() {
         price: 8500, // $85.00
         description: 'On-site power generation for locations without outlets',
         inventoryCount: 2
-      },
-      {
-        name: 'Slip-n-Slide Combo',
-        price: 15000, // $150.00
-        description: '25ft slip-n-slide with foam integration',
-        inventoryCount: 1
       }
     ]
   })

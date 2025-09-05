@@ -423,12 +423,12 @@ export function BookingStepper({ initialStep = 1, completedSteps = [] }: Booking
              </div>
              
              <div 
-               data-testid="addon-neon-foam" 
+               data-testid="addon-glow-neon-foam" 
                className={`border p-4 rounded cursor-pointer hover:bg-gray-50 ${
-                 selectedAddons.some(addon => addon.name === 'Neon Foam Upgrade') ? 'border-green-500 bg-green-50' : ''
+                 selectedAddons.some(addon => addon.name === 'Glow/Neon Foam Upgrade') ? 'border-green-500 bg-green-50' : ''
                }`}
                onClick={() => {
-                 const addon = { name: 'Neon Foam Upgrade', price: 75 };
+                 const addon = { name: 'Glow/Neon Foam Upgrade', price: 99 };
                  if (selectedAddons.some(a => a.name === addon.name)) {
                    setSelectedAddons(selectedAddons.filter(a => a.name !== addon.name));
                  } else {
@@ -436,27 +436,8 @@ export function BookingStepper({ initialStep = 1, completedSteps = [] }: Booking
                  }
                }}
              >
-               <h3 className="font-bold">Neon Foam Upgrade</h3>
-               <p className="text-2xl font-bold">$75</p>
-             </div>
-             
-             <div 
-               data-testid="addon-slip-n-slide" 
-               className={`border p-4 rounded cursor-pointer hover:bg-gray-50 ${
-                 selectedAddons.some(addon => addon.name === 'Slip-n-Slide Combo') ? 'border-green-500 bg-green-50' : ''
-               }`}
-               data-available="true"
-               onClick={() => {
-                 const addon = { name: 'Slip-n-Slide Combo', price: 150 };
-                 if (selectedAddons.some(a => a.name === addon.name)) {
-                   setSelectedAddons(selectedAddons.filter(a => a.name !== addon.name));
-                 } else {
-                   setSelectedAddons([...selectedAddons, addon]);
-                 }
-               }}
-             >
-               <h3 className="font-bold">Slip-n-Slide Combo</h3>
-               <p className="text-2xl font-bold">$150</p>
+               <h3 className="font-bold">Glow/Neon Foam Upgrade</h3>
+               <p className="text-2xl font-bold">$99</p>
              </div>
            </div>
          </div>

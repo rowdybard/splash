@@ -130,15 +130,15 @@ export default function AddOnsPage() {
               </div>
             </div>
 
-            {/* Glow Package */}
+            {/* Glow/Neon Foam Upgrade */}
             <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
               <div className="text-center mb-6">
                 <div className="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-4xl">✨</span>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900">Glow Package</h3>
+                <h3 className="text-2xl font-bold text-gray-900">Glow/Neon Foam Upgrade</h3>
                 <div className="text-3xl font-bold text-yellow-600">$99</div>
-                <p className="text-gray-600">Make it glow!</p>
+                <p className="text-gray-600">Make it glow with neon colors!</p>
               </div>
               
               <div className="space-y-4 mb-6">
@@ -154,7 +154,7 @@ export default function AddOnsPage() {
                   </li>
                   <li className="flex items-center">
                     <span className="text-green-500 mr-2">✓</span>
-                    Neon foam effects
+                    Neon/glow foam effects
                   </li>
                   <li className="flex items-center">
                     <span className="text-green-500 mr-2">✓</span>
@@ -197,12 +197,11 @@ export default function AddOnsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8 text-center">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Premium Experience</h3>
-              <div className="text-4xl font-bold text-blue-600 mb-4">$174</div>
-              <p className="text-gray-600 mb-6">Save $25 when you bundle!</p>
+              <div className="text-4xl font-bold text-blue-600 mb-4">$198</div>
+              <p className="text-gray-600 mb-6">Save $0 when you bundle!</p>
               <ul className="space-y-2 text-gray-700 mb-6">
                 <li>• Extra Foam (1 hour)</li>
-                <li>• Glow Package</li>
-                <li>• Neon Foam Upgrade</li>
+                <li>• Glow/Neon Foam Upgrade</li>
               </ul>
               <Link
                 href="/book"
@@ -214,13 +213,11 @@ export default function AddOnsPage() {
             
             <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-8 text-center">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Ultimate Party</h3>
-              <div className="text-4xl font-bold text-green-600 mb-4">$324</div>
-              <p className="text-gray-600 mb-6">Save $50 when you bundle!</p>
+              <div className="text-4xl font-bold text-green-600 mb-4">$396</div>
+              <p className="text-gray-600 mb-6">Save $0 when you bundle!</p>
               <ul className="space-y-2 text-gray-700 mb-6">
                 <li>• Extra Foam (3 hours)</li>
-                <li>• Glow Package</li>
-                <li>• Neon Foam Upgrade</li>
-                <li>• Slip-n-Slide Combo</li>
+                <li>• Glow/Neon Foam Upgrade</li>
               </ul>
               <Link
                 href="/book"
