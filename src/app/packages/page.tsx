@@ -63,7 +63,7 @@ export default function PackagesPage() {
                   </li>
                   <li className="flex items-center">
                     <span className="text-green-500 mr-3 text-xl">✓</span>
-                    <span>Basic party props</span>
+                    <span>Music system included</span>
                   </li>
                 </ul>
               </div>
@@ -114,7 +114,7 @@ export default function PackagesPage() {
                   </li>
                   <li className="flex items-center">
                     <span className="text-green-500 mr-3 text-xl">✓</span>
-                    <span>Enhanced party props</span>
+                    <span>Music system included</span>
                   </li>
                 </ul>
               </div>
@@ -161,7 +161,7 @@ export default function PackagesPage() {
                   </li>
                   <li className="flex items-center">
                     <span className="text-green-500 mr-3 text-xl">✓</span>
-                    <span>Enhanced party props</span>
+                    <span>Music system included</span>
                   </li>
                 </ul>
               </div>

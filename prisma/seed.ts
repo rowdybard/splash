@@ -22,7 +22,8 @@ async function main() {
         'Professional foam machine',
         'Biodegradable foam solution',
         'Setup and breakdown',
-        'Basic safety briefing'
+        'Basic safety briefing',
+        'Music system'
       ]
     }
   })
@@ -38,8 +39,7 @@ async function main() {
         'Biodegradable foam solution',
         'Setup and breakdown',
         'Safety briefing and supervision',
-        'Fun props and games',
-        'Photo opportunities'
+        'Music system'
       ]
     }
   })
@@ -56,7 +56,7 @@ async function main() {
         'UV lighting setup',
         'Setup and breakdown',
         'Evening safety supervision',
-        'Glow accessories'
+        'Music system'
       ]
     }
   })
