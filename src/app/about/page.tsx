@@ -29,9 +29,8 @@ export default function AboutPage() {
               <div className="space-y-4 text-gray-600">
                 <p>
                   Splashtastic Foam Parties was born from a simple idea: what if we could bring 
-                  the pure joy and excitement of foam parties to every celebration? Founded in 2024 
-                  by Tammy and Daniel, two friends who love creating memorable experiences, we started with 
-                  a passion for fun and a dream to make every party unforgettable.
+                  the pure joy and excitement of foam parties to every celebration? Founded in 2025 
+                  by Tammy and her family, we started with a passion for fun and a dream to make every party unforgettable.
                 </p>
                 <p>
                   As a brand new company serving the Greater Lansing area, we're excited to bring 
@@ -151,8 +150,9 @@ export default function AboutPage() {
               Meet Our Team
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We're a passionate team of foam enthusiasts, safety experts, and party professionals 
-              who love what we do and it shows in every event we host.
+              We're a family-owned business passionate about creating amazing foam party experiences. 
+              With Tammy's experience from Fluff N' Stuff and our shared love for fun, we bring 
+              professional entertainment to every event we host.
             </p>
           </div>
           
@@ -162,10 +162,11 @@ export default function AboutPage() {
                 <span className="text-4xl">👩</span>
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Tammy</h3>
-              <p className="text-blue-600 font-semibold mb-3">Co-Founder & Operations</p>
+              <p className="text-blue-600 font-semibold mb-3">Owner & Operations</p>
               <p className="text-gray-600 text-sm">
                 Tammy brings her passion for creating magical moments and attention to detail 
-                to every event. She ensures every party runs smoothly and exceeds expectations.
+                to every event. She also owns Fluff N' Stuff, a local cotton candy and snow cone vendor, 
+                bringing years of experience in party entertainment to Splashtastic.
               </p>
             </div>
             
@@ -174,7 +175,7 @@ export default function AboutPage() {
                 <span className="text-4xl">👨</span>
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Daniel</h3>
-              <p className="text-green-600 font-semibold mb-3">Co-Founder & Technical</p>
+              <p className="text-green-600 font-semibold mb-3">Family Member & Technical</p>
               <p className="text-gray-600 text-sm">
                 Daniel handles all the technical aspects, from equipment setup to safety protocols. 
                 His expertise ensures every foam party is both fun and safe for everyone involved.
@@ -211,9 +212,9 @@ export default function AboutPage() {
               <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
                 <span className="text-3xl">🤝</span>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Personal Touch</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Family Business</h3>
               <p className="text-gray-600">
-                As a small, local business, we provide personalized service and attention to every detail.
+                As a family-owned business with experience from Fluff N' Stuff, we provide personalized service and attention to every detail.
               </p>
             </div>
             
