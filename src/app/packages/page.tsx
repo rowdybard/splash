@@ -215,24 +215,6 @@ export default function PackagesPage() {
              </div>
 
 
-            {/* Themed Decorations */}
-            <div className="bg-gray-50 rounded-xl p-6 hover:shadow-md transition-shadow duration-200">
-              <div className="text-center mb-4">
-                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <span className="text-2xl">🎨</span>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900">Themed Decorations</h3>
-                <div className="text-2xl font-bold text-purple-600">$29</div>
-              </div>
-              <p className="text-gray-600 text-center mb-4">
-                Transform your space with themed decorations matching your party theme.
-              </p>
-              <ul className="text-sm text-gray-600 space-y-1 mb-4">
-                <li>• Balloons & banners</li>
-                <li>• Themed props</li>
-                <li>• Color coordination</li>
-              </ul>
-            </div>
 
             {/* Glow/Neon Foam Upgrade */}
             <div className="bg-gray-50 rounded-xl p-6 hover:shadow-md transition-shadow duration-200">

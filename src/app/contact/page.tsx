@@ -204,8 +204,12 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900">Phone</h3>
-                      <a href="tel:+15551234567" className="text-blue-600 hover:text-blue-800">
-                        (555) 123-4567
+                      <a href="tel:+15179303292" className="text-blue-600 hover:text-blue-800">
+                        517-930-3292 (Tammy)
+                      </a>
+                      <br />
+                      <a href="tel:+15175051122" className="text-blue-600 hover:text-blue-800">
+                        517-505-1122 (Daniel)
                       </a>
                     </div>
                   </div>
@@ -217,7 +221,7 @@ export default function ContactPage() {
                     <div>
                       <h3 className="font-semibold text-gray-900">Service Area</h3>
                       <p className="text-gray-600">Greater Lansing Area</p>
-                      <p className="text-sm text-gray-500">Wayne, Oakland & Macomb Counties</p>
+                      <p className="text-sm text-gray-500">Lansing, East Lansing, Grand Ledge, Okemos, Holt, Mason, Potterville, Charlotte, Haslett, DeWitt, and more</p>
                     </div>
                   </div>
                   
@@ -284,14 +288,14 @@ export default function ContactPage() {
               <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-3xl">🏙️</span>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Wayne County</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Lansing Area</h3>
               <ul className="text-gray-600 space-y-1">
                 <li>Lansing</li>
-                <li>Dearborn</li>
-                <li>Livonia</li>
-                <li>Westland</li>
-                <li>Garden City</li>
-                <li>Redford</li>
+                <li>East Lansing</li>
+                <li>Grand Ledge</li>
+                <li>Okemos</li>
+                <li>Holt</li>
+                <li>Mason</li>
               </ul>
             </div>
             
@@ -299,14 +303,14 @@ export default function ContactPage() {
               <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-3xl">🌳</span>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Oakland County</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Surrounding Communities</h3>
               <ul className="text-gray-600 space-y-1">
-                <li>Troy</li>
-                <li>Royal Oak</li>
-                <li>Birmingham</li>
-                <li>Bloomfield Hills</li>
-                <li>Farmington Hills</li>
-                <li>Novi</li>
+                <li>Potterville</li>
+                <li>Charlotte</li>
+                <li>Haslett</li>
+                <li>DeWitt</li>
+                <li>Williamston</li>
+                <li>Dimondale</li>
               </ul>
             </div>
             
@@ -314,14 +318,14 @@ export default function ContactPage() {
               <div className="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-3xl">🏘️</span>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Macomb County</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Extended Service Area</h3>
               <ul className="text-gray-600 space-y-1">
-                <li>Warren</li>
-                <li>Sterling Heights</li>
-                <li>Clinton Township</li>
-                <li>Macomb Township</li>
-                <li>Shelby Township</li>
-                <li>Utica</li>
+                <li>Bath</li>
+                <li>Eagle</li>
+                <li>Dansville</li>
+                <li>Leslie</li>
+                <li>Stockbridge</li>
+                <li>Webberville</li>
               </ul>
             </div>
           </div>
@@ -397,7 +401,8 @@ export default function ContactPage() {
               <h4 className="text-md font-semibold mb-4">Contact Info</h4>
               <ul className="space-y-2 text-gray-400">
                 <li>📧 info@splashtastic.com</li>
-                <li>📱 (555) 123-4567</li>
+                <li>📱 517-930-3292 (Tammy)</li>
+                <li>📱 517-505-1122 (Daniel)</li>
                 <li>📍 Greater Lansing Area</li>
               </ul>
             </div>

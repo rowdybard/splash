@@ -87,48 +87,6 @@ export default function AddOnsPage() {
             </div>
 
 
-            {/* Themed Decorations */}
-            <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
-              <div className="text-center mb-6">
-                <div className="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-4xl">🎨</span>
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900">Themed Decorations</h3>
-                <div className="text-3xl font-bold text-purple-600">$29</div>
-                <p className="text-gray-600">Transform your space!</p>
-              </div>
-              
-              <div className="space-y-4 mb-6">
-                <h4 className="font-semibold text-gray-900">What's Included:</h4>
-                <ul className="space-y-2 text-gray-600">
-                  <li className="flex items-center">
-                    <span className="text-green-500 mr-2">✓</span>
-                    Balloons & banners
-                  </li>
-                  <li className="flex items-center">
-                    <span className="text-green-500 mr-2">✓</span>
-                    Themed props
-                  </li>
-                  <li className="flex items-center">
-                    <span className="text-green-500 mr-2">✓</span>
-                    Color coordination
-                  </li>
-                  <li className="flex items-center">
-                    <span className="text-green-500 mr-2">✓</span>
-                    Setup & cleanup
-                  </li>
-                </ul>
-              </div>
-              
-              <div className="text-center">
-                <Link
-                  href="/book"
-                  className="inline-block w-full bg-purple-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-purple-700 transition-colors duration-200"
-                >
-                  Add to Package
-                </Link>
-              </div>
-            </div>
 
             {/* Glow/Neon Foam Upgrade */}
             <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
