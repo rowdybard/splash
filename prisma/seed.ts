@@ -48,7 +48,7 @@ async function main() {
     data: {
       name: 'Glow Night Spectacular',
       durationMin: 90,
-      basePrice: 59900, // $599.00
+      basePrice: 9900, // $99.00
       maxGuests: 30,
       includedItems: [
         'Professional foam machine',
@@ -56,8 +56,7 @@ async function main() {
         'UV lighting setup',
         'Setup and breakdown',
         'Evening safety supervision',
-        'Glow accessories',
-        'Music coordination'
+        'Glow accessories'
       ]
     }
   })
@@ -75,12 +74,6 @@ async function main() {
         price: 7500, // $75.00
         description: 'Upgrade to our vibrant neon-colored foam (safe, biodegradable)',
         requiresEvening: false
-      },
-      {
-        name: 'Premium Sound System',
-        price: 12500, // $125.00
-        description: 'Professional Bluetooth speaker system with microphone',
-        inventoryCount: 3
       },
       {
         name: 'Portable Generator',

@@ -114,15 +114,7 @@ export default function PackagesPage() {
                   </li>
                   <li className="flex items-center">
                     <span className="text-green-500 mr-3 text-xl">✓</span>
-                    <span>Music system with playlist</span>
-                  </li>
-                  <li className="flex items-center">
-                    <span className="text-green-500 mr-3 text-xl">✓</span>
                     <span>Enhanced party props</span>
-                  </li>
-                  <li className="flex items-center">
-                    <span className="text-green-500 mr-3 text-xl">✓</span>
-                    <span>Party coordinator</span>
                   </li>
                 </ul>
               </div>
@@ -165,19 +157,11 @@ export default function PackagesPage() {
                   </li>
                   <li className="flex items-center">
                     <span className="text-green-500 mr-3 text-xl">✓</span>
-                    <span>Professional lighting setup</span>
+                    <span>Premium foam machine</span>
                   </li>
                   <li className="flex items-center">
                     <span className="text-green-500 mr-3 text-xl">✓</span>
-                    <span>Custom foam colors</span>
-                  </li>
-                  <li className="flex items-center">
-                    <span className="text-green-500 mr-3 text-xl">✓</span>
-                    <span>Party games & activities</span>
-                  </li>
-                  <li className="flex items-center">
-                    <span className="text-green-500 mr-3 text-xl">✓</span>
-                    <span>Dedicated event manager</span>
+                    <span>Enhanced party props</span>
                   </li>
                 </ul>
               </div>
@@ -230,24 +214,6 @@ export default function PackagesPage() {
                </ul>
              </div>
 
-            {/* Music System */}
-            <div className="bg-gray-50 rounded-xl p-6 hover:shadow-md transition-shadow duration-200">
-              <div className="text-center mb-4">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <span className="text-2xl">🎵</span>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900">Music System</h3>
-                <div className="text-2xl font-bold text-green-600">$39</div>
-              </div>
-              <p className="text-gray-600 text-center mb-4">
-                Professional sound system with curated party playlists to keep the energy high.
-              </p>
-              <ul className="text-sm text-gray-600 space-y-1 mb-4">
-                <li>• Professional speakers</li>
-                <li>• Party playlist included</li>
-                <li>• Bluetooth connectivity</li>
-              </ul>
-            </div>
 
             {/* Themed Decorations */}
             <div className="bg-gray-50 rounded-xl p-6 hover:shadow-md transition-shadow duration-200">
@@ -275,7 +241,7 @@ export default function PackagesPage() {
                   <span className="text-2xl">✨</span>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900">Glow Package</h3>
-                <div className="text-2xl font-bold text-yellow-600">$79</div>
+                <div className="text-2xl font-bold text-yellow-600">$99</div>
               </div>
               <p className="text-gray-600 text-center mb-4">
                 Make your party glow with UV lighting and glow-in-the-dark accessories.
@@ -287,43 +253,6 @@ export default function PackagesPage() {
               </ul>
             </div>
 
-            {/* Photo Booth */}
-            <div className="bg-gray-50 rounded-xl p-6 hover:shadow-md transition-shadow duration-200">
-              <div className="text-center mb-4">
-                <div className="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <span className="text-2xl">📸</span>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900">Photo Booth</h3>
-                <div className="text-2xl font-bold text-pink-600">$59</div>
-              </div>
-              <p className="text-gray-600 text-center mb-4">
-                Capture the fun with our foam-themed photo booth and props.
-              </p>
-              <ul className="text-sm text-gray-600 space-y-1 mb-4">
-                <li>• Professional camera setup</li>
-                <li>• Foam-themed props</li>
-                <li>• Digital photo delivery</li>
-              </ul>
-            </div>
-
-            {/* Party Games */}
-            <div className="bg-gray-50 rounded-xl p-6 hover:shadow-md transition-shadow duration-200">
-              <div className="text-center mb-4">
-                <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                  <span className="text-2xl">🎮</span>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900">Party Games</h3>
-                <div className="text-2xl font-bold text-red-600">$39</div>
-              </div>
-              <p className="text-gray-600 text-center mb-4">
-                Organized games and activities to keep everyone entertained and engaged.
-              </p>
-              <ul className="text-sm text-gray-600 space-y-1 mb-4">
-                <li>• Foam tag & relay races</li>
-                <li>• Bubble contests</li>
-                <li>• Party coordinator</li>
-              </ul>
-            </div>
           </div>
         </div>
       </section>
