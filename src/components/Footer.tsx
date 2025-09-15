@@ -17,7 +17,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center space-x-2 text-gray-400">
                 <span>📧</span>
-                <span>info@splashtastic.com</span>
+                <span>splashtasticfoamparties@gmail.com</span>
               </div>
               <div className="flex items-center space-x-2 text-gray-400">
                 <span>📱</span>

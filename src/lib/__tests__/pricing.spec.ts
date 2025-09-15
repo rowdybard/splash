@@ -12,9 +12,9 @@ describe('Pricing Service', () => {
   const mockPackage = {
     id: 'pkg_1',
     name: 'Starter Party',
-    basePrice: 29900, // $299.00
+    basePrice: 39900, // $399.00
     durationMin: 60,
-    maxGuests: 15
+    maxGuests: 30
   }
 
   const mockAddons = [
@@ -41,9 +41,9 @@ describe('Pricing Service', () => {
 
       const result = calculatePricing(input)
 
-      expect(result.packagePrice).toBe(29900)
+      expect(result.packagePrice).toBe(39900)
       expect(result.addonsPrice).toBe(17400) // 9900 + 7500
-      expect(result.subtotal).toBe(47300) // package + addons
+      expect(result.subtotal).toBe(57300) // package + addons
     })
 
     it('should apply evening surcharge for Glow Night package only', () => {
@@ -174,14 +174,14 @@ describe('Pricing Service', () => {
 
       const result = calculatePricing(input)
 
-      expect(result.packagePrice).toBe(29900)
+      expect(result.packagePrice).toBe(39900)
       expect(result.addonsPrice).toBe(9900)
-      expect(result.subtotal).toBe(39800) // package + addons
+      expect(result.subtotal).toBe(49800) // package + addons
       expect(result.travelFee).toBe(4900) // $49 for 25 miles
-      expect(result.tax).toBe(3576) // 8% of (subtotal + travel)
-      expect(result.total).toBe(48276) // subtotal + travel + tax
-      expect(result.depositAmount).toBe(14483) // 30% of total, rounded up
-      expect(result.balanceAmount).toBe(33793) // total - deposit
+      expect(result.tax).toBe(4376) // 8% of (subtotal + travel)
+      expect(result.total).toBe(59076) // subtotal + travel + tax
+      expect(result.depositAmount).toBe(17723) // 30% of total, rounded up
+      expect(result.balanceAmount).toBe(41353) // total - deposit
     })
   })
 })

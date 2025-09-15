@@ -315,7 +315,7 @@ export function BookingStepper({ initialStep = 1, completedSteps = [] }: Booking
                }}
              >
                                <h3 className="font-bold">Starter Party</h3>
-                <p className="text-gray-600">1 hour • Up to 20 guests</p>
+                <p className="text-gray-600">1 hour • 30 guests</p>
                 <p className="text-2xl font-bold">$399</p>
                <ul className="text-sm text-gray-600 mt-2">
                  <li>• Professional foam machine</li>
@@ -340,7 +340,7 @@ export function BookingStepper({ initialStep = 1, completedSteps = [] }: Booking
                }}
              >
                <h3 className="font-bold">Deluxe Party</h3>
-               <p className="text-gray-600">2 hours • Up to 40 guests</p>
+               <p className="text-gray-600">2 hours • 30 guests</p>
                <p className="text-2xl font-bold">$499</p>
              </div>
             
@@ -360,8 +360,8 @@ export function BookingStepper({ initialStep = 1, completedSteps = [] }: Booking
                }}
              >
                <h3 className="font-bold">Premium Party</h3>
-               <p className="text-gray-600">4 hours • Up to 60 guests</p>
-               <p className="text-2xl font-bold">$799</p>
+               <p className="text-gray-600">4 hours • 30 guests</p>
+               <p className="text-2xl font-bold">$699</p>
              </div>
           </div>
         </div>

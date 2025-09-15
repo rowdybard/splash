@@ -139,7 +139,7 @@ export default function HomePage() {
               <ul className="space-y-3 mb-8">
                 <li className="flex items-center">
                   <span className="text-green-500 mr-2">✓</span>
-                  Up to 20 guests
+                  30 guests
                 </li>
                 <li className="flex items-center">
                   <span className="text-green-500 mr-2">✓</span>
@@ -151,7 +151,7 @@ export default function HomePage() {
                 </li>
                 <li className="flex items-center">
                   <span className="text-green-500 mr-2">✓</span>
-                  Safety equipment included
+                  Bubble Machine included
                 </li>
               </ul>
               <Link
@@ -176,7 +176,7 @@ export default function HomePage() {
               <ul className="space-y-3 mb-8">
                 <li className="flex items-center">
                   <span className="text-green-500 mr-2">✓</span>
-                  Up to 40 guests
+                  30 guests
                 </li>
                 <li className="flex items-center">
                   <span className="text-green-500 mr-2">✓</span>
@@ -188,7 +188,7 @@ export default function HomePage() {
                 </li>
                 <li className="flex items-center">
                   <span className="text-green-500 mr-2">✓</span>
-                  Music system included
+                  Bubble Machine included
                 </li>
               </ul>
               <Link
@@ -205,12 +205,12 @@ export default function HomePage() {
                   <span className="text-2xl">👑</span>
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900">Premium Party</h3>
-                <div className="text-4xl font-bold text-purple-600 mt-2">$799</div>
+                <div className="text-4xl font-bold text-purple-600 mt-2">$699</div>
               </div>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-center">
                   <span className="text-green-500 mr-2">✓</span>
-                  Up to 60 guests
+                  30 guests
                 </li>
                 <li className="flex items-center">
                   <span className="text-green-500 mr-2">✓</span>
@@ -222,7 +222,7 @@ export default function HomePage() {
                 </li>
                 <li className="flex items-center">
                   <span className="text-green-500 mr-2">✓</span>
-                  Full entertainment package
+                  Bubble Machine included
                 </li>
               </ul>
               <Link

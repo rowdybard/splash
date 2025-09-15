@@ -54,10 +54,13 @@ export async function POST(request: NextRequest) {
       // Use deterministic fallback for tests
       const fallbackPackages: any = {
         starter_package_id: {
-          id: 'starter_package_id', name: 'Starter Party', basePrice: 39900, durationMin: 60, maxGuests: 15
+          id: 'starter_package_id', name: 'Starter Party', basePrice: 39900, durationMin: 60, maxGuests: 30
         },
-        glow_package_id: {
-          id: 'glow_package_id', name: 'Glow Night Spectacular', basePrice: 59900, durationMin: 90, maxGuests: 30
+        deluxe_package_id: {
+          id: 'deluxe_package_id', name: 'Deluxe Party', basePrice: 49900, durationMin: 120, maxGuests: 30
+        },
+        premium_package_id: {
+          id: 'premium_package_id', name: 'Premium Party', basePrice: 69900, durationMin: 240, maxGuests: 30
         }
       }
       packageData = fallbackPackages[packageId]

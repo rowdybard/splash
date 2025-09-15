@@ -16,46 +16,45 @@ async function main() {
     data: {
       name: 'Starter Party',
       durationMin: 60,
-      basePrice: 29900, // $299.00
-      maxGuests: 15,
-      includedItems: [
-        'Professional foam machine',
-        'Biodegradable foam solution',
-        'Setup and breakdown',
-        'Basic safety briefing',
-        'Music system'
-      ]
-    }
-  })
-
-  const megaPackage = await prisma.package.create({
-    data: {
-      name: 'Mega Splash',
-      durationMin: 120,
-      basePrice: 44900, // $449.00
-      maxGuests: 25,
-      includedItems: [
-        'Professional foam machine',
-        'Biodegradable foam solution',
-        'Setup and breakdown',
-        'Safety briefing and supervision',
-        'Music system'
-      ]
-    }
-  })
-
-  const glowPackage = await prisma.package.create({
-    data: {
-      name: 'Glow Night Spectacular',
-      durationMin: 90,
-      basePrice: 9900, // $99.00
+      basePrice: 39900, // $399.00
       maxGuests: 30,
       includedItems: [
         'Professional foam machine',
-        'Glow-in-the-dark foam solution',
-        'UV lighting setup',
+        'Biodegradable foam solution',
         'Setup and breakdown',
-        'Evening safety supervision',
+        'Bubble Machine included',
+        'Music system'
+      ]
+    }
+  })
+
+  const deluxePackage = await prisma.package.create({
+    data: {
+      name: 'Deluxe Party',
+      durationMin: 120,
+      basePrice: 49900, // $499.00
+      maxGuests: 30,
+      includedItems: [
+        'Professional foam machine',
+        'Biodegradable foam solution',
+        'Setup and breakdown',
+        'Bubble Machine included',
+        'Music system'
+      ]
+    }
+  })
+
+  const premiumPackage = await prisma.package.create({
+    data: {
+      name: 'Premium Party',
+      durationMin: 240,
+      basePrice: 69900, // $699.00
+      maxGuests: 30,
+      includedItems: [
+        'Professional foam machine',
+        'Biodegradable foam solution',
+        'Setup and breakdown',
+        'Bubble Machine included',
         'Music system'
       ]
     }
@@ -136,10 +135,10 @@ async function main() {
         eventId: testEvent.id,
         packageId: starterPackage.id,
         addons: [],
-        subtotal: 29900,
+        subtotal: 39900,
         travelFee: 0,
-        tax: 2392, // 8% tax
-        depositAmount: 8987, // 30% deposit
+        tax: 3192, // 8% tax
+        depositAmount: 11976, // 30% deposit
         stripePaymentStatus: 'PENDING'
       }
     })

@@ -25,7 +25,7 @@ export default function Navigation() {
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4" />
-                <span>info@splashtastic.com</span>
+                <span>splashtasticfoamparties@gmail.com</span>
               </div>
             </div>
             <div className="flex items-center space-x-2">

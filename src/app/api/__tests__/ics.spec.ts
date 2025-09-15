@@ -65,7 +65,7 @@ describe('/api/ics/[bookingId]', () => {
       },
       startDateTime: expect.any(Date),
       endDateTime: expect.any(Date),
-      organizerEmail: 'info@splashtastic.com',
+      organizerEmail: 'splashtasticfoamparties@gmail.com',
       attendeeEmail: 'customer@example.com',
       url: 'https://splashtastic.com'
     })

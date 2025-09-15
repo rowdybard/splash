@@ -78,7 +78,7 @@ describe('Email Service', () => {
       expect(icsContent).toContain('VERSION:2.0')
       expect(icsContent).toContain('TZID:America/Detroit')
       expect(icsContent).toContain('SUMMARY:Splashtastic Foam Party - Starter Party')
-      expect(icsContent).toContain('ORGANIZER:mailto:info@splashtastic.com')
+      expect(icsContent).toContain('ORGANIZER:mailto:splashtasticfoamparties@gmail.com')
       expect(icsContent).toContain('ATTENDEE:mailto:test@example.com')
     })
   })

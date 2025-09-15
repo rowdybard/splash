@@ -144,7 +144,7 @@ export async function sendBookingConfirmation(data: EmailData): Promise<boolean>
       location: data.eventAddress,
       startTime: data.eventDate,
       endTime: new Date(data.eventDate.getTime() + 3 * 60 * 60 * 1000), // 3 hours duration
-      organizerEmail: 'info@splashtastic.com',
+      organizerEmail: 'splashtasticfoamparties@gmail.com',
       attendeeEmail: data.to
     })
 
@@ -251,7 +251,7 @@ function generateEmailHTML(data: EmailTemplateData): string {
           
           <p>If you have any questions, please don't hesitate to contact us:</p>
           <ul>
-            <li>📧 Email: info@splashtastic.com</li>
+            <li>📧 Email: splashtasticfoamparties@gmail.com</li>
             <li>📱 Phone: (555) 123-4567</li>
             <li>🌐 Website: www.splashtastic.com</li>
           </ul>
@@ -341,7 +341,7 @@ export async function sendReminderEmail(data: EmailData): Promise<boolean> {
             
             <p>If you need to make any changes or have questions, please contact us immediately:</p>
             <ul>
-              <li>📧 Email: info@splashtastic.com</li>
+              <li>📧 Email: splashtasticfoamparties@gmail.com</li>
               <li>📱 Phone: (555) 123-4567</li>
             </ul>
             
@@ -434,7 +434,7 @@ export async function sendCancellationEmail(data: EmailData, reason?: string): P
             
             <p>If you'd like to reschedule or have any questions, please contact us:</p>
             <ul>
-              <li>📧 Email: info@splashtastic.com</li>
+              <li>📧 Email: splashtasticfoamparties@gmail.com</li>
               <li>📱 Phone: (555) 123-4567</li>
             </ul>
             

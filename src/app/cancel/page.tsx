@@ -53,8 +53,8 @@ export default function CancelPage() {
         <div className="mt-8 pt-6 border-t border-gray-200">
           <p className="text-sm text-gray-500">
             Need help? Contact us at{' '}
-            <a href="mailto:info@splashtastic.com" className="text-blue-600 hover:underline">
-              info@splashtastic.com
+            <a href="mailto:splashtasticfoamparties@gmail.com" className="text-blue-600 hover:underline">
+              splashtasticfoamparties@gmail.com
             </a>
           </p>
         </div>

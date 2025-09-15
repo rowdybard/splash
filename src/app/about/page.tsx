@@ -378,7 +378,7 @@ export default function AboutPage() {
             <div>
               <h4 className="text-md font-semibold mb-4">Contact Info</h4>
               <ul className="space-y-2 text-gray-400">
-                <li>📧 info@splashtastic.com</li>
+                <li>📧 splashtasticfoamparties@gmail.com</li>
                 <li>📱 517-930-3292 (Tammy) | 517-505-1122 (Daniel)</li>
                 <li>📍 Greater Lansing Area</li>
               </ul>

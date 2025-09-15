@@ -31,7 +31,7 @@ export async function GET(
         },
       startDateTime: new Date('2024-06-15T14:00:00Z'),
       endDateTime: new Date('2024-06-15T16:00:00Z'),
-      organizerEmail: 'info@splashtastic.com',
+      organizerEmail: 'splashtasticfoamparties@gmail.com',
       attendeeEmail: 'customer@example.com',
       url: 'https://splashtastic.com'
     }
@@ -73,7 +73,7 @@ export async function GET(
       },
       startDateTime: new Date('2024-06-15T14:00:00Z'),
       endDateTime: new Date('2024-06-15T16:00:00Z'),
-      organizerEmail: 'info@splashtastic.com',
+      organizerEmail: 'splashtasticfoamparties@gmail.com',
       attendeeEmail: 'customer@example.com',
       url: 'https://splashtastic.com'
     }
