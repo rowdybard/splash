@@ -145,7 +145,7 @@ export default function PoliciesPage() {
           <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
             <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center">
               <span className="text-3xl mr-3">🛡️</span>
-              Safety Guidelines & Requirements
+              Safety Guidelines & Requirements (30 × 30)
             </h2>
             
             <div className="space-y-6">
@@ -175,27 +175,6 @@ export default function PoliciesPage() {
                 </ul>
               </div>
               
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Safety Equipment</h3>
-                <ul className="space-y-2 text-gray-600">
-                  <li className="flex items-start">
-                    <span className="text-blue-500 mr-2 mt-1">•</span>
-                    <span>We provide safety goggles for all participants</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-blue-500 mr-2 mt-1">•</span>
-                    <span>Safety briefing before each event</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-blue-500 mr-2 mt-1">•</span>
-                    <span>Trained staff on-site throughout the event</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-blue-500 mr-2 mt-1">•</span>
-                    <span>Emergency contact information readily available</span>
-                  </li>
-                </ul>
-              </div>
               
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">Participant Guidelines</h3>
@@ -321,27 +300,6 @@ export default function PoliciesPage() {
                 </ul>
               </div>
               
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Liability Waiver</h3>
-                <ul className="space-y-2 text-gray-600">
-                  <li className="flex items-start">
-                    <span className="text-blue-500 mr-2 mt-1">•</span>
-                    <span>All participants must sign a liability waiver</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-blue-500 mr-2 mt-1">•</span>
-                    <span>Minors require parent/guardian signature</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-blue-500 mr-2 mt-1">•</span>
-                    <span>Waivers are provided electronically before the event</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-blue-500 mr-2 mt-1">•</span>
-                    <span>Failure to sign waivers may result in event cancellation</span>
-                  </li>
-                </ul>
-              </div>
               
               <div className="bg-yellow-50 rounded-lg p-4 border border-yellow-200">
                 <h4 className="font-semibold text-gray-900 mb-2">Important Note</h4>
@@ -490,7 +448,7 @@ export default function PoliciesPage() {
             <div>
               <h4 className="text-md font-semibold mb-4">Contact Info</h4>
               <ul className="space-y-2 text-gray-400">
-                <li>📧 info@splashtastic.com</li>
+                <li>📧 splashtasticfoamparties@gmail.com</li>
                 <li>📱 (555) 123-4567</li>
                 <li>📍 Greater Lansing Area</li>
               </ul>

@@ -39,7 +39,7 @@ export default function PackagesPage() {
                 <ul className="space-y-3">
                   <li className="flex items-center">
                     <span className="text-green-500 mr-3 text-xl">✓</span>
-                    <span>Up to 20 guests</span>
+                    <span>30 guests</span>
                   </li>
                                      <li className="flex items-center">
                      <span className="text-green-500 mr-3 text-xl">✓</span>
@@ -55,7 +55,7 @@ export default function PackagesPage() {
                   </li>
                   <li className="flex items-center">
                     <span className="text-green-500 mr-3 text-xl">✓</span>
-                    <span>Safety equipment & briefing</span>
+                    <span>Bubble Machine included</span>
                   </li>
                   <li className="flex items-center">
                     <span className="text-green-500 mr-3 text-xl">✓</span>
@@ -98,7 +98,7 @@ export default function PackagesPage() {
                 <ul className="space-y-3">
                   <li className="flex items-center">
                     <span className="text-green-500 mr-3 text-xl">✓</span>
-                    <span>Up to 40 guests</span>
+                    <span>30 guests</span>
                   </li>
                   <li className="flex items-center">
                     <span className="text-green-500 mr-3 text-xl">✓</span>
@@ -114,7 +114,7 @@ export default function PackagesPage() {
                   </li>
                   <li className="flex items-center">
                     <span className="text-green-500 mr-3 text-xl">✓</span>
-                    <span>Music system included</span>
+                    <span>Bubble Machine included</span>
                   </li>
                 </ul>
               </div>
@@ -136,7 +136,7 @@ export default function PackagesPage() {
                   <span className="text-4xl">👑</span>
                 </div>
                 <h2 className="text-3xl font-bold text-gray-900 mb-2">Premium Party</h2>
-                <div className="text-5xl font-bold text-purple-600 mb-2">$799</div>
+                <div className="text-5xl font-bold text-purple-600 mb-2">$699</div>
                 <p className="text-gray-600">Ultimate foam party experience</p>
               </div>
               
@@ -145,7 +145,7 @@ export default function PackagesPage() {
                 <ul className="space-y-3">
                   <li className="flex items-center">
                     <span className="text-green-500 mr-3 text-xl">✓</span>
-                    <span>Up to 60 guests</span>
+                    <span>30 guests</span>
                   </li>
                   <li className="flex items-center">
                     <span className="text-green-500 mr-3 text-xl">✓</span>
@@ -161,7 +161,7 @@ export default function PackagesPage() {
                   </li>
                   <li className="flex items-center">
                     <span className="text-green-500 mr-3 text-xl">✓</span>
-                    <span>Music system included</span>
+                    <span>Bubble Machine included</span>
                   </li>
                 </ul>
               </div>
@@ -235,6 +235,27 @@ export default function PackagesPage() {
               </ul>
             </div>
 
+            {/* Extra Foam Cannons */}
+            <div className="bg-gray-50 rounded-xl p-6 hover:shadow-md transition-shadow duration-200">
+              <div className="text-center mb-4">
+                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <span className="text-2xl">💨</span>
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900">Extra Foam Cannons</h3>
+                <div className="text-2xl font-bold text-orange-600">TBD</div>
+                <p className="text-gray-600 text-center">Price coming soon</p>
+              </div>
+              <p className="text-gray-600 text-center mb-4">
+                Increase foam coverage for larger parties and wide spaces.
+              </p>
+              <ul className="text-sm text-gray-600 space-y-1 mb-4">
+                <li>• Additional foam cannons</li>
+                <li>• Enhanced coverage area</li>
+                <li>• Perfect for large groups</li>
+                <li>• Wide space coverage</li>
+              </ul>
+            </div>
+
           </div>
         </div>
       </section>
@@ -295,7 +316,7 @@ export default function PackagesPage() {
             <div>
               <h4 className="text-md font-semibold mb-4">Contact Info</h4>
               <ul className="space-y-2 text-gray-400">
-                <li>📧 info@splashtastic.com</li>
+                <li>📧 splashtasticfoamparties@gmail.com</li>
                 <li>📱 (555) 123-4567</li>
                 <li>📍 Greater Lansing Area</li>
               </ul>

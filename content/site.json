@@ -1,0 +1,126 @@
+{
+  "packages": {
+    "starter": {
+      "name": "Starter Party",
+      "price": 399,
+      "guestLimit": 30,
+      "duration": "1 hour",
+      "bullets": [
+        "30 guests",
+        "1 hour of foam fun",
+        "Professional foam machine",
+        "Biodegradable foam solution",
+        "Bubble Machine included",
+        "Setup & cleanup included",
+        "Music system included"
+      ]
+    },
+    "deluxe": {
+      "name": "Deluxe Party",
+      "price": 499,
+      "guestLimit": 30,
+      "duration": "2 hours",
+      "bullets": [
+        "30 guests",
+        "2 hours of foam fun",
+        "Everything in Starter",
+        "Premium foam machine",
+        "Bubble Machine included"
+      ]
+    },
+    "premium": {
+      "name": "Premium Party",
+      "price": 699,
+      "guestLimit": 30,
+      "duration": "4 hours",
+      "bullets": [
+        "30 guests",
+        "4 hours of foam fun",
+        "Everything in Deluxe",
+        "Premium foam machine",
+        "Bubble Machine included"
+      ]
+    }
+  },
+  "addons": [
+    {
+      "name": "Extra Foam Hours",
+      "price": 99,
+      "description": "Extend your party by 1-3 additional hours with continuous foam coverage",
+      "bullets": [
+        "+1 hour: $99",
+        "+2 hours: $198",
+        "+3 hours: $297",
+        "Continuous foam coverage"
+      ]
+    },
+    {
+      "name": "Glow/Neon Foam Upgrade",
+      "price": 99,
+      "description": "Make your party glow with UV lighting and neon/glow foam effects",
+      "bullets": [
+        "UV black lights",
+        "Glow accessories",
+        "Neon/glow foam effects"
+      ]
+    },
+    {
+      "name": "Extra Foam Cannons",
+      "price": null,
+      "description": "Increase foam coverage for larger parties and wide spaces",
+      "bullets": [
+        "Additional foam cannons",
+        "Enhanced coverage area",
+        "Perfect for large groups",
+        "Wide space coverage"
+      ]
+    }
+  ],
+  "bundles": [
+    {
+      "name": "Premium Experience (Ultimate Party Included)",
+      "price": 198,
+      "description": "Complete premium package with all enhancements",
+      "items": [
+        "Extra Foam (1 hour)",
+        "Glow/Neon Foam Upgrade"
+      ]
+    },
+    {
+      "name": "Ultimate Party",
+      "price": 297,
+      "description": "Maximum foam fun with extended hours",
+      "items": [
+        "Extra Foam (2 hours)",
+        "Glow/Neon Foam Upgrade"
+      ]
+    }
+  ],
+  "policies": {
+    "requirementsHeader": "Safety Guidelines & Requirements (30 × 30)",
+    "venueRequirements": [
+      "Clear outdoor area of at least 20x20 feet",
+      "Access to water source (garden hose connection)",
+      "Electrical outlet within 50 feet",
+      "Permission to use the space",
+      "Proper drainage to prevent water accumulation"
+    ],
+    "participantGuidelines": [
+      "Children under 3 should not participate in foam activities",
+      "Children 3-6 require direct adult supervision",
+      "No running or rough play in the foam area",
+      "Follow staff instructions at all times"
+    ]
+  },
+  "contact": {
+    "email": "splashtasticfoamparties@gmail.com",
+    "phone": "(555) 123-4567",
+    "website": "splashtasticfoamparties.com",
+    "serviceArea": "Greater Lansing Area"
+  },
+  "travel": {
+    "noMileageFees": true,
+    "standardRadius": 25,
+    "message": "We do not currently charge mileage. Our package pricing is all-in and typically ~$50 higher than nearby providers who charge mileage separately. For events beyond our standard radius, a travel fee may apply."
+  }
+}

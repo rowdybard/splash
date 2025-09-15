@@ -154,9 +154,9 @@ export default function AddOnsPage() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8 text-center">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Premium Experience</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Premium Experience (Ultimate Party Included)</h3>
               <div className="text-4xl font-bold text-blue-600 mb-4">$198</div>
-              <p className="text-gray-600 mb-6">Save $0 when you bundle!</p>
+              <p className="text-gray-600 mb-6">Complete premium package with all enhancements</p>
               <ul className="space-y-2 text-gray-700 mb-6">
                 <li>• Extra Foam (1 hour)</li>
                 <li>• Glow/Neon Foam Upgrade</li>
@@ -172,7 +172,7 @@ export default function AddOnsPage() {
             <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-8 text-center">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Ultimate Party</h3>
               <div className="text-4xl font-bold text-green-600 mb-4">$297</div>
-              <p className="text-gray-600 mb-6">Save $0 when you bundle!</p>
+              <p className="text-gray-600 mb-6">Maximum foam fun with extended hours</p>
               <ul className="space-y-2 text-gray-700 mb-6">
                 <li>• Extra Foam (2 hours)</li>
                 <li>• Glow/Neon Foam Upgrade</li>
@@ -244,7 +244,7 @@ export default function AddOnsPage() {
             <div>
               <h4 className="text-md font-semibold mb-4">Contact Info</h4>
               <ul className="space-y-2 text-gray-400">
-                <li>📧 info@splashtastic.com</li>
+                <li>📧 splashtasticfoamparties@gmail.com</li>
                 <li>📱 (555) 123-4567</li>
                 <li>📍 Greater Lansing Area</li>
               </ul>

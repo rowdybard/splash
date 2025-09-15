@@ -258,6 +258,16 @@ export default function ServiceAreaPage() {
               </div>
             </div>
           </div>
+          
+          <div className="bg-blue-50 rounded-xl p-8 mt-8">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Travel Fees</h3>
+            <p className="text-gray-600 mb-4">
+              We do not currently charge mileage. Our package pricing is all-in and typically ~$50 higher than nearby providers who charge mileage separately.
+            </p>
+            <p className="text-gray-600">
+              For events beyond our standard radius, a travel fee may apply.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -342,41 +352,6 @@ export default function ServiceAreaPage() {
         </div>
       </section>
 
-      {/* Coverage Checker */}
-      <section className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            Check Your Coverage
-          </h2>
-          <p className="text-xl text-gray-600 mb-8">
-            Not sure if we cover your area? Contact us with your address and we'll let you know 
-            immediately if we can serve your location and what the travel costs would be.
-          </p>
-          
-          <div className="bg-gradient-to-r from-blue-50 to-green-50 rounded-2xl p-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Quick Coverage Check</h3>
-            <p className="text-gray-600 mb-6">
-              Send us your address and we'll respond within 2 hours with coverage confirmation 
-              and any applicable travel fees.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="inline-flex items-center px-8 py-4 bg-blue-600 text-white font-semibold rounded-lg text-lg hover:bg-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-              >
-                📍 Check My Address
-              </Link>
-              <Link
-                href="/book"
-                className="inline-flex items-center px-8 py-4 border-2 border-blue-600 text-blue-600 font-semibold rounded-lg text-lg hover:bg-blue-50 transition-all duration-200"
-              >
-                🎉 Book Now
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-blue-600 to-green-600">
@@ -435,7 +410,7 @@ export default function ServiceAreaPage() {
             <div>
               <h4 className="text-md font-semibold mb-4">Contact Info</h4>
               <ul className="space-y-2 text-gray-400">
-                <li>📧 info@splashtastic.com</li>
+                <li>📧 splashtasticfoamparties@gmail.com</li>
                 <li>📱 (555) 123-4567</li>
                 <li>📍 Greater Lansing Area</li>
               </ul>

@@ -192,8 +192,8 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900">Email</h3>
-                      <a href="mailto:info@splashtastic.com" className="text-blue-600 hover:text-blue-800">
-                        info@splashtastic.com
+                      <a href="mailto:splashtasticfoamparties@gmail.com" className="text-blue-600 hover:text-blue-800">
+                        splashtasticfoamparties@gmail.com
                       </a>
                     </div>
                   </div>
@@ -400,7 +400,7 @@ export default function ContactPage() {
             <div>
               <h4 className="text-md font-semibold mb-4">Contact Info</h4>
               <ul className="space-y-2 text-gray-400">
-                <li>📧 info@splashtastic.com</li>
+                <li>📧 splashtasticfoamparties@gmail.com</li>
                 <li>📱 517-930-3292 (Tammy)</li>
                 <li>📱 517-505-1122 (Daniel)</li>
                 <li>📍 Greater Lansing Area</li>
