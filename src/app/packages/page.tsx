@@ -222,7 +222,7 @@ export default function PackagesPage() {
                 <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-3">
                   <span className="text-2xl">✨</span>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900">Glow/Neon Foam Upgrade</h3>
+                <h3 className="text-xl font-semibold text-gray-900">Glow Foam Upgrade</h3>
                 <div className="text-2xl font-bold text-yellow-600">$99</div>
               </div>
               <p className="text-gray-600 text-center mb-4">
@@ -242,8 +242,8 @@ export default function PackagesPage() {
                   <span className="text-2xl">💨</span>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900">Extra Foam Cannons</h3>
-                <div className="text-2xl font-bold text-orange-600">TBD</div>
-                <p className="text-gray-600 text-center">Price coming soon</p>
+                <div className="text-2xl font-bold text-orange-600">Contact Us</div>
+                <p className="text-gray-600 text-center">Custom pricing available</p>
               </div>
               <p className="text-gray-600 text-center mb-4">
                 Increase foam coverage for larger parties and wide spaces.
