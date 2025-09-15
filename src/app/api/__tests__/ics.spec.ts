@@ -7,6 +7,7 @@ vi.mock('@/lib/ics', () => ({
 }))
 
 // Mock environment
+// @ts-ignore - Test environment setup
 process.env.NODE_ENV = 'test'
 
 // Import after mocking

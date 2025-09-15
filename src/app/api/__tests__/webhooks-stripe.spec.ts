@@ -355,6 +355,7 @@ describe('/api/webhooks/stripe', () => {
   describe('security', () => {
     it('should require HTTPS in production', async () => {
       const originalEnv = process.env.NODE_ENV
+      // @ts-ignore - Test environment setup
       process.env.NODE_ENV = 'production'
 
       const payload = { type: 'test' }
@@ -373,6 +374,7 @@ describe('/api/webhooks/stripe', () => {
       const data = await response.json()
       expect(data.error).toContain('HTTPS required')
 
+      // @ts-ignore - Test environment setup
       process.env.NODE_ENV = originalEnv
     })
 
