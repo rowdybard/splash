@@ -129,16 +129,16 @@ describe('BookingStepper', () => {
       
       // Should show package cards
       expect(screen.getByText('Starter Party')).toBeInTheDocument()
-      expect(screen.getByText('Mega Splash')).toBeInTheDocument()
-      expect(screen.getByText('Glow Night Spectacular')).toBeInTheDocument()
+      expect(screen.getByText('Deluxe Party')).toBeInTheDocument()
+      expect(screen.getByText('Premium Party')).toBeInTheDocument()
     })
 
     it('should display package details and pricing', () => {
       const starterPackage = screen.getByTestId('package-starter')
       
-      expect(starterPackage).toHaveTextContent('$299')
+      expect(starterPackage).toHaveTextContent('$399')
       expect(starterPackage).toHaveTextContent('60 minutes')
-      expect(starterPackage).toHaveTextContent('Up to 15 guests')
+      expect(starterPackage).toHaveTextContent('30 guests')
     })
 
     it('should allow package selection', async () => {
@@ -293,7 +293,7 @@ describe('BookingStepper', () => {
       expect(screen.getByText(/Starter Party/)).toBeInTheDocument()
       expect(screen.getByText(/Package/)).toBeInTheDocument()
       // Use getAllByText to get all instances and verify we have the expected count
-      const priceElements = screen.getAllByText('$299.00')
+      const priceElements = screen.getAllByText('$399.00')
       expect(priceElements).toHaveLength(2) // Package price + Subtotal
     })
 

@@ -350,7 +350,7 @@ export function BookingStepper({ initialStep = 1, completedSteps = [] }: Booking
                  selectedPackage?.name === 'Premium Party' ? 'border-blue-500 bg-blue-50' : ''
                }`}
                onClick={() => {
-                 setSelectedPackage({ name: 'Premium Party', price: 799, durationMin: 240 });
+                 setSelectedPackage({ name: 'Premium Party', price: 699, durationMin: 240 });
                  setError(null);
                  setSuccess(null);
                  // Refresh availability with new duration if date is selected

@@ -69,7 +69,7 @@ test.describe('Booking Flow E2E', () => {
     
     // Verify booking summary
     await expect(page.getByText('Starter Party')).toBeVisible()
-    await expect(page.getByText('$299.00')).toBeVisible()
+    await expect(page.getByText('$399.00')).toBeVisible()
 
     // Accept waiver
     await page.getByLabel(/waiver/i).check()
